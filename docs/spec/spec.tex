@@ -1,0 +1,181 @@
+\documentclass{article}
+\usepackage{hyperref}
+\title{Specification Document}
+\author{Omkar Girish Kamath}
+\begin{document}
+\maketitle
+\tableofcontents
+\date
+\section{\textbf{Description}}
+The Tinycpu is a \textit{8-bit} Instruction Set Architecture, \textit{8-bit} wide databus CPU built on a custom designed 2 layer PCB board with a seperate daughter PCB board for the Power supply.\\ The whole board is encased in a box for insulation and safety purposes, it has a passive cooling system. The board has a 8 x 8k EEPROM device acting as the data and instruction memory for the CPU which can be programmed using programmer device.\\ It displays outputs using Hex Displays. Buttons and switches on its externals can be used to dynamically provide inputs such as reset signals, and address signals for the hex display output. The software version is completely built in verilog and python, tested and verified with a diverse set of Assembly codes. 
+\section{\textbf{Instruction Set of the Processor}}
+\subsection{Arithmetic and Logical Instructions}
+
+\subsubsection{AND}
+\textit{Opcode: 0000} \\
+\textit{Instruction Description}:  Bit-wise "ANDs" values stored in
+register A and register B and stores the result in register A.
+\begin{center} \textbf{rA \& rB -$>$rA} \end{center}
+
+\subsubsection{OR}
+\textit{Opcode: 0001} \\
+\textit{Instruction Description}:  Bit-wise "ORs" values stored in
+register A and register B and stores the result in register A. \\
+\begin{center} \textbf{rA $|$ rB -$>$ rA} \end{center}
+
+\subsubsection{INV}
+\textit{Opcode: 0010}  \\
+\textit{Instruction Description}:  Bit-wise "Inverts" values stored in
+register A and stores the result in register A. \\
+\begin{center}\textbf{not(rA) -$>$ rA}\end{center}
+
+\subsubsection{ADD}
+\textit{Opcode: 0011}  \\
+\textit{Instruction Description}:  "ADDs" values stored in
+register A and register B and stores the result in register A.
+\begin{center} \textbf{rA + rB -$>$ rA} \end{center}
+
+\subsection{Memory Access and Immediate Instructions}
+
+\subsubsection{LDI} 
+\textit{Opcode: 0100}  \\
+\textit{Instruction Description}:  Left Shifts value in register A and the
+4-bit immediate value provided with the instruction is stored at the
+lower 4-bits of rA.
+\begin{center} \textbf{rA$[7:4] ~<- ~rA[3:0]$} \end{center} 
+\begin{center} \textbf{rA$[3:0] ~<- ~imm[3:0]$} \end{center}
+
+\subsubsection{LDM}
+\textit{Opcode: 0101}  \\
+\textit{Instruction Description}:  Loads the value stored at memory
+address $[register ~M]$ in register A.
+
+\subsubsection{STM}
+\textit{Opcode: 0110}  \\
+\textit{Instruction Description}:  Stores the value stored in register
+A at memory address $[register ~M]$.
+
+\subsection{Memory Access and Immediate Instructions}
+
+\subsubsection{SWAB}
+\textit{Opcode: 1000}  \\
+\textit{Instruction Description}:  Swaps the values stored in register
+A and register B.
+\begin{center}\textbf{rA $<$-$>$ rB}\end{center}
+
+\subsubsection{SWMB}
+\textit{Opcode: 1001}  \\
+\textit{Instruction Description}: Swap the values stored in register M
+and register B.
+\begin{center}\textbf{rM $<$-$>$ rB}\end{center}
+
+\subsubsection{CPPA}
+\textit{Opcode: 1010}  \\
+\textit{Instruction Description}:  Copies the value stored in register
+P (program counter) to register A.
+\begin{center}\textbf{rA $<$- rP}\end{center}
+
+\subsubsection{CPAM}
+\textit{Opcode: 1011}  \\
+\textit{Instruction Description}:  Copies the value stored in register
+A to register M.
+\begin{center}\textbf{rM $<$- rA}\end{center}
+\subsection{Unconditional and Conditional Jumps}
+
+\subsubsection{JU}
+\textit{Opcode: 1100}  \\
+\textit{Instruction Description}:  Copies value stored in register M
+to register P (program counter).
+\begin{center}\textbf{rM -$>$ rP}\end{center}
+\subsubsection{JE}
+\textit{Opcode: 1101}  \\
+\textit{Instruction Description}:  Copies value stored in register M
+to register P (program counter) if values stored in register A and
+register B are equal.
+\begin{center}\textbf{rM -$>$ rP if (rA $=$ rB)}\end{center}
+\subsubsection{JL}
+\textit{Opcode: 1110}  \\
+\textit{Instruction Description}:  Copies value stored in register M
+to register P (program counter) if value stored in register A is
+lesser than value stored in register B.
+\begin{center}\textbf{rM -$>$ rP if (rA $<$ rB)}\end{center}
+\subsubsection{JG}
+\textit{Opcode: 1111}  \\
+\textit{Instruction Description}:  Copies value stored in register M
+to register P (program counter) if value stored in register A is
+greater than value stored in register B.
+\begin{center}\textbf{rM -$>$ rP if (rA $>$ rB)}\end{center}
+\section{\textbf{Block Diagram}}
+\section{\textbf{Software Design and Verification Tools}}
+\subsection{Emulator}
+It is a reference model of the processor written in Python. It is used
+to verify the correctness of the other models such as the Behavioural
+model, the Structural model and the 74 series structural model.
+\subsection{Assembler}
+It is a utility which converts Assembly level instructions (.s) files
+and converts them into machine code level files which are then used to
+feed to the processor RAM using \$readmemh.\\
+It is completely written in Python.
+\subsection{Makefile}
+\section{\textbf{I/O Interface Description}}
+\section{\textbf{Behavioural Model}}
+A behavioural model of the processor designed fully in Verilog.
+The behavioral model refers to a modeling style that describes the
+behavior or functionality of a digital circuit using procedural
+code. It focuses on how the circuit operates and behaves rather than
+its physical implementation. \\
+
+In a behavioral model, you describe the circuit's functionality using
+high-level constructs, such as if-else statements, loops, and
+assignments, which resemble programming languages like C or Java. This
+allows you to specify the desired behavior of the circuit without
+getting into the details of the circuit's structure or timing.
+\section{\textbf{Structural Model}}
+The structural modeling style involves describing a digital circuit as
+an interconnected network of lower-level components or modules. It
+focuses on the physical structure of the circuit, specifying how the
+components are connected to form the desired functionality.
+
+In structural modeling, you instantiate and connect instances of
+predefined or user-defined modules to create the circuit. Each module
+represents a lower-level component or a subcircuit, and its internal
+structure is described separately. The connections between modules are
+made using signals or wires.
+\section{\textbf{74 series Structural Model}}
+It is similar to the structural model but in this model we create
+modules of the ICs that we require after observing the approximate BOM
+and place them as per their functionalities in the structural model
+such as the IC-SN7408 is a quad 2-input AND gate IC, so we replace AND
+gates in the structural model with instantiated modules of the
+mentioned ICs. The result is we are able to fully express the
+structural design in terms of ICs of 74 series and similar kind. This
+is the 74 series Structural Model that we require.
+\section{\textbf{SRAM / EEPROM}}
+\subsection{Components Required}
+\subsubsection{IC}
+The IC required is the \textbf{AT28C64B}.
+Its a 32-pin PLCC type package, J type.
+We need a 32-pin PLCC to DIP package socket for the above IC.
+\subsubsection{Sockets}
+
+\subsection{I/O of the Device}
+\subsection{Programmer Device}
+\subsection{Timing Diagrams}
+\section{\textbf{PCB design for the Processor}}
+\subsection{Schematic Design}
+\subsection{Place and Route}
+\subsubsection{Front Side Copper Layer}
+\subsubsection{Back Side Copper Layer}
+\subsection{Silk-screen Layer}
+\section{\textbf{PWR Source of the Device}}
+\subsection{Components Required}
+\subsection{PCB Design for the PWR Source}
+\subsection{Cooling for the Source}
+\section{\textbf{Timing Diagrams of the Device}}
+\section{\textbf{Device Externals}}
+\subsection{Hex Display and Drivers}
+\subsection{Buttons and Switches}
+\subsection{Insulation Box}
+\subsection{Passive Cooling}
+\subsection{Stilts}
+\end{document}
