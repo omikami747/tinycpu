@@ -1,0 +1,153 @@
+#!/usr/bin/env python3
+
+import getopt
+import sys
+from dataclasses import dataclass
+from copy import deepcopy
+
+
+@dataclass
+class Instruction:
+    """Class for keeping track of an instruction and its associated data."""
+    opcode: str = ""
+    argument: str = ""
+    label: str = ""
+
+
+# Argument parsing
+try:
+    opts, args = getopt.gnu_getopt(sys.argv[1:], "o:")
+    if len(args) != 1:
+        print("usage: asm file.s [-o output_file]")
+        sys.exit(1)
+
+except getopt.GetoptError:
+    print("usage: asm file.s [-o output_file]")
+    sys.exit(1)
+
+try:
+    out_name = opts[0][1]
+except IndexError:
+    out_name = "a.out"
+
+# Encodings for opcodes and registers.
+opcode_encoding = {
+    "AND": 0x0,
+    "OR": 0x1,
+    "INV": 0x2,
+    "ADD": 0x3,
+    "LDI": 0x4,
+    "LDM": 0x5,
+    "STM": 0x6,
+    "SWAB": 0x8,
+    "SWMB": 0x9,
+    "CPPA": 0xA,
+    "CPAM": 0xB,
+    "JU": 0xC,
+    "JE": 0xD,
+    "JL": 0xE,
+    "JG": 0xF,
+}
+
+register_encoding = {
+    "A": 0b00,
+    "B": 0b01,
+    "M": 0b10,
+    "P": 0b11,
+}
+
+instructions = []
+binary = []
+
+# Parse assembly file.
+try:
+    with open(args[0], "r") as asm:
+        curr_label = ""
+        for line_no, line in enumerate(asm):
+            if ":" not in line:
+                line = line.split("#")[0].strip()
+                if line == "":
+                    continue
+                instr = Instruction()
+                instr.opcode = line.split(" ")[0].upper()
+                if instr.opcode == "LDI":
+                    try:
+                        instr.argument = line.split(" ")[1]
+                    except IndexError:
+                        print(f"error: {args[0]}:{line_no} LDI requires an argument.")
+                        sys.exit(1)
+                if instr.opcode[0] == "J":
+                    try:
+                        instr.argument = line.split(" ")[1]
+                    except IndexError:
+                        pass
+                    if not instr.argument.isidentifier():
+                        print(f"error: {args[0]}:{line_no} invalid label syntax {instr.argument}.")
+                        sys.exit(1)
+                instr.label = curr_label
+                curr_label = ""
+                instructions.append(instr)
+            else:
+                curr_label = line.split(":")[0]
+
+except FileNotFoundError:
+    print(f"File '{args[0]}' not found.")
+
+
+# Find all J instructions with labels. These need prep code.
+addr_comp_logic = [
+    Instruction("SWMB"),
+    Instruction("SWAB"),
+    Instruction("LDI"),
+    Instruction("LDI"),
+    Instruction("SWAB"),
+    Instruction("SWMB"),
+]
+with_addr_comp = deepcopy(instructions)
+
+i = 0
+for instr in instructions:
+    if instr.opcode[0] == "J" and instr.argument != "":
+        addr_comp_logic[2].argument = instr.argument
+        addr_comp_logic[3].argument = instr.argument
+        with_addr_comp = (
+            with_addr_comp[0:i] + deepcopy(addr_comp_logic) + with_addr_comp[i:]
+        )
+        i += 6
+    i += 1
+
+instructions = with_addr_comp
+
+# Get label indexes
+labels = dict()
+for i, instr in enumerate(instructions):
+    if instr.label != '':
+        labels[instr.label] = i
+
+# Put label addresses into LDI's
+for i, instr in enumerate(instructions):
+    if instr.opcode == "LDI" and instructions[i-1].opcode == "LDI":
+        if instr.argument.isidentifier() and instructions[i-1].argument.isidentifier():
+            with_addr_comp[i-1].argument = str(labels[instructions[i-1].argument] >> 4)
+            with_addr_comp[i].argument = str(labels[instr.argument] & 0xf)
+
+instructions = with_addr_comp
+
+# Encode the instructions.
+for instr in instructions:
+    try:
+        enc = opcode_encoding[instr.opcode] << 4
+    except KeyError:
+        print(f"error: {args[0]}:{i} unknown opcode {instr.opcode}.")
+        sys.exit(1)
+
+    if instr.opcode == "LDI":
+        if (imm := int(instr.argument, 0)) > 0xf:
+            print(f"error: in {args[0]}:{i} invalid immediate {imm}.")
+        enc |= imm
+
+    binary.append(enc)
+
+# Write binary file.
+with open(out_name, "wb") as out:
+    out.write(bytearray(binary))

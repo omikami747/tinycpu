@@ -1,0 +1,21 @@
+#!/usr/bin/env python3
+
+import sys
+
+if len(sys.argv) != 2:
+    print("usage: bin2readmemh binary > contents.mem")
+    sys.exit(1)
+
+ctr = 0
+try:
+    with open(sys.argv[1], "rb") as f:
+        while (byte := f.read(1)):
+            print(hex(int.from_bytes(byte, 'big'))[2:])
+            ctr += 1
+
+except FileNotFoundError:
+    print(f"File '{sys.argv[1]}' not found.")
+
+while ctr < 256:
+    print("0")
+    ctr += 1

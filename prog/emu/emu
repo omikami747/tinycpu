@@ -1,0 +1,107 @@
+#!/usr/bin/env python3
+
+import getopt
+import sys
+from ctypes import c_uint8
+
+try:
+    opts, args = getopt.gnu_getopt(sys.argv[1:], "")
+    if len(args) != 1:
+        print("usage: emu [-v] binary")
+        sys.exit(1)
+
+except getopt.GetoptError:
+    print("usage: emu [-v] binary")
+    sys.exit(1)
+
+
+reg = {"A": 0, "B": 0, "M": 0, "P": 0}
+ram = [0] * 2**8
+
+
+opcode_encoding = {
+    "AND": 0x0,
+    "OR": 0x1,
+    "INV": 0x2,
+    "ADD": 0x3,
+    "LDI": 0x4,
+    "LDM": 0x5,
+    "STM": 0x6,
+    "SWAB": 0x8,
+    "SWMB": 0x9,
+    "CPPA": 0xA,
+    "CPAM": 0xB,
+    "JU": 0xC,
+    "JE": 0xD,
+    "JL": 0xE,
+    "JG": 0xF,
+}
+enc_opcode = {v: k for k, v in opcode_encoding.items()}
+
+register_encoding = {
+    "A": 0b00,
+    "B": 0b01,
+    "M": 0b10,
+    "P": 0b11,
+}
+enc_reg = {v: k for k, v in register_encoding.items()}
+
+try:
+    with open(args[0], "rb") as f:
+        binary = f.read()
+
+except FileNotFoundError:
+    print(f"File '{args[0]}' not found.")
+
+for i, instr in enumerate(binary):
+    ram[i] = instr
+
+while True:
+    print(f"A = {reg['A']}, B = {reg['B']}, M = {reg['M']}, P = {reg['P']}")
+    instr = ram[reg["P"]]
+    curr_addr = reg["P"]
+    reg["P"] += 1
+    opcode = enc_opcode[instr >> 4]
+
+    if opcode == "JU" or opcode == "JE" or opcode == "JG" or opcode == "JL":
+        if reg["M"] == curr_addr:
+            print("Detected forever loop, halting CPU.")
+            # print(ram)
+            sys.exit(0)
+
+    if opcode == "ADD":
+        reg["A"] = (reg["A"] + reg["B"]) % 2**8
+    elif opcode == "AND":
+        reg["A"] &= reg["B"]
+    elif opcode == "OR":
+        reg["A"] |= reg["B"]
+    elif opcode == "INV":
+        reg["A"] = c_uint8(~reg["A"]).value
+    elif opcode == "LDI":
+        imm = instr & 0xf
+        reg["A"] &= 0xf
+        reg["A"] <<= 4
+        reg["A"] |= imm
+    elif opcode == "LDM":
+        reg["A"] = ram[reg["M"]]
+    elif opcode == "STM":
+        ram[reg["M"]] = reg["A"]
+    elif opcode == "SWAB":
+        reg["A"], reg["B"] = reg["B"], reg["A"]
+    elif opcode == "SWMB":
+        reg["M"], reg["B"] = reg["B"], reg["M"]
+    elif opcode == "CPPA":
+        reg["A"] = reg["P"]
+    elif opcode == "CPAM":
+        reg["M"] = reg["A"]
+    elif opcode == "JU":
+        reg["P"] = reg["M"]
+    elif opcode == "JE":
+        if reg["A"] == reg["B"]:
+            reg["P"] = reg["M"]
+    elif opcode == "JL":
+        if reg["A"] < reg["B"]:
+            reg["P"] = reg["M"]
+    elif opcode == "JG":
+        if reg["A"] > reg["B"]:
+            reg["P"] = reg["M"]
