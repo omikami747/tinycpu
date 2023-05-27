@@ -1,5 +1,5 @@
 load_arr_0:
-        LDI array          # An interesting side-effect of the design of labels in
+        LDI array          # An interesting note about the design of labels in
         LDI array          # the assembler is that doing this lets me load a pointer.
         SWAB
         SWMB               # rM now has &(array[0]).

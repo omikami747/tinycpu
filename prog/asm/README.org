@@ -1,0 +1,3 @@
+* =asm=, the assembler for TinyCPU
+Some example programs are reproduced below:
+#+include: ../src/compute_128.s src asm
