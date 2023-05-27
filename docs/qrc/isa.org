@@ -1,0 +1,35 @@
+#+title: TinyCPU ISA Quick Reference Card
+#+latex_class_options: [twocolumn]
+#+options: toc:nil
+#+LATEX_HEADER: \usepackage{parskip}
+
+This QRC is intended mostly for assembly programmers. RTL folks will
+have to look elsewhere for their TinyCPU QRC needs.
+
+#+ATTR_LATEX: :booktabs t
+| Register | Purpose         |
+|----------+-----------------|
+| ~rA~     | Accumulator     |
+| ~rB~     | Background      |
+| ~rM~     | Memory address  |
+| ~rP~     | Program counter |
+#+LATEX: \vfill\eject
+
+#+ATTR_LATEX: :booktabs t
+| Instruction | RTL                                      |
+|-------------+------------------------------------------|
+| =AND=       | ~rA <= rA & rB~                          |
+| =OR=        | ~rA <= rA~ $\mathtt{\vert}$ ~rB~         |
+| =INV=       | ~rA <= ~rA~                              |
+| =ADD=       | ~rA <= rA + rB~                          |
+| =LDI imm=   | ~rA <= (rA << 4)~ $\mathtt{\vert}$ ~imm~ |
+| =LDM=       | ~rA <= M[rM]~                            |
+| =STM=       | ~M[rM] <= rA~                            |
+| =SWAB=      | ~rA <= rB~, ~rB <= rA~                   |
+| =SWMB=      | ~rM <= rB~, ~rB <= rM~                   |
+| =CPPA=      | ~rA <= rP~                               |
+| =CPAM=      | ~rM <= rA~                               |
+| =JU=        | ~rP <= rM~                               |
+| =JE=        | ~(rA == rB) ? rP <= rM~                  |
+| =JL=        | ~(rA < rB) ? rP <= rM~                   |
+| =JG=        | ~(rA > rB) ? rP <= rM~                   |
