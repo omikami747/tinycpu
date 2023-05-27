@@ -70,7 +70,7 @@ try:
                     continue
                 instr = Instruction()
                 instr.opcode = line.split(" ")[0].upper()
-                if instr.opcode == "LDI":
+                if instr.opcode == "LDI" or instr.opcode == ".WORD":
                     try:
                         instr.argument = line.split(" ")[1]
                     except IndexError:
@@ -138,12 +138,19 @@ for instr in instructions:
     try:
         enc = opcode_encoding[instr.opcode] << 4
     except KeyError:
-        print(f"error: {args[0]}:{i} unknown opcode {instr.opcode}.")
-        sys.exit(1)
+        if instr.opcode == ".WORD":
+            if (literal := int(instr.argument, 0)) > 0xff:
+                print(f"error: in {args[0]}:{i} invalid literal value {literal}.")
+                sys.exit(1)
+            enc = literal
+        else:
+            print(f"error: {args[0]}:{i} unknown opcode {instr.opcode}.")
+            sys.exit(1)
 
     if instr.opcode == "LDI":
         if (imm := int(instr.argument, 0)) > 0xf:
             print(f"error: in {args[0]}:{i} invalid immediate {imm}.")
+            sys.exit(1)
         enc |= imm
 
     binary.append(enc)
