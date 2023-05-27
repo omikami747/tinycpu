@@ -14,3 +14,23 @@ An example program is reproduced below:
   array:
           .word 42
 #+end_src
+
+** Notes on the assembler
+
+*** Rules
+Any violations of the rules below is undefined behavior, though most
+of these should be caught by the assembler.
+
+- Comments start with =#= and end with the newline character.
+- Labels must end in =:=. *A label must be the only thing on its line
+  (other than comments).*
+- Label naming rules follow the [[https://docs.python.org/3/reference/lexical_analysis.html#identifiers][syntax rules for Python identifiers]].
+- Immediates for =LDI= and literals for =.word= may be in any base
+  Python supports, with the same syntax (=0x=, =0b=, =0o=, and
+  decimal).
+
+*** On Label Jumps
+Jumps to labels add extra code to actually compute the address and
+jump there --- exactly five instructions are added prior to any
+label jump to achieve this. This is relevant if you're wondering why
+your code size is more than expected.
