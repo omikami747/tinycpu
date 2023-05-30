@@ -3,8 +3,8 @@ ALL_STRUCT = $(STRUCT)tinycpu_test.v $(STRUCT)sram.v $(STRUCT)sim_env.v $(STRUCT
 
 run: emulog rtllog structurallog
 	$(call check_defined, ASM, file to exec)
-	diff -q structurallog emulog  #-q real option, change after test
-	diff -q rtllog emulog         #-q real option, change after test
+	diff -s structurallog emulog  #-q real option, change after test
+	diff -s rtllog emulog         #-q real option, change after test
 
 emulog: prog/asm/asm prog/emu/emu
 	./prog/asm/asm $(ASM) -o bin.out
