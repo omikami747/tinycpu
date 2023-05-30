@@ -79,11 +79,11 @@ try:
                 if instr.opcode[0] == "J":
                     try:
                         instr.argument = line.split(" ")[1]
+                        if not instr.argument.isidentifier():
+                            print(f"error: {args[0]}:{line_no} invalid label syntax {instr.argument}.")
+                            sys.exit(1)
                     except IndexError:
                         pass
-                    if not instr.argument.isidentifier():
-                        print(f"error: {args[0]}:{line_no} invalid label syntax {instr.argument}.")
-                        sys.exit(1)
                 instr.label = curr_label
                 curr_label = ""
                 instructions.append(instr)
