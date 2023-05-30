@@ -2,7 +2,6 @@ STRUCT = rtl/struct/
 ALL_STRUCT = $(STRUCT)tinycpu_test.v $(STRUCT)sram.v $(STRUCT)sim_env.v $(STRUCT)toplevel.v $(STRUCT)cmp.v $(STRUCT)alu.v $(STRUCT)data_path.v $(STRUCT)cpu_reg.v $(STRUCT)cpu_ctrl.v $(STRUCT)sram_ctrl.v
 
 run: emulog rtllog structurallog
-	$(call check_defined, ASM, file to exec)
 	diff -s structurallog emulog  #-q real option, change after test
 	diff -s rtllog emulog         #-q real option, change after test
 
@@ -25,4 +24,4 @@ structurallog: $(ALL_STRUCT)
 	rm tmp2
 
 clean:
-	rm -f structurallog rtllog emulog program.mem a.out bin.out dump.vcd
+	rm -f structurallog rtllog emulog program.mem a.out bin.out dump.vcd prog/emulog a.out struct

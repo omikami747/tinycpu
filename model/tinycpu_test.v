@@ -34,7 +34,7 @@ module tinycpu_test;
         end
       if (cpumodel.exec_state == 3'd0 && reset == 1'b1)
         begin
-          $display("A = %x, B = %x, M = %x, P = %x",
+          $display("A = %0d, B = %0d, M = %0d, P = %0d",
                    cpumodel.rA, cpumodel.rB, cpumodel.rM, cpumodel.rP);
         end
     end

@@ -12,7 +12,7 @@ module sram
   localparam DEBUG_ON = 0;
 `endif
 
-  localparam TOOLCHAIN = 0;
+  localparam TOOLCHAIN = 1;
   
   //----------------------------------------------------------------------
   // Instruction Set
