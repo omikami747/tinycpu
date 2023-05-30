@@ -24,4 +24,4 @@ structurallog: $(ALL_STRUCT)
 	rm tmp2
 
 clean:
-	rm -f structurallog rtllog emulog program.mem a.out bin.out dump.vcd a.out struct
+	rm -f structurallog rtllog emulog program.mem a.out bin.out dump.vcd struct
