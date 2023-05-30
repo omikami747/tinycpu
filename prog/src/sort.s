@@ -32,11 +32,11 @@ addr_check:
 	SWAB
 	LDI 0
 	LDI 1		## imp -> change this later to 1		
-	JE display
+	JE display	## checking tmp value to get whether array sorted or not
 	LDI 0	
 	LDI 1
 	SWAB
-	LDI 15     	## checking tmp value to get whether array sorted or not	
+	LDI 15     		
 	LDI 15
 	CPAM
 	SWAB
