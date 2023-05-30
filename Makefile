@@ -19,7 +19,7 @@ rtllog: model/tinycpu.v model/sram.v model/tinycpu_test.v
 
 structurallog: $(ALL_STRUCT)
 	./prog/bin2readmemh/bin2readmemh bin.out > program.mem
-	iverilog $(STRUCT)*.v -o struct
+	iverilog -o struct $(STRUCT)*.v
 	./struct > tmp2
 	tail -n +2 tmp2 > structurallog
 	rm tmp2
