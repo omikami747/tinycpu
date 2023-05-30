@@ -1,7 +1,7 @@
-	LDI strg	
-	LDI strg
+	LDI strg	## iterator val at addr-253, current element or [addr] at addr-254
+	LDI strg	## initial value of iterator address stored at address=255
 	SWAB
-	LDI 15     	## initial value of iterator address stored at address=253
+	LDI 15     	
 	LDI 13
 	CPAM
 	SWAB
@@ -9,7 +9,7 @@
 	LDI 0	
 	LDI 1
 	SWAB
-	LDI 15     	## initial value of array_sorted stored at address=255	
+	LDI 15     	## initial value of tmp = array_sorted stored at address=255	
 	LDI 15
 	CPAM
 	SWAB
@@ -36,7 +36,7 @@ addr_check:
 	LDI 0	
 	LDI 1
 	SWAB
-	LDI 15     	##	
+	LDI 15     	## checking tmp value to get whether array sorted or not	
 	LDI 15
 	CPAM
 	SWAB
@@ -50,35 +50,35 @@ addr_check:
 	SWAB
 	STM
 
-loop:  			## temp_inst
-	LDI 15
+loop:  			
+	LDI 15		## getting addr value from 253
 	LDI 13
 	CPAM
 	LDM
 	CPAM
-	LDM
+	LDM             ## getting [addr]
 	SWAB
-	LDI 15
+	LDI 15       
 	LDI 14
 	SWAB
 	SWMB
-	STM
+	STM             ## storing [addr] at 254
 	CPAM
 	LDI 0
 	LDI 1
 	ADD
 	SWMB
 	CPAM
-	LDM
-	JL swap
-	LDI 15
-	LDI 13
+	LDM             ## getting [addr+1]
+	JL swap         ## check [addr] > [addr+1]
+	LDI 15		## jump taken for above condition
+	LDI 13		
 	CPAM
 	LDM
 	SWAB
 	LDI 0
 	LDI 1
-	ADD
+	ADD		## increment addr stored at 253
 	STM
 	JU addr_check
 display:
