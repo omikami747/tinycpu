@@ -10,10 +10,12 @@ module tinycpu_test;
 	reset <= 1'b0;
 	#10;
 	reset <= 1'b1;
+
+        // Remove once implementation is verified.
 	#100000;
 	$finish;
      end
-   
+
    always
      begin
 	#5;
@@ -21,11 +23,11 @@ module tinycpu_test;
 	#5;
 	clk <= 1'b0;
      end
-   
+
    always @(posedge clk)
      begin
-	
-	
+
+
 	if (cpumodel.toplevel.cpu_ctrl.state == 3'd2
             && cpumodel.toplevel.cpu_ctrl.inst[7:6] == 2'b11
             && (cpumodel.toplevel.cpu_reg.rP_out - 1) == cpumodel.toplevel.cpu_reg.rM_out
@@ -36,14 +38,14 @@ module tinycpu_test;
           end
 	if  (cpumodel.toplevel.cpu_ctrl.state == 4'b1000 && reset == 1'b1)
           begin
-             $display("A = %0d, B = %0d, M = %0d, P = %0d",
+             $display("A = %x, B = %x, M = %x, P = %x",
                       cpumodel.toplevel.cpu_reg.rA_out, cpumodel.toplevel.cpu_reg.rB_out, cpumodel.toplevel.cpu_reg.rM_out, cpumodel.toplevel.cpu_reg.rP_out);
           end
      end
-   
+
    sim_env cpumodel
      (.clk(clk),
       .rst(reset)
       );
-   
+
 endmodule // tinycpu_test

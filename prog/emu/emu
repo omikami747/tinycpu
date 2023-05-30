@@ -4,6 +4,9 @@ import getopt
 import sys
 from ctypes import c_uint8
 
+def i2zhex(n: int):
+    return hex(n)[2:].zfill(2)
+
 try:
     opts, args = getopt.gnu_getopt(sys.argv[1:], "")
     if len(args) != 1:
@@ -57,7 +60,7 @@ for i, instr in enumerate(binary):
     ram[i] = instr
 
 while True:
-    print(f"A = {reg['A']}, B = {reg['B']}, M = {reg['M']}, P = {reg['P']}")
+    print(f"A = {i2zhex(reg['A'])}, B = {i2zhex(reg['B'])}, M = {i2zhex(reg['M'])}, P = {i2zhex(reg['P'])}")
     instr = ram[reg["P"]]
     curr_addr = reg["P"]
     reg["P"] += 1

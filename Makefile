@@ -3,8 +3,8 @@ ALL_STRUCT = $(STRUCT)tinycpu_test.v $(STRUCT)sram.v $(STRUCT)sim_env.v $(STRUCT
 SOURCES := $(shell find prog/)
 
 run: emulog rtllog structurallog
-	diff -s structurallog emulog  #-q real option, change after test
-	diff -s rtllog emulog         #-q real option, change after test
+	diff -q rtllog emulog
+	diff -q structurallog emulog
 
 .PHONY: emulog rtllog structurallog clean
 emulog: prog/asm/asm prog/emu/emu $(SOURCES)
