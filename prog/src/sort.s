@@ -1,20 +1,20 @@
 	LDI strg	## iterator val at addr-253, current element or [addr] at addr-254
 	LDI strg	## initial value of iterator address stored at address=255
 	SWAB
-	LDI 15     	
+	LDI 15
 	LDI 13
 	CPAM
 	SWAB
 	STM
-	LDI 0	
+	LDI 0
 	LDI 1
 	SWAB
-	LDI 15     	## initial value of tmp = array_sorted stored at address=255	
+	LDI 15     	## initial value of tmp = array_sorted stored at address=255
 	LDI 15
 	CPAM
 	SWAB
 	STM
-	
+
 addr_check:
 	LDI 15  	## checks if iterator address is equal to end address
 	LDI 13
@@ -31,17 +31,17 @@ addr_check:
 	LDM
 	SWAB
 	LDI 0
-	LDI 1		## imp -> change this later to 1		
+	LDI 1		## imp -> change this later to 1
 	JE display	## checking tmp value to get whether array sorted or not
-	LDI 0	
+	LDI 0
 	LDI 1
 	SWAB
-	LDI 15     		
+	LDI 15
 	LDI 15
 	CPAM
 	SWAB
 	STM
-	LDI strg	
+	LDI strg
 	LDI strg
 	SWAB
 	LDI 15     	## value of iterator address stored at address=253 is rst
@@ -50,7 +50,7 @@ addr_check:
 	SWAB
 	STM
 
-loop:  			
+loop:
 	LDI 15		## getting addr value from 253
 	LDI 13
 	CPAM
@@ -58,7 +58,7 @@ loop:
 	CPAM
 	LDM             ## getting [addr]
 	SWAB
-	LDI 15       
+	LDI 15
 	LDI 14
 	SWAB
 	SWMB
@@ -72,7 +72,7 @@ loop:
 	LDM             ## getting [addr+1]
 	JL swap         ## check [addr] > [addr+1]
 	LDI 15		## jump taken for above condition
-	LDI 13		
+	LDI 13
 	CPAM
 	LDM
 	SWAB
@@ -82,7 +82,7 @@ loop:
 	STM
 	JU addr_check
 display:
-	LDI strg	
+	LDI strg
 	LDI strg
 	CPAM
 	LDM
@@ -110,10 +110,10 @@ display:
 	ADD		#
 	CPAM		#
 	LDM		#
-	
+
 halt:
 	JU halt
-	
+
 swap:
 	SWAB     ## putting [addr+1] at addr
 	LDI 15
@@ -149,9 +149,64 @@ swap:
 	STM
 	JU addr_check
 strg:
-	.word 11
-	.word 9
-	.word 14
-	.word 13
+.word 92
+.word 120
+.word 34
+.word 135
+.word 167
+.word 5
+.word 44
+.word 90
+.word 249
+.word 229
+.word 45
+.word 10
+.word 167
+.word 91
+.word 3
+.word 37
+.word 242
+.word 122
+.word 81
+.word 147
+.word 228
+.word 60
+.word 126
+.word 229
+.word 75
+.word 246
+.word 144
+.word 31
+.word 240
+.word 143
+.word 241
+.word 102
+.word 55
+.word 153
+.word 31
+.word 156
+.word 89
+.word 163
+.word 76
+.word 15
+.word 74
+.word 139
+.word 30
+.word 157
+.word 21
+.word 255
+.word 32
+.word 204
+.word 179
+.word 143
+.word 73
+.word 133
+.word 118
+.word 85
+.word 32
+.word 131
+.word 141
+.word 101
+.word 228
 end:
-	.word 16
+.word 8

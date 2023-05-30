@@ -11,7 +11,7 @@ module tinycpu_test;
       #10;
       reset <= 1'b1;
       #100000;
-      $finish;
+      // $finish;
     end
 
   always
