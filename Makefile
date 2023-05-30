@@ -1,10 +1,12 @@
 STRUCT = rtl/struct/
 ALL_STRUCT = $(STRUCT)tinycpu_test.v $(STRUCT)sram.v $(STRUCT)sim_env.v $(STRUCT)toplevel.v $(STRUCT)cmp.v $(STRUCT)alu.v $(STRUCT)data_path.v $(STRUCT)cpu_reg.v $(STRUCT)cpu_ctrl.v $(STRUCT)sram_ctrl.v
 SOURCES := $(shell find prog/)
+
 run: emulog rtllog structurallog
 	diff -s structurallog emulog  #-q real option, change after test
 	diff -s rtllog emulog         #-q real option, change after test
 
+.PHONY: emulog rtllog structurallog clean
 emulog: prog/asm/asm prog/emu/emu $(SOURCES)
 	./prog/asm/asm $(ASM) -o bin.out
 	./prog/emu/emu bin.out > emulog
