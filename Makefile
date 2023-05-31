@@ -3,27 +3,39 @@ ALL_STRUCT = $(STRUCT)tinycpu_test.v $(STRUCT)sram.v $(STRUCT)sim_env.v $(STRUCT
 SOURCES := $(shell find prog/)
 
 run: emulog rtllog structurallog
-	diff -q rtllog emulog
-	diff -q structurallog emulog
+	diff -q artifacts/rtllog artifacts/emulog
+	diff -q artifacts/structurallog artifacts/emulog
 
-.PHONY: emulog rtllog structurallog clean
-emulog: prog/asm/asm prog/emu/emu $(SOURCES)
+.PHONY: bin.out emulog rtllog structurallog clean
+bin.out:
+	mkdir -p artifacts
 	./prog/asm/asm $(ASM) -o bin.out
-	./prog/emu/emu bin.out > emulog
+	mv bin.out artifacts/
+
+emulog: prog/asm/asm prog/emu/emu $(SOURCES) bin.out
+	./prog/emu/emu artifacts/bin.out > artifacts/emulog
 
 rtllog: model/tinycpu.v model/sram.v model/tinycpu_test.v bin.out
-	./prog/bin2readmemh/bin2readmemh bin.out > program.mem
-	iverilog model/*.v
-	./a.out > tmp
+	./prog/bin2readmemh/bin2readmemh artifacts/bin.out > program.mem
+	iverilog -o model_vvp model/*.v
+	./model_vvp > tmp
 	tail -n +2 tmp > rtllog
 	rm tmp
+	mv model_vvp artifacts/
+	mv rtllog artifacts/
+	mv model_dump.vcd artifacts/
+	mv program.mem artifacts/
 
 structurallog: $(ALL_STRUCT) bin.out
-	./prog/bin2readmemh/bin2readmemh bin.out > program.mem
-	iverilog -o struct $(STRUCT)*.v
-	./struct > tmp2
+	./prog/bin2readmemh/bin2readmemh artifacts/bin.out > program.mem
+	iverilog -o struct_vvp $(STRUCT)*.v
+	./struct_vvp > tmp2
 	tail -n +2 tmp2 > structurallog
 	rm tmp2
+	mv struct_vvp artifacts/
+	mv structurallog artifacts/
+	mv structural_dump.vcd artifacts/
+	mv program.mem artifacts/
 
 clean:
-	rm -f structurallog rtllog emulog program.mem a.out bin.out dump.vcd struct
+	rm -rf artifacts

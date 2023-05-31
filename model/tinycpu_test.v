@@ -5,13 +5,12 @@ module tinycpu_test;
 
   initial
     begin
+      $dumpfile("model_dump.vcd");
       $dumpvars;
       clk <= 1'b0;
       reset <= 1'b0;
       #10;
-       reset <= 1'b1;
-       #100000;
-       $finish;
+      reset <= 1'b1;
     end
 
   always

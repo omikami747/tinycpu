@@ -5,7 +5,8 @@ module tinycpu_test;
 
    initial
      begin
-	$dumpvars;
+	$dumpfile("structural_dump.vcd");
+        $dumpvars;
 	clk <= 1'b0;
 	reset <= 1'b0;
 	#10;
