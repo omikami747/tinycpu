@@ -155,7 +155,8 @@ curr_elem:
 	.word 0
 tmp:
 	.word 0
-	
+disp_it:
+	.word 0	
 strg:
 	.word 92
 	.word 120
@@ -218,5 +219,3 @@ strg:
 	.word 228
 end:
 	.word 8
-disp_it:
-	.word 0
