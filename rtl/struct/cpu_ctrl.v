@@ -8,25 +8,25 @@
 //--------------------------------------------------------------------
 
 module cpu_ctrl (
-		 dq,     // input from sram_ctrl
-		 rst,
-		 clk,
-		 cmp,      // compare result sig in
-		 mux_rA,   // control sig for register MUXes
-		 rA_we,
-		 mux_rB,
-		 rB_we,
-		 mux_rM,
-		 rM_we,
-		 den,      // control sig for SRAM ctrl
-		 cen,
-		 wen,
-		 oen,
-		 alu_ctrl, // control sig for ALU
-		 rP_inc,   // control sig for rP
-		 rP_load,
-		 addr_ctrl// address control signal to SRAM ctrl
-		 );
+                 dq,     // input from sram_ctrl
+                 rst,
+                 clk,
+                 cmp,      // compare result sig in
+                 mux_rA,   // control sig for register MUXes
+                 rA_we,
+                 mux_rB,
+                 rB_we,
+                 mux_rM,
+                 rM_we,
+                 den,      // control sig for SRAM ctrl
+                 cen,
+                 wen,
+                 oen,
+                 alu_ctrl, // control sig for ALU
+                 rP_inc,   // control sig for rP
+                 rP_load,
+                 addr_ctrl// address control signal to SRAM ctrl
+                 );
 
    //----------------------------------------------------------------------
    // Instruction Set
@@ -57,11 +57,13 @@ module cpu_ctrl (
    //--------------------------------------------------------------------
    // Processor States
    //--------------------------------------------------------------------
-   localparam IDLE   = 4'b1000;
-   localparam FETCH  = 4'b0100;
-   localparam EXEC   = 4'b0010;
-   localparam MEMACC = 4'b0001;
-
+   localparam IDLE    = 3'd0;
+   localparam FETCH   = 3'd1;
+   localparam EXEC    = 3'd2;
+   localparam MEMACC1 = 3'd3;
+   localparam MEMACC2 = 3'd4;
+   localparam MEMACC3 = 3'd5;
+   
    // Compare Results
    localparam EQ = 2'b00;
    localparam LT = 2'b01;
@@ -79,68 +81,88 @@ module cpu_ctrl (
    // Outputs
    //--------------------------------------------------------------------
    output reg [2:0]  mux_rA;
-   output reg 	     mux_rB;
+   output reg        mux_rB;
    output reg [1:0]  mux_rM;
-   output reg 	     den;
-   output reg 	     cen;
-   output reg 	     wen;
-   output reg 	     oen;
+   output reg        den;
+   output reg        cen;
+   output reg        wen;
+   output reg        oen;
    output reg [1:0]  alu_ctrl;
-   output reg 	     rP_inc;
-   output reg 	     rP_load;
-   output reg 	     addr_ctrl;
-   output reg 	     rA_we;
-   output reg 	     rB_we;
-   output reg 	     rM_we;
+   output reg        rP_inc;
+   output reg        rP_load;
+   output reg        addr_ctrl;
+   output reg        rA_we;
+   output reg        rB_we;
+   output reg        rM_we;
 
    //--------------------------------------------------------------------
    // Internals
    //--------------------------------------------------------------------
-   reg [3:0] 	     state;
-   reg [7:0] 	     inst;
+   reg [3:0]         state;
+   reg [7:0]         inst;
 
    //--------------------------------------------------------------------
    // Processor State Machine
    //--------------------------------------------------------------------
    always @(posedge clk or negedge rst)
      begin
-	if (rst == 'b0)
-	  begin
-	     state <= IDLE;
-	  end
-	else
-	  begin
-	     case (state)
-	       IDLE :
-		 begin
-		    state <= FETCH ;
-		 end
+        if (rst == 'b0)
+          begin
+             state <= IDLE;
+          end
+        else
+          begin
+             case (state)
+               IDLE :
+                 begin
+                    state <= FETCH ;
+                 end
 
-	       FETCH :
-		 begin
-		    state <= EXEC ;
-		 end
+               FETCH :
+                 begin
+                    state <= EXEC ;
+                 end
 
-	       EXEC :
-		 begin
-		    state <= IDLE;
-		    if ((inst[7:4] == LDM) || (inst[7:4] == STM))
-		      begin
-			 state <= MEMACC;
-		      end
-		 end
+               EXEC :
+                 begin
+                    state <= IDLE;
+                    if (inst[7:4] == LDM)
+                      begin
+                         state <= MEMACC2;
+                      end
+                    else 
+                      if (inst[7:4] == STM)
+                        begin
+                           state <= MEMACC1;
+                        end
+                 end
 
-	       MEMACC :
-		 begin
-		    state <= IDLE ;
-		 end
+               MEMACC1 :
+                 begin
+                    state <= MEMACC2;
+                 end
+               MEMACC2 :
+                 begin
+                    if (inst[7:4] == STM)
+                      begin
+                         state <= MEMACC3;
+                      end
+                    else
+                      begin
+                         state <= IDLE;
+                      end
+                 end
+               MEMACC3 :
+                 begin
+                    state <= IDLE ;
+                 end
 
-	       default :
-		 begin
-		    state <= IDLE ;
-		 end
-	     endcase
-	  end
+               default :
+                 begin
+                    state <= IDLE ;
+                 end
+             endcase
+          end
      end
 
    //--------------------------------------------------------------------
@@ -148,17 +170,17 @@ module cpu_ctrl (
    //--------------------------------------------------------------------
    always@ (posedge clk or negedge rst)
      begin
-	if (rst == 'b0)
-	  begin
-	     inst <= 'b0;
-	  end
-	else
-	  begin
-	     if (state == FETCH)
-	       begin
-		  inst <= dq;
-	       end
-	  end
+        if (rst == 'b0)
+          begin
+             inst <= 'b0;
+          end
+        else
+          begin
+             if (state == FETCH)
+               begin
+                  inst <= dq;
+               end
+          end
      end // always@ (posedge clk or negedge rst)
 
    //--------------------------------------------------------------------
@@ -166,63 +188,73 @@ module cpu_ctrl (
    //--------------------------------------------------------------------
    always@ (*)
      begin
-	case (state)
-	  EXEC :
-	    begin
-	       case (inst[7:4])
-		 LDI :
-		   begin
-		      mux_rA <= 'd0;
-		      rA_we  <= 'b1;
-		   end
-		 AND :
-		   begin
-		      mux_rA <= 'd1;
-		      rA_we  <= 'b1;
-		   end
-		 OR  :
-		   begin
-		      mux_rA <= 'd1;
-		      rA_we  <= 'b1;
-		   end
-		 INV :
-		   begin
-		      mux_rA <= 'd1;
-		      rA_we  <= 'b1;
-		   end
-		 ADD :
-		   begin
-		      mux_rA <= 'd1;
-		      rA_we  <= 'b1;
-		   end
-		 SWAB :
-		   begin
-		      mux_rA <= 'd2;
-		      rA_we  <= 'b1;
-		   end
-		 CPPA :
-		   begin
-		      mux_rA <= 'd3;
-		      rA_we  <= 'b1;
-		   end
-		 default :
-		   begin
-		      mux_rA <= 'd0;
-		      rA_we  <= 'b0;
-		   end
-	       endcase
-	    end
-	  MEMACC :
-	    begin
-	       mux_rA <= 'd4;
-	       rA_we  <= 'b1;
-	    end
-	  default:
-	    begin
-	       mux_rA <= 'b0;
-	       rA_we  <= 'b0;
-	    end
-	endcase
+        case (state)
+          EXEC :
+            begin
+               case (inst[7:4])
+                 LDI :
+                   begin
+                      mux_rA <= 'd0;
+                      rA_we  <= 'b1;
+                   end
+                 AND :
+                   begin
+                      mux_rA <= 'd1;
+                      rA_we  <= 'b1;
+                   end
+                 OR  :
+                   begin
+                      mux_rA <= 'd1;
+                      rA_we  <= 'b1;
+                   end
+                 INV :
+                   begin
+                      mux_rA <= 'd1;
+                      rA_we  <= 'b1;
+                   end
+                 ADD :
+                   begin
+                      mux_rA <= 'd1;
+                      rA_we  <= 'b1;
+                   end
+                 SWAB :
+                   begin
+                      mux_rA <= 'd2;
+                      rA_we  <= 'b1;
+                   end
+                 CPPA :
+                   begin
+                      mux_rA <= 'd3;
+                      rA_we  <= 'b1;
+                   end
+                 default :
+                   begin
+                      mux_rA <= 'd0;
+                      rA_we  <= 'b0;
+                   end
+               endcase
+            end // case: EXEC
+          MEMACC1 :
+            begin
+               mux_rA <= 'd4;
+               rA_we  <= 'b0;
+            end
+          MEMACC2 :
+            begin
+               mux_rA <= 'd4;
+               rA_we  <= 'b1;
+            end
+          MEMACC3 :
+            begin
+               mux_rA <= 'd4;
+               rA_we  <= 'b0;
+            end
+          default:
+            begin
+               mux_rA <= 'b0;
+               rA_we  <= 'b0;
+            end
+        endcase
      end
 
    //--------------------------------------------------------------------
@@ -231,25 +263,25 @@ module cpu_ctrl (
    always@ (*)
      begin
 
-	if (state == EXEC)
-	  begin
-	     if (inst[7:4] == SWAB)
-	       begin
-		  mux_rB <= 1'b0;
-		  rB_we  <= 'b1;
-	       end
-	     else
-	       if (inst[7:4] == SWMB)
-		 begin
-		    mux_rB <= 1'b1;
-		    rB_we  <= 'b1;
-		 end
-	  end // if (state == EXEC)
-	else
-	  begin
-	     mux_rB <= 1'b0;
-	     rB_we  <= 'b0;
-	  end
+        if (state == EXEC)
+          begin
+             if (inst[7:4] == SWAB)
+               begin
+                  mux_rB <= 1'b0;
+                  rB_we  <= 'b1;
+               end
+             else
+               if (inst[7:4] == SWMB)
+                 begin
+                    mux_rB <= 1'b1;
+                    rB_we  <= 'b1;
+                 end
+          end // if (state == EXEC)
+        else
+          begin
+             mux_rB <= 1'b0;
+             rB_we  <= 'b0;
+          end
      end
 
    //--------------------------------------------------------------------
@@ -257,51 +289,51 @@ module cpu_ctrl (
    //--------------------------------------------------------------------
    always@ (*)
      begin
-	if (state == EXEC)
-	  begin
-	     case (inst[7:4])
-	       CPAM :
-		 begin
-		    mux_rM <= 'd0;
-		    rM_we  <= 'b1;
-		 end
-	       SWMB :
-		 begin
-		    mux_rM <= 'd1;
-		    rM_we  <= 'b1;
-		 end
-	       JU   :
-		 begin
-		    mux_rM <= 'd2;
-		    rM_we  <= 'b0;
-		 end
-	       JE   :
-		 begin
-		    mux_rM <= 'd2;
-		    rM_we  <= 'b0;
-		 end
-	       JL   :
-		 begin
-		    mux_rM <= 'd2;
-		    rM_we  <= 'b0;
-		 end
-	       JG   :
-		 begin
-		    mux_rM <= 'd2;
-		    rM_we  <= 'b0;
-		 end
-	       default :
-		 begin
-		    mux_rM <= 'd3;
-		    rM_we  <= 'b0;
-		 end
-	     endcase
-	  end // if (state == EXEC)
-	else
-	  begin
-	     mux_rM <= 'd3;
-	     rM_we <= 'b0;
-	  end
+        if (state == EXEC)
+          begin
+             case (inst[7:4])
+               CPAM :
+                 begin
+                    mux_rM <= 'd0;
+                    rM_we  <= 'b1;
+                 end
+               SWMB :
+                 begin
+                    mux_rM <= 'd1;
+                    rM_we  <= 'b1;
+                 end
+               JU   :
+                 begin
+                    mux_rM <= 'd2;
+                    rM_we  <= 'b0;
+                 end
+               JE   :
+                 begin
+                    mux_rM <= 'd2;
+                    rM_we  <= 'b0;
+                 end
+               JL   :
+                 begin
+                    mux_rM <= 'd2;
+                    rM_we  <= 'b0;
+                 end
+               JG   :
+                 begin
+                    mux_rM <= 'd2;
+                    rM_we  <= 'b0;
+                 end
+               default :
+                 begin
+                    mux_rM <= 'd3;
+                    rM_we  <= 'b0;
+                 end
+             endcase
+          end // if (state == EXEC)
+        else
+          begin
+             mux_rM <= 'd3;
+             rM_we <= 'b0;
+          end
      end
 
    //--------------------------------------------------------------------
@@ -309,21 +341,21 @@ module cpu_ctrl (
    //--------------------------------------------------------------------
    always @(posedge clk or negedge rst)
      begin
-	if (rst == 'b0)
-	  begin
-	     den <= 1'b0;
-	  end
-	else
-	  begin
-	     if ((state == EXEC) && (inst[7:4] == STM))
-	       begin
-		  den <= 'b1;
-	       end
-	     else
-	       begin
-		  den <= 'b0;
-	       end
-	  end
+        if (rst == 'b0)
+          begin
+             den <= 1'b0;
+          end
+        else
+          begin
+             if (((state == MEMACC1) || (state == MEMACC2)) && (inst[7:4] == STM))
+               begin
+                  den <= 'b1;
+               end
+             else
+               begin
+                  den <= 'b0;
+               end
+          end
      end
 
    //--------------------------------------------------------------------
@@ -331,21 +363,21 @@ module cpu_ctrl (
    //--------------------------------------------------------------------
    always @(posedge clk or negedge rst)
      begin
-	if (rst == 'b0)
-	  begin
-	     cen <= 1'b1;
-	  end
-	else
-	  begin
-	     if ((state == IDLE) || ((state == EXEC) && ((inst[7:4] == STM) || (inst[7:4] == LDM))))
-	       begin
-		  cen <= 'b0;
-	       end
-	     else
-	       begin
-		  cen <= 'b1;
-	       end
-	  end
+        if (rst == 'b0)
+          begin
+             cen <= 1'b1;
+          end
+        else
+          begin
+             if ((state == IDLE) || ((state == EXEC) && (inst[7:4] == LDM)) || (state == MEMACC1))
+               begin
+                  cen <= 'b0;
+               end
+             else
+               begin
+                  cen <= 'b1;
+               end
+          end
      end
 
    //--------------------------------------------------------------------
@@ -353,21 +385,21 @@ module cpu_ctrl (
    //--------------------------------------------------------------------
    always @(posedge clk or negedge rst)
      begin
-	if (rst == 'b0)
-	  begin
-	     wen <= 1'b1;
-	  end
-	else
-	  begin
-	     if ((state == EXEC) && ((inst[7:4] == STM)))
-	       begin
-		  wen <= 'b0;
-	       end
-	     else
-	       begin
-		  wen <= 'b1;
-	       end
-	  end
+        if (rst == 'b0)
+          begin
+             wen <= 1'b1;
+          end
+        else
+          begin
+             if ((state == MEMACC1) && ((inst[7:4] == STM)))
+               begin
+                  wen <= 'b0;
+               end
+             else
+               begin
+                  wen <= 'b1;
+               end
+          end
      end
 
 
@@ -376,21 +408,21 @@ module cpu_ctrl (
    //--------------------------------------------------------------------
    always @(posedge clk or negedge rst)
      begin
-	if (rst == 'b0)
-	  begin
-	     oen <= 1'b1;
-	  end
-	else
-	  begin
-	     if ((state == IDLE) || ((state == EXEC) && (inst[7:4] == LDM)))
-	       begin
-		  oen <= 'b0;
-	       end
-	     else
-	       begin
-		  oen <= 'b1;
-	       end
-	  end
+        if (rst == 'b0)
+          begin
+             oen <= 1'b1;
+          end
+        else
+          begin
+             if ((state == IDLE) || ((state == EXEC) && (inst[7:4] == LDM)))
+               begin
+                  oen <= 'b0;
+               end
+             else
+               begin
+                  oen <= 'b1;
+               end
+          end
      end
 
    //--------------------------------------------------------------------
@@ -406,14 +438,14 @@ module cpu_ctrl (
    //--------------------------------------------------------------------
    always@ (*)
      begin
-	if (state == FETCH)
-	  begin
+        if (state == FETCH)
+          begin
              rP_inc <= 'b1;
-	  end
-	else
-	  begin
-	     rP_inc <= 'b0;
-	  end
+          end
+        else
+          begin
+             rP_inc <= 'b0;
+          end
      end
 
    //--------------------------------------------------------------------
@@ -421,14 +453,14 @@ module cpu_ctrl (
    //--------------------------------------------------------------------
    always@ (*)
      begin
-	if (state == EXEC && ((inst[7:4] == JU))||((inst[7:4] == JE)&&(cmp == EQ))||((inst[7:4] == JL)&&(cmp == LT))||((inst[7:4] == JG)&&(cmp == GT)))
-	  begin
+        if (state == EXEC && ((inst[7:4] == JU))||((inst[7:4] == JE)&&(cmp == EQ))||((inst[7:4] == JL)&&(cmp == LT))||((inst[7:4] == JG)&&(cmp == GT)))
+          begin
              rP_load <= 'b1;
-	  end
-	else
-	  begin
-	     rP_load <= 'b0;
-	  end
+          end
+        else
+          begin
+             rP_load <= 'b0;
+          end
      end // always@ (*)
 
    //--------------------------------------------------------------------
@@ -437,14 +469,14 @@ module cpu_ctrl (
 
    always@ (*)
      begin
-	if (state == EXEC && ((inst[7:4] == LDM) || (inst[7:4] == STM)))
-	  begin
-	     addr_ctrl <= 'b1;
-	  end
-	else
-	  begin
-	     addr_ctrl <= 'b0;
-	  end
+        if (((state == EXEC) && (inst[7:4] == LDM)) || ((inst[7:4] == STM) && (state == MEMACC1)))
+          begin
+             addr_ctrl <= 'b1;
+          end
+        else
+          begin
+             addr_ctrl <= 'b0;
+          end
      end
 
 
