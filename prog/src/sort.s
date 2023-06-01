@@ -1,18 +1,18 @@
 	LDI disp_it   	## temp, remove after test
 	LDI disp_it
-	LDI strg	## iterator val at addr-253, current element or [addr] at addr-254
-	LDI strg	## initial value of iterator address stored at address=255
+	LDI strg	## iterator val at label it_val, current element or [addr] at			
+	LDI strg	## label curr_elem, value of array sorted stored at label tmp
 	SWAB		##############################################################
-	LDI 15		## IN THIS CODE, PC=117 DISPLAYS SORTED VALUES IN LOG FILES ##
-	LDI 13		##############################################################
+	LDI it_val	## IN THIS CODE, PC=117 DISPLAYS SORTED VALUES IN LOG FILES ##
+	LDI it_val	##############################################################
 	CPAM
 	SWAB
 	STM
 	LDI 0
 	LDI 1
 	SWAB
-	LDI 15     	## initial value of tmp = array_sorted stored at address=255
-	LDI 15
+	LDI tmp     	## initial value of tmp = array_sorted stored at label tmp
+	LDI tmp
 	CPAM
 	SWAB
 	STM
@@ -23,53 +23,53 @@
 	LDI strg
 	STM
 addr_check:
-	LDI 15  	## checks if iterator address is equal to end address
-	LDI 13
+	LDI it_val  	## checks if iterator address is equal to end address
+	LDI it_val
 	CPAM
 	LDM
 	SWAB
 	LDI end
 	LDI end
 	JG loop 	## if iterator is lesser than end address then jump
-	LDI 15		## if iterator is equal to end address then check tmp
-	LDI 15		## at address 255
+	LDI tmp	 	## if iterator is equal to end address then check tmp
+	LDI tmp		## at tmp
 	CPAM
 	SWAB
 	LDM
 	SWAB
 	LDI 0
-	LDI 1		## imp -> change this later to 1
+	LDI 1		
 	JE display	## checking tmp value to get whether array sorted or not
 	LDI 0
 	LDI 1
 	SWAB
-	LDI 15
-	LDI 15
+	LDI tmp
+	LDI tmp
 	CPAM
 	SWAB
 	STM
 	LDI strg
 	LDI strg
 	SWAB
-	LDI 15     	## value of iterator address stored at address=253 is rst
-	LDI 13
+	LDI it_val     	## value of iterator address stored at it_val is rst
+	LDI it_val
 	CPAM
 	SWAB
 	STM
 
 loop:
-	LDI 15		## getting addr value from 253
-	LDI 13
+	LDI it_val	## getting addr value from it_val
+	LDI it_val
 	CPAM
 	LDM
 	CPAM
 	LDM             ## getting [addr]
 	SWAB
-	LDI 15
-	LDI 14
+	LDI curr_elem
+	LDI curr_elem
 	SWAB
 	SWMB
-	STM             ## storing [addr] at 254
+	STM             ## storing [addr] at curr_elem
 	CPAM
 	LDI 0
 	LDI 1
@@ -78,8 +78,8 @@ loop:
 	CPAM
 	LDM             ## getting [addr+1]
 	JL swap         ## check [addr] > [addr+1]
-	LDI 15		## jump taken for above condition
-	LDI 13
+	LDI it_val	## jump taken for above condition
+	LDI it_val
 	CPAM
 	LDM
 	SWAB
@@ -115,16 +115,16 @@ halt:
 	JU halt
 
 swap:
-	SWAB     ## putting [addr+1] at addr
-	LDI 15
-	LDI 13
+	SWAB    	## putting [addr+1] at addr
+	LDI it_val
+	LDI it_val
 	CPAM
 	LDM
 	CPAM
 	SWAB
 	STM
-	LDI 15   ## increment address at 253
-	LDI 13
+	LDI it_val   	## increment address at it_val
+	LDI it_val
 	CPAM
 	LDM
 	SWAB
@@ -132,22 +132,30 @@ swap:
 	LDI 1
 	ADD
 	STM
-	SWAB	## putting old [addr] at addr+1
-	LDI 15
-	LDI 14
+	SWAB		## putting old [addr] at addr+1
+	LDI curr_elem
+	LDI curr_elem
 	CPAM
 	LDM
 	SWMB
 	STM
-	LDI 0	## setting tmp at 255 to zero
+	LDI 0		## setting value at tmp to zero
 	LDI 0
 	SWAB
-	LDI 15
-	LDI 15
+	LDI tmp
+	LDI tmp
 	CPAM
 	SWAB
 	STM
 	JU addr_check
+
+it_val:	
+	.word 0	
+curr_elem:
+	.word 0
+tmp:
+	.word 0
+	
 strg:
 	.word 92
 	.word 120
