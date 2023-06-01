@@ -76,7 +76,7 @@ module tinycpu
         den        <= 1'b0;
         instr      <= 8'h00;
         addr       <= 8'h00;
-        
+
         exec_state <= IDLE;
       end
 
@@ -186,7 +186,7 @@ module tinycpu
                   begin
                     rM <= rA;
                   end
-                
+
                 //----------------------------------------------------------
                 // Branch
                 //----------------------------------------------------------
@@ -204,7 +204,7 @@ module tinycpu
                         rP <= rM;
                       end
                   end
-                
+
                 JL:  // Jump on less than flag
                   begin
                     if (rA < rB)
@@ -213,7 +213,7 @@ module tinycpu
                         rP <= rM;
                       end
                   end
-                
+
                 JG:  // Jump on greater than flag
                   begin
                     if (rA > rB)
@@ -222,7 +222,7 @@ module tinycpu
                         rP <= rM;
                       end
                   end
-                
+
               endcase // case (instr)
 
             end // case: EXEC
@@ -244,7 +244,7 @@ module tinycpu
         endcase // case (exec_state)
 
       end // else: !if(!reset)
-  
+
   //----------------------------------------------------------------------
   // SRAM
   //----------------------------------------------------------------------

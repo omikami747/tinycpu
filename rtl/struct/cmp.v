@@ -1,7 +1,7 @@
 //--------------------------------------------------------------------
 // File: cmp.v
 // Name: Omkar Girish Kamath
-// Date: 17th May 2023 
+// Date: 17th May 2023
 // Description: Compares values between rA and rB and provides compare
 // signal.
 //--------------------------------------------------------------------
@@ -16,13 +16,13 @@ module cmp (
    localparam EQ = 2'b00;
    localparam LT = 2'b01;
    localparam GT = 2'b10;
-   
+
    //--------------------------------------------------------------------
    // Input Signals
    //--------------------------------------------------------------------
    input wire [7:0] rA;
    input wire [7:0] rB;
-   
+
    //--------------------------------------------------------------------
    // Output Signals
    //--------------------------------------------------------------------
@@ -40,7 +40,7 @@ module cmp (
 	    begin
 	       cmp <= EQ;
 	    end
-	  else 
+	  else
 	    if (rA < rB)
 	      begin
 		 cmp <= LT;
@@ -51,4 +51,3 @@ module cmp (
 	      end
      end
 endmodule
-   

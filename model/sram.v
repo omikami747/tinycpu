@@ -13,7 +13,7 @@ module sram
 `endif
 
   localparam TOOLCHAIN = 1;
-  
+
   //----------------------------------------------------------------------
   // Instruction Set
   //----------------------------------------------------------------------
@@ -44,10 +44,10 @@ module sram
   reg  [7:0]   sram [0:255];
   reg          hizen;
   wire [7:0]   q;
-  
+
   assign q  = sram[addr];
   assign dq = hizen ? q : 8'hZZ;
-  
+
   initial
     begin
       if (TOOLCHAIN)
@@ -78,9 +78,9 @@ module sram
           sram[ 18] = {JU,   4'h0};  // JU (to this address - 0x12 = 0d18)
 
           // This is a forever loop or halt
-        end      
+        end
     end // initial begin
-  
+
   always // @(cen or oen or wen)
     begin
       hizen <= 1'b0;
@@ -90,7 +90,7 @@ module sram
         begin
           wait(cen == 1'b0);
           addr_reg <= addr;  // Flop address on falling edge of CE
-          
+
           if (DEBUG_ON)
             begin
               $display("At time %0t: CE Initiated Write cycle", $stime);
@@ -113,7 +113,7 @@ module sram
           sram[addr_reg] = dq;
           wait ((cen == 1'b1) && (wen == 1'b1));
         end
-      
+
       else                 // WE initiated cycle
         begin
           wait ((wen == 1'b0) || (oen == 1'b0));
@@ -126,7 +126,7 @@ module sram
                 begin
                   $display("At time %0t: WE Initiated Write cycle", $stime);
                 end
-              
+
               wait ((cen == 1'b1) || (wen == 1'b1));
 
               if (DEBUG_ON)
@@ -144,7 +144,7 @@ module sram
               sram[addr_reg] = dq;
               wait ((cen == 1'b1) && (wen == 1'b1));
             end // if (wen == 1'b0)
-          
+
           else
             begin
               wait (oen == 1'b0);

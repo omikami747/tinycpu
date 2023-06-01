@@ -22,7 +22,7 @@ module toplevel (
    //--------------------------------------------------------------------
    // Internal Wires
    //--------------------------------------------------------------------
-   
+
    wire [7:0] 	     dq_sram ;
    wire [1:0] 	     cmp_in;
    wire [2:0] 	     mux_rA_o;
@@ -60,12 +60,12 @@ module toplevel (
 		     .mux_rB(mux_rB_o),
 		     .mux_rM(mux_rM_o),
 		     .den(den_o),      // control sig for SRAM ctrl
-		     .cen(cen_o),      
+		     .cen(cen_o),
 		     .wen(wen_o),
-		     .oen(oen_o),      
+		     .oen(oen_o),
 		     .alu_ctrl(alu_ctrl_o), // control sig for ALU
 		     .rP_inc(rP_inc_o),   // control sig for rP
-		     .rP_load(rP_load_o),  
+		     .rP_load(rP_load_o),
 		     .addr_ctrl(addr_ctrl_o), // address control signal to SRAM ctrl
 		     .rA_we(rA_we_o),
 		     .rB_we(rB_we_o),
@@ -87,7 +87,7 @@ module toplevel (
 		    .rM_in(rM_in_o),
 		    .rM_we(rM_we_o),
 		    .rM_out(rM_o)
-      
+
 		    );
    data_path  data_path(
 			.rA_ldi({rA_o[3:0],cpu_ctrl.inst[3:0]}),
@@ -133,5 +133,5 @@ module toplevel (
 	   .rB(rB_o),
 	   .cmp(cmp_in)
 	   );
-   
+
 endmodule

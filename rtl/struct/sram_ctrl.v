@@ -1,7 +1,7 @@
 //--------------------------------------------------------------------
 // File: sram_ctrl.v
 // Name: Omkar Girish Kamath
-// Date: 17th May 2023 
+// Date: 17th May 2023
 // Description: Provides all the control signals for SRAM.
 //--------------------------------------------------------------------
 
@@ -22,7 +22,7 @@ module sram_ctrl(
 		 rA_mux_in
 		 );
 
-   
+
 
    //--------------------------------------------------------------------
    // Input
@@ -35,10 +35,10 @@ module sram_ctrl(
    input wire 	    cen_in;
    input wire 	    oen_in;
    input wire 	    wen_in;
-   
+
    //--------------------------------------------------------------------
    // Output
-   //--------------------------------------------------------------------   
+   //--------------------------------------------------------------------
    output wire 	     cen_out;
    output wire 	     oen_out;
    output wire 	     wen_out;
@@ -66,5 +66,5 @@ module sram_ctrl(
 	     addr_out <= addr_in;
 	  end
      end
-   
+
 endmodule // sram_ctrl

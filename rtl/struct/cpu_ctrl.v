@@ -1,7 +1,7 @@
 //--------------------------------------------------------------------
 // File: cpu_ctrl.v
 // Name: Omkar Girish Kamath
-// Date: 17th May 2023 
+// Date: 17th May 2023
 // Description: Provides all the control signal for CPU function such
 // as for MUXes, write enable for registers, ALU etc.
 //
@@ -19,17 +19,17 @@ module cpu_ctrl (
 		 mux_rM,
 		 rM_we,
 		 den,      // control sig for SRAM ctrl
-		 cen,      
+		 cen,
 		 wen,
-		 oen,      
+		 oen,
 		 alu_ctrl, // control sig for ALU
 		 rP_inc,   // control sig for rP
-		 rP_load,  
+		 rP_load,
 		 addr_ctrl// address control signal to SRAM ctrl
 		 );
 
    //----------------------------------------------------------------------
-   // Instruction Set 
+   // Instruction Set
    //----------------------------------------------------------------------
    //Arithmetic and Logic
    localparam     AND   = 4'h0;            // A = A & B
@@ -47,13 +47,13 @@ module cpu_ctrl (
    localparam     SWMB  = 4'h9;            // M <-> B
    localparam     CPPA  = 4'hA;            // A <-- P
    localparam     CPAM  = 4'hB;            // M <-- A
-   
+
    // Jumps and branching
    localparam     JU    = 4'hC;            // Always   P <-> M
    localparam     JE    = 4'hD;            // A == B ? P <-> M
    localparam     JL    = 4'hE;            // A < B  ? P <-> M
    localparam     JG    = 4'hF;            // A > B  ? P <-> M
-   
+
    //--------------------------------------------------------------------
    // Processor States
    //--------------------------------------------------------------------
@@ -66,7 +66,7 @@ module cpu_ctrl (
    localparam EQ = 2'b00;
    localparam LT = 2'b01;
    localparam GT = 2'b10;
-   
+
    //--------------------------------------------------------------------
    // Inputs
    //--------------------------------------------------------------------
@@ -74,31 +74,31 @@ module cpu_ctrl (
    input wire        rst;
    input wire [7:0]  dq ;
    input wire [1:0]  cmp;
-   
+
    //--------------------------------------------------------------------
    // Outputs
-   //--------------------------------------------------------------------   
+   //--------------------------------------------------------------------
    output reg [2:0]  mux_rA;
    output reg 	     mux_rB;
    output reg [1:0]  mux_rM;
-   output reg 	     den;   
-   output reg 	     cen;      
+   output reg 	     den;
+   output reg 	     cen;
    output reg 	     wen;
-   output reg 	     oen;      
+   output reg 	     oen;
    output reg [1:0]  alu_ctrl;
-   output reg 	     rP_inc;  
-   output reg 	     rP_load;  
+   output reg 	     rP_inc;
+   output reg 	     rP_load;
    output reg 	     addr_ctrl;
    output reg 	     rA_we;
    output reg 	     rB_we;
    output reg 	     rM_we;
-   
+
    //--------------------------------------------------------------------
    // Internals
    //--------------------------------------------------------------------
    reg [3:0] 	     state;
    reg [7:0] 	     inst;
-   
+
    //--------------------------------------------------------------------
    // Processor State Machine
    //--------------------------------------------------------------------
@@ -115,7 +115,7 @@ module cpu_ctrl (
 		 begin
 		    state <= FETCH ;
 		 end
-	       
+
 	       FETCH :
 		 begin
 		    state <= EXEC ;
@@ -129,12 +129,12 @@ module cpu_ctrl (
 			 state <= MEMACC;
 		      end
 		 end
-	       
+
 	       MEMACC :
 		 begin
 		    state <= IDLE ;
 		 end
-	       
+
 	       default :
 		 begin
 		    state <= IDLE ;
@@ -160,7 +160,7 @@ module cpu_ctrl (
 	       end
 	  end
      end // always@ (posedge clk or negedge rst)
-   
+
    //--------------------------------------------------------------------
    // rA MUX and we control
    //--------------------------------------------------------------------
@@ -210,7 +210,7 @@ module cpu_ctrl (
 		      mux_rA <= 'd0;
 		      rA_we  <= 'b0;
 		   end
-	       endcase 
+	       endcase
 	    end
 	  MEMACC :
 	    begin
@@ -223,14 +223,14 @@ module cpu_ctrl (
 	       rA_we  <= 'b0;
 	    end
 	endcase
-     end 
+     end
 
    //--------------------------------------------------------------------
    // rB MUX and we control
    //--------------------------------------------------------------------
    always@ (*)
      begin
-	
+
 	if (state == EXEC)
 	  begin
 	     if (inst[7:4] == SWAB)
@@ -243,7 +243,7 @@ module cpu_ctrl (
 		 begin
 		    mux_rB <= 1'b1;
 		    rB_we  <= 'b1;
-		 end 
+		 end
 	  end // if (state == EXEC)
 	else
 	  begin
@@ -251,7 +251,7 @@ module cpu_ctrl (
 	     rB_we  <= 'b0;
 	  end
      end
-   
+
    //--------------------------------------------------------------------
    // rM MUX control
    //--------------------------------------------------------------------
@@ -303,7 +303,7 @@ module cpu_ctrl (
 	     rM_we <= 'b0;
 	  end
      end
-   
+
    //--------------------------------------------------------------------
    // den control
    //--------------------------------------------------------------------
@@ -347,7 +347,7 @@ module cpu_ctrl (
 	       end
 	  end
      end
-   
+
    //--------------------------------------------------------------------
    // wen control
    //--------------------------------------------------------------------
@@ -398,7 +398,7 @@ module cpu_ctrl (
    //--------------------------------------------------------------------
    always@ (*)
      begin
-        alu_ctrl <= inst[5:4]; 
+        alu_ctrl <= inst[5:4];
      end
 
    //--------------------------------------------------------------------
@@ -408,7 +408,7 @@ module cpu_ctrl (
      begin
 	if (state == FETCH)
 	  begin
-             rP_inc <= 'b1; 
+             rP_inc <= 'b1;
 	  end
 	else
 	  begin
@@ -446,7 +446,7 @@ module cpu_ctrl (
 	     addr_ctrl <= 'b0;
 	  end
      end
-   
-   
+
+
 endmodule
-   
+

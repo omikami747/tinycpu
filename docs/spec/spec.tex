@@ -7,7 +7,7 @@
 \tableofcontents
 \date
 \section{\textbf{Description}}
-The Tinycpu is a \textit{8-bit} Instruction Set Architecture, \textit{8-bit} wide databus CPU built on a custom designed 2 layer PCB board with a seperate daughter PCB board for the Power supply.\\ The whole board is encased in a box for insulation and safety purposes, it has a passive cooling system. The board has a 8 x 8k EEPROM device acting as the data and instruction memory for the CPU which can be programmed using programmer device.\\ It displays outputs using Hex Displays. Buttons and switches on its externals can be used to dynamically provide inputs such as reset signals, and address signals for the hex display output. The software version is completely built in verilog and python, tested and verified with a diverse set of Assembly codes. 
+The Tinycpu is a \textit{8-bit} Instruction Set Architecture, \textit{8-bit} wide databus CPU built on a custom designed 2 layer PCB board with a seperate daughter PCB board for the Power supply.\\ The whole board is encased in a box for insulation and safety purposes, it has a passive cooling system. The board has a 8 x 8k EEPROM device acting as the data and instruction memory for the CPU which can be programmed using programmer device.\\ It displays outputs using Hex Displays. Buttons and switches on its externals can be used to dynamically provide inputs such as reset signals, and address signals for the hex display output. The software version is completely built in verilog and python, tested and verified with a diverse set of Assembly codes.
 \section{\textbf{Instruction Set of the Processor}}
 \subsection{Arithmetic and Logical Instructions}
 
@@ -37,12 +37,12 @@ register A and register B and stores the result in register A.
 
 \subsection{Memory Access and Immediate Instructions}
 
-\subsubsection{LDI} 
+\subsubsection{LDI}
 \textit{Opcode: 0100}  \\
 \textit{Instruction Description}:  Left Shifts value in register A and the
 4-bit immediate value provided with the instruction is stored at the
 lower 4-bits of rA.
-\begin{center} \textbf{rA$[7:4] ~<- ~rA[3:0]$} \end{center} 
+\begin{center} \textbf{rA$[7:4] ~<- ~rA[3:0]$} \end{center}
 \begin{center} \textbf{rA$[3:0] ~<- ~imm[3:0]$} \end{center}
 
 \subsubsection{LDM}
