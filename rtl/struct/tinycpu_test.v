@@ -13,8 +13,7 @@ module tinycpu_test;
 	reset <= 1'b1;
 
         // Remove once implementation is verified.
-	#100000;
-	$finish;
+        
      end
 
    always
@@ -37,7 +36,7 @@ module tinycpu_test;
              $display("Detected forever loop, halting CPU.");
              $finish;
           end
-	if  (cpumodel.toplevel.cpu_ctrl.state == 4'b1000 && reset == 1'b1)
+	if  (cpumodel.toplevel.cpu_ctrl.state == 3'd0 && reset == 1'b1)
           begin
              $display("A = %x, B = %x, M = %x, P = %x",
                       cpumodel.toplevel.cpu_reg.rA_out, cpumodel.toplevel.cpu_reg.rB_out, cpumodel.toplevel.cpu_reg.rM_out, cpumodel.toplevel.cpu_reg.rP_out);
