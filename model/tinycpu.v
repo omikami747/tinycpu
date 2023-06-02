@@ -35,7 +35,9 @@ module tinycpu
   localparam     IDLE    = 3'd0;
   localparam     FETCH   = 3'd1;
   localparam     EXEC    = 3'd2;
-  localparam     MEMACC  = 3'd3;
+  localparam     MEMACC1 = 3'd3;
+  localparam     MEMACC2 = 3'd4;
+  localparam     MEMACC3 = 3'd5;
 
   //----------------------------------------------------------------------
   // CPU registers
@@ -149,17 +151,17 @@ module tinycpu
                     wen        <= 1'b1;
                     den        <= 1'b0;
                     addr       <= rM;
-                    exec_state <= MEMACC;
+                    exec_state <= MEMACC1;
                   end
 
                 STM:
                   begin
-                    cen        <= 1'b0;
+                    cen        <= 1'b1;
                     oen        <= 1'b1;
-                    wen        <= 1'b0;
+                    wen        <= 1'b1;
                     den        <= 1'b1;
                     addr       <= rM;
-                    exec_state <= MEMACC;
+                    exec_state <= MEMACC1;
                   end
 
                 //----------------------------------------------------------
@@ -227,20 +229,37 @@ module tinycpu
 
             end // case: EXEC
 
-          MEMACC:
+          MEMACC1:
             begin
               if (den == 1'b0)
                 begin
-                  rA <= dq;
+                  rA         <= dq;
+                  addr       <= rP;
+                  exec_state <= IDLE;
                 end
+              else
+                begin
+                  cen        <= 1'b0;
+                  oen        <= 1'b1;
+                  wen        <= 1'b0;
+                  exec_state <= MEMACC2;
+                end // else: !if(den == 1'b0)
+            end
+
+          MEMACC2:
+            begin
               cen        <= 1'b1;
-              oen        <= 1'b1;
               wen        <= 1'b1;
+              exec_state <= MEMACC3;
+            end
+          
+          MEMACC3:
+            begin
               addr       <= rP;
               den        <= 1'b0;
               exec_state <= IDLE;
             end
-
+          
         endcase // case (exec_state)
 
       end // else: !if(!reset)
