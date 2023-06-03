@@ -1,0 +1,3028 @@
+VCD info: dumpfile model_dump.vcd opened for output.
+A = 00, B = 00, M = 00, P = 00
+At time 15: READ mem[00] = 40
+A = 00, B = 00, M = 00, P = 01
+At time 45: READ mem[01] = 42
+A = 02, B = 00, M = 00, P = 02
+At time 75: READ mem[02] = 80
+A = 00, B = 02, M = 00, P = 03
+At time 105: READ mem[03] = a0
+A = 04, B = 02, M = 00, P = 04
+At time 135: READ mem[04] = 30
+A = 06, B = 02, M = 00, P = 05
+At time 165: READ mem[05] = b0
+A = 06, B = 02, M = 06, P = 06
+At time 195: READ mem[06] = 80
+A = 02, B = 06, M = 06, P = 07
+At time 225: READ mem[07] = 40
+A = 20, B = 06, M = 06, P = 08
+At time 255: READ mem[08] = 41
+A = 01, B = 06, M = 06, P = 09
+At time 285: READ mem[09] = 80
+A = 06, B = 01, M = 06, P = 0a
+At time 315: READ mem[0a] = 30
+A = 07, B = 01, M = 06, P = 0b
+At time 345: READ mem[0b] = f0
+A = 07, B = 01, M = 06, P = 06
+At time 375: READ mem[06] = 80
+A = 01, B = 07, M = 06, P = 07
+At time 405: READ mem[07] = 40
+A = 10, B = 07, M = 06, P = 08
+At time 435: READ mem[08] = 41
+A = 01, B = 07, M = 06, P = 09
+At time 465: READ mem[09] = 80
+A = 07, B = 01, M = 06, P = 0a
+At time 495: READ mem[0a] = 30
+A = 08, B = 01, M = 06, P = 0b
+At time 525: READ mem[0b] = f0
+A = 08, B = 01, M = 06, P = 06
+At time 555: READ mem[06] = 80
+A = 01, B = 08, M = 06, P = 07
+At time 585: READ mem[07] = 40
+A = 10, B = 08, M = 06, P = 08
+At time 615: READ mem[08] = 41
+A = 01, B = 08, M = 06, P = 09
+At time 645: READ mem[09] = 80
+A = 08, B = 01, M = 06, P = 0a
+At time 675: READ mem[0a] = 30
+A = 09, B = 01, M = 06, P = 0b
+At time 705: READ mem[0b] = f0
+A = 09, B = 01, M = 06, P = 06
+At time 735: READ mem[06] = 80
+A = 01, B = 09, M = 06, P = 07
+At time 765: READ mem[07] = 40
+A = 10, B = 09, M = 06, P = 08
+At time 795: READ mem[08] = 41
+A = 01, B = 09, M = 06, P = 09
+At time 825: READ mem[09] = 80
+A = 09, B = 01, M = 06, P = 0a
+At time 855: READ mem[0a] = 30
+A = 0a, B = 01, M = 06, P = 0b
+At time 885: READ mem[0b] = f0
+A = 0a, B = 01, M = 06, P = 06
+At time 915: READ mem[06] = 80
+A = 01, B = 0a, M = 06, P = 07
+At time 945: READ mem[07] = 40
+A = 10, B = 0a, M = 06, P = 08
+At time 975: READ mem[08] = 41
+A = 01, B = 0a, M = 06, P = 09
+At time 1005: READ mem[09] = 80
+A = 0a, B = 01, M = 06, P = 0a
+At time 1035: READ mem[0a] = 30
+A = 0b, B = 01, M = 06, P = 0b
+At time 1065: READ mem[0b] = f0
+A = 0b, B = 01, M = 06, P = 06
+At time 1095: READ mem[06] = 80
+A = 01, B = 0b, M = 06, P = 07
+At time 1125: READ mem[07] = 40
+A = 10, B = 0b, M = 06, P = 08
+At time 1155: READ mem[08] = 41
+A = 01, B = 0b, M = 06, P = 09
+At time 1185: READ mem[09] = 80
+A = 0b, B = 01, M = 06, P = 0a
+At time 1215: READ mem[0a] = 30
+A = 0c, B = 01, M = 06, P = 0b
+At time 1245: READ mem[0b] = f0
+A = 0c, B = 01, M = 06, P = 06
+At time 1275: READ mem[06] = 80
+A = 01, B = 0c, M = 06, P = 07
+At time 1305: READ mem[07] = 40
+A = 10, B = 0c, M = 06, P = 08
+At time 1335: READ mem[08] = 41
+A = 01, B = 0c, M = 06, P = 09
+At time 1365: READ mem[09] = 80
+A = 0c, B = 01, M = 06, P = 0a
+At time 1395: READ mem[0a] = 30
+A = 0d, B = 01, M = 06, P = 0b
+At time 1425: READ mem[0b] = f0
+A = 0d, B = 01, M = 06, P = 06
+At time 1455: READ mem[06] = 80
+A = 01, B = 0d, M = 06, P = 07
+At time 1485: READ mem[07] = 40
+A = 10, B = 0d, M = 06, P = 08
+At time 1515: READ mem[08] = 41
+A = 01, B = 0d, M = 06, P = 09
+At time 1545: READ mem[09] = 80
+A = 0d, B = 01, M = 06, P = 0a
+At time 1575: READ mem[0a] = 30
+A = 0e, B = 01, M = 06, P = 0b
+At time 1605: READ mem[0b] = f0
+A = 0e, B = 01, M = 06, P = 06
+At time 1635: READ mem[06] = 80
+A = 01, B = 0e, M = 06, P = 07
+At time 1665: READ mem[07] = 40
+A = 10, B = 0e, M = 06, P = 08
+At time 1695: READ mem[08] = 41
+A = 01, B = 0e, M = 06, P = 09
+At time 1725: READ mem[09] = 80
+A = 0e, B = 01, M = 06, P = 0a
+At time 1755: READ mem[0a] = 30
+A = 0f, B = 01, M = 06, P = 0b
+At time 1785: READ mem[0b] = f0
+A = 0f, B = 01, M = 06, P = 06
+At time 1815: READ mem[06] = 80
+A = 01, B = 0f, M = 06, P = 07
+At time 1845: READ mem[07] = 40
+A = 10, B = 0f, M = 06, P = 08
+At time 1875: READ mem[08] = 41
+A = 01, B = 0f, M = 06, P = 09
+At time 1905: READ mem[09] = 80
+A = 0f, B = 01, M = 06, P = 0a
+At time 1935: READ mem[0a] = 30
+A = 10, B = 01, M = 06, P = 0b
+At time 1965: READ mem[0b] = f0
+A = 10, B = 01, M = 06, P = 06
+At time 1995: READ mem[06] = 80
+A = 01, B = 10, M = 06, P = 07
+At time 2025: READ mem[07] = 40
+A = 10, B = 10, M = 06, P = 08
+At time 2055: READ mem[08] = 41
+A = 01, B = 10, M = 06, P = 09
+At time 2085: READ mem[09] = 80
+A = 10, B = 01, M = 06, P = 0a
+At time 2115: READ mem[0a] = 30
+A = 11, B = 01, M = 06, P = 0b
+At time 2145: READ mem[0b] = f0
+A = 11, B = 01, M = 06, P = 06
+At time 2175: READ mem[06] = 80
+A = 01, B = 11, M = 06, P = 07
+At time 2205: READ mem[07] = 40
+A = 10, B = 11, M = 06, P = 08
+At time 2235: READ mem[08] = 41
+A = 01, B = 11, M = 06, P = 09
+At time 2265: READ mem[09] = 80
+A = 11, B = 01, M = 06, P = 0a
+At time 2295: READ mem[0a] = 30
+A = 12, B = 01, M = 06, P = 0b
+At time 2325: READ mem[0b] = f0
+A = 12, B = 01, M = 06, P = 06
+At time 2355: READ mem[06] = 80
+A = 01, B = 12, M = 06, P = 07
+At time 2385: READ mem[07] = 40
+A = 10, B = 12, M = 06, P = 08
+At time 2415: READ mem[08] = 41
+A = 01, B = 12, M = 06, P = 09
+At time 2445: READ mem[09] = 80
+A = 12, B = 01, M = 06, P = 0a
+At time 2475: READ mem[0a] = 30
+A = 13, B = 01, M = 06, P = 0b
+At time 2505: READ mem[0b] = f0
+A = 13, B = 01, M = 06, P = 06
+At time 2535: READ mem[06] = 80
+A = 01, B = 13, M = 06, P = 07
+At time 2565: READ mem[07] = 40
+A = 10, B = 13, M = 06, P = 08
+At time 2595: READ mem[08] = 41
+A = 01, B = 13, M = 06, P = 09
+At time 2625: READ mem[09] = 80
+A = 13, B = 01, M = 06, P = 0a
+At time 2655: READ mem[0a] = 30
+A = 14, B = 01, M = 06, P = 0b
+At time 2685: READ mem[0b] = f0
+A = 14, B = 01, M = 06, P = 06
+At time 2715: READ mem[06] = 80
+A = 01, B = 14, M = 06, P = 07
+At time 2745: READ mem[07] = 40
+A = 10, B = 14, M = 06, P = 08
+At time 2775: READ mem[08] = 41
+A = 01, B = 14, M = 06, P = 09
+At time 2805: READ mem[09] = 80
+A = 14, B = 01, M = 06, P = 0a
+At time 2835: READ mem[0a] = 30
+A = 15, B = 01, M = 06, P = 0b
+At time 2865: READ mem[0b] = f0
+A = 15, B = 01, M = 06, P = 06
+At time 2895: READ mem[06] = 80
+A = 01, B = 15, M = 06, P = 07
+At time 2925: READ mem[07] = 40
+A = 10, B = 15, M = 06, P = 08
+At time 2955: READ mem[08] = 41
+A = 01, B = 15, M = 06, P = 09
+At time 2985: READ mem[09] = 80
+A = 15, B = 01, M = 06, P = 0a
+At time 3015: READ mem[0a] = 30
+A = 16, B = 01, M = 06, P = 0b
+At time 3045: READ mem[0b] = f0
+A = 16, B = 01, M = 06, P = 06
+At time 3075: READ mem[06] = 80
+A = 01, B = 16, M = 06, P = 07
+At time 3105: READ mem[07] = 40
+A = 10, B = 16, M = 06, P = 08
+At time 3135: READ mem[08] = 41
+A = 01, B = 16, M = 06, P = 09
+At time 3165: READ mem[09] = 80
+A = 16, B = 01, M = 06, P = 0a
+At time 3195: READ mem[0a] = 30
+A = 17, B = 01, M = 06, P = 0b
+At time 3225: READ mem[0b] = f0
+A = 17, B = 01, M = 06, P = 06
+At time 3255: READ mem[06] = 80
+A = 01, B = 17, M = 06, P = 07
+At time 3285: READ mem[07] = 40
+A = 10, B = 17, M = 06, P = 08
+At time 3315: READ mem[08] = 41
+A = 01, B = 17, M = 06, P = 09
+At time 3345: READ mem[09] = 80
+A = 17, B = 01, M = 06, P = 0a
+At time 3375: READ mem[0a] = 30
+A = 18, B = 01, M = 06, P = 0b
+At time 3405: READ mem[0b] = f0
+A = 18, B = 01, M = 06, P = 06
+At time 3435: READ mem[06] = 80
+A = 01, B = 18, M = 06, P = 07
+At time 3465: READ mem[07] = 40
+A = 10, B = 18, M = 06, P = 08
+At time 3495: READ mem[08] = 41
+A = 01, B = 18, M = 06, P = 09
+At time 3525: READ mem[09] = 80
+A = 18, B = 01, M = 06, P = 0a
+At time 3555: READ mem[0a] = 30
+A = 19, B = 01, M = 06, P = 0b
+At time 3585: READ mem[0b] = f0
+A = 19, B = 01, M = 06, P = 06
+At time 3615: READ mem[06] = 80
+A = 01, B = 19, M = 06, P = 07
+At time 3645: READ mem[07] = 40
+A = 10, B = 19, M = 06, P = 08
+At time 3675: READ mem[08] = 41
+A = 01, B = 19, M = 06, P = 09
+At time 3705: READ mem[09] = 80
+A = 19, B = 01, M = 06, P = 0a
+At time 3735: READ mem[0a] = 30
+A = 1a, B = 01, M = 06, P = 0b
+At time 3765: READ mem[0b] = f0
+A = 1a, B = 01, M = 06, P = 06
+At time 3795: READ mem[06] = 80
+A = 01, B = 1a, M = 06, P = 07
+At time 3825: READ mem[07] = 40
+A = 10, B = 1a, M = 06, P = 08
+At time 3855: READ mem[08] = 41
+A = 01, B = 1a, M = 06, P = 09
+At time 3885: READ mem[09] = 80
+A = 1a, B = 01, M = 06, P = 0a
+At time 3915: READ mem[0a] = 30
+A = 1b, B = 01, M = 06, P = 0b
+At time 3945: READ mem[0b] = f0
+A = 1b, B = 01, M = 06, P = 06
+At time 3975: READ mem[06] = 80
+A = 01, B = 1b, M = 06, P = 07
+At time 4005: READ mem[07] = 40
+A = 10, B = 1b, M = 06, P = 08
+At time 4035: READ mem[08] = 41
+A = 01, B = 1b, M = 06, P = 09
+At time 4065: READ mem[09] = 80
+A = 1b, B = 01, M = 06, P = 0a
+At time 4095: READ mem[0a] = 30
+A = 1c, B = 01, M = 06, P = 0b
+At time 4125: READ mem[0b] = f0
+A = 1c, B = 01, M = 06, P = 06
+At time 4155: READ mem[06] = 80
+A = 01, B = 1c, M = 06, P = 07
+At time 4185: READ mem[07] = 40
+A = 10, B = 1c, M = 06, P = 08
+At time 4215: READ mem[08] = 41
+A = 01, B = 1c, M = 06, P = 09
+At time 4245: READ mem[09] = 80
+A = 1c, B = 01, M = 06, P = 0a
+At time 4275: READ mem[0a] = 30
+A = 1d, B = 01, M = 06, P = 0b
+At time 4305: READ mem[0b] = f0
+A = 1d, B = 01, M = 06, P = 06
+At time 4335: READ mem[06] = 80
+A = 01, B = 1d, M = 06, P = 07
+At time 4365: READ mem[07] = 40
+A = 10, B = 1d, M = 06, P = 08
+At time 4395: READ mem[08] = 41
+A = 01, B = 1d, M = 06, P = 09
+At time 4425: READ mem[09] = 80
+A = 1d, B = 01, M = 06, P = 0a
+At time 4455: READ mem[0a] = 30
+A = 1e, B = 01, M = 06, P = 0b
+At time 4485: READ mem[0b] = f0
+A = 1e, B = 01, M = 06, P = 06
+At time 4515: READ mem[06] = 80
+A = 01, B = 1e, M = 06, P = 07
+At time 4545: READ mem[07] = 40
+A = 10, B = 1e, M = 06, P = 08
+At time 4575: READ mem[08] = 41
+A = 01, B = 1e, M = 06, P = 09
+At time 4605: READ mem[09] = 80
+A = 1e, B = 01, M = 06, P = 0a
+At time 4635: READ mem[0a] = 30
+A = 1f, B = 01, M = 06, P = 0b
+At time 4665: READ mem[0b] = f0
+A = 1f, B = 01, M = 06, P = 06
+At time 4695: READ mem[06] = 80
+A = 01, B = 1f, M = 06, P = 07
+At time 4725: READ mem[07] = 40
+A = 10, B = 1f, M = 06, P = 08
+At time 4755: READ mem[08] = 41
+A = 01, B = 1f, M = 06, P = 09
+At time 4785: READ mem[09] = 80
+A = 1f, B = 01, M = 06, P = 0a
+At time 4815: READ mem[0a] = 30
+A = 20, B = 01, M = 06, P = 0b
+At time 4845: READ mem[0b] = f0
+A = 20, B = 01, M = 06, P = 06
+At time 4875: READ mem[06] = 80
+A = 01, B = 20, M = 06, P = 07
+At time 4905: READ mem[07] = 40
+A = 10, B = 20, M = 06, P = 08
+At time 4935: READ mem[08] = 41
+A = 01, B = 20, M = 06, P = 09
+At time 4965: READ mem[09] = 80
+A = 20, B = 01, M = 06, P = 0a
+At time 4995: READ mem[0a] = 30
+A = 21, B = 01, M = 06, P = 0b
+At time 5025: READ mem[0b] = f0
+A = 21, B = 01, M = 06, P = 06
+At time 5055: READ mem[06] = 80
+A = 01, B = 21, M = 06, P = 07
+At time 5085: READ mem[07] = 40
+A = 10, B = 21, M = 06, P = 08
+At time 5115: READ mem[08] = 41
+A = 01, B = 21, M = 06, P = 09
+At time 5145: READ mem[09] = 80
+A = 21, B = 01, M = 06, P = 0a
+At time 5175: READ mem[0a] = 30
+A = 22, B = 01, M = 06, P = 0b
+At time 5205: READ mem[0b] = f0
+A = 22, B = 01, M = 06, P = 06
+At time 5235: READ mem[06] = 80
+A = 01, B = 22, M = 06, P = 07
+At time 5265: READ mem[07] = 40
+A = 10, B = 22, M = 06, P = 08
+At time 5295: READ mem[08] = 41
+A = 01, B = 22, M = 06, P = 09
+At time 5325: READ mem[09] = 80
+A = 22, B = 01, M = 06, P = 0a
+At time 5355: READ mem[0a] = 30
+A = 23, B = 01, M = 06, P = 0b
+At time 5385: READ mem[0b] = f0
+A = 23, B = 01, M = 06, P = 06
+At time 5415: READ mem[06] = 80
+A = 01, B = 23, M = 06, P = 07
+At time 5445: READ mem[07] = 40
+A = 10, B = 23, M = 06, P = 08
+At time 5475: READ mem[08] = 41
+A = 01, B = 23, M = 06, P = 09
+At time 5505: READ mem[09] = 80
+A = 23, B = 01, M = 06, P = 0a
+At time 5535: READ mem[0a] = 30
+A = 24, B = 01, M = 06, P = 0b
+At time 5565: READ mem[0b] = f0
+A = 24, B = 01, M = 06, P = 06
+At time 5595: READ mem[06] = 80
+A = 01, B = 24, M = 06, P = 07
+At time 5625: READ mem[07] = 40
+A = 10, B = 24, M = 06, P = 08
+At time 5655: READ mem[08] = 41
+A = 01, B = 24, M = 06, P = 09
+At time 5685: READ mem[09] = 80
+A = 24, B = 01, M = 06, P = 0a
+At time 5715: READ mem[0a] = 30
+A = 25, B = 01, M = 06, P = 0b
+At time 5745: READ mem[0b] = f0
+A = 25, B = 01, M = 06, P = 06
+At time 5775: READ mem[06] = 80
+A = 01, B = 25, M = 06, P = 07
+At time 5805: READ mem[07] = 40
+A = 10, B = 25, M = 06, P = 08
+At time 5835: READ mem[08] = 41
+A = 01, B = 25, M = 06, P = 09
+At time 5865: READ mem[09] = 80
+A = 25, B = 01, M = 06, P = 0a
+At time 5895: READ mem[0a] = 30
+A = 26, B = 01, M = 06, P = 0b
+At time 5925: READ mem[0b] = f0
+A = 26, B = 01, M = 06, P = 06
+At time 5955: READ mem[06] = 80
+A = 01, B = 26, M = 06, P = 07
+At time 5985: READ mem[07] = 40
+A = 10, B = 26, M = 06, P = 08
+At time 6015: READ mem[08] = 41
+A = 01, B = 26, M = 06, P = 09
+At time 6045: READ mem[09] = 80
+A = 26, B = 01, M = 06, P = 0a
+At time 6075: READ mem[0a] = 30
+A = 27, B = 01, M = 06, P = 0b
+At time 6105: READ mem[0b] = f0
+A = 27, B = 01, M = 06, P = 06
+At time 6135: READ mem[06] = 80
+A = 01, B = 27, M = 06, P = 07
+At time 6165: READ mem[07] = 40
+A = 10, B = 27, M = 06, P = 08
+At time 6195: READ mem[08] = 41
+A = 01, B = 27, M = 06, P = 09
+At time 6225: READ mem[09] = 80
+A = 27, B = 01, M = 06, P = 0a
+At time 6255: READ mem[0a] = 30
+A = 28, B = 01, M = 06, P = 0b
+At time 6285: READ mem[0b] = f0
+A = 28, B = 01, M = 06, P = 06
+At time 6315: READ mem[06] = 80
+A = 01, B = 28, M = 06, P = 07
+At time 6345: READ mem[07] = 40
+A = 10, B = 28, M = 06, P = 08
+At time 6375: READ mem[08] = 41
+A = 01, B = 28, M = 06, P = 09
+At time 6405: READ mem[09] = 80
+A = 28, B = 01, M = 06, P = 0a
+At time 6435: READ mem[0a] = 30
+A = 29, B = 01, M = 06, P = 0b
+At time 6465: READ mem[0b] = f0
+A = 29, B = 01, M = 06, P = 06
+At time 6495: READ mem[06] = 80
+A = 01, B = 29, M = 06, P = 07
+At time 6525: READ mem[07] = 40
+A = 10, B = 29, M = 06, P = 08
+At time 6555: READ mem[08] = 41
+A = 01, B = 29, M = 06, P = 09
+At time 6585: READ mem[09] = 80
+A = 29, B = 01, M = 06, P = 0a
+At time 6615: READ mem[0a] = 30
+A = 2a, B = 01, M = 06, P = 0b
+At time 6645: READ mem[0b] = f0
+A = 2a, B = 01, M = 06, P = 06
+At time 6675: READ mem[06] = 80
+A = 01, B = 2a, M = 06, P = 07
+At time 6705: READ mem[07] = 40
+A = 10, B = 2a, M = 06, P = 08
+At time 6735: READ mem[08] = 41
+A = 01, B = 2a, M = 06, P = 09
+At time 6765: READ mem[09] = 80
+A = 2a, B = 01, M = 06, P = 0a
+At time 6795: READ mem[0a] = 30
+A = 2b, B = 01, M = 06, P = 0b
+At time 6825: READ mem[0b] = f0
+A = 2b, B = 01, M = 06, P = 06
+At time 6855: READ mem[06] = 80
+A = 01, B = 2b, M = 06, P = 07
+At time 6885: READ mem[07] = 40
+A = 10, B = 2b, M = 06, P = 08
+At time 6915: READ mem[08] = 41
+A = 01, B = 2b, M = 06, P = 09
+At time 6945: READ mem[09] = 80
+A = 2b, B = 01, M = 06, P = 0a
+At time 6975: READ mem[0a] = 30
+A = 2c, B = 01, M = 06, P = 0b
+At time 7005: READ mem[0b] = f0
+A = 2c, B = 01, M = 06, P = 06
+At time 7035: READ mem[06] = 80
+A = 01, B = 2c, M = 06, P = 07
+At time 7065: READ mem[07] = 40
+A = 10, B = 2c, M = 06, P = 08
+At time 7095: READ mem[08] = 41
+A = 01, B = 2c, M = 06, P = 09
+At time 7125: READ mem[09] = 80
+A = 2c, B = 01, M = 06, P = 0a
+At time 7155: READ mem[0a] = 30
+A = 2d, B = 01, M = 06, P = 0b
+At time 7185: READ mem[0b] = f0
+A = 2d, B = 01, M = 06, P = 06
+At time 7215: READ mem[06] = 80
+A = 01, B = 2d, M = 06, P = 07
+At time 7245: READ mem[07] = 40
+A = 10, B = 2d, M = 06, P = 08
+At time 7275: READ mem[08] = 41
+A = 01, B = 2d, M = 06, P = 09
+At time 7305: READ mem[09] = 80
+A = 2d, B = 01, M = 06, P = 0a
+At time 7335: READ mem[0a] = 30
+A = 2e, B = 01, M = 06, P = 0b
+At time 7365: READ mem[0b] = f0
+A = 2e, B = 01, M = 06, P = 06
+At time 7395: READ mem[06] = 80
+A = 01, B = 2e, M = 06, P = 07
+At time 7425: READ mem[07] = 40
+A = 10, B = 2e, M = 06, P = 08
+At time 7455: READ mem[08] = 41
+A = 01, B = 2e, M = 06, P = 09
+At time 7485: READ mem[09] = 80
+A = 2e, B = 01, M = 06, P = 0a
+At time 7515: READ mem[0a] = 30
+A = 2f, B = 01, M = 06, P = 0b
+At time 7545: READ mem[0b] = f0
+A = 2f, B = 01, M = 06, P = 06
+At time 7575: READ mem[06] = 80
+A = 01, B = 2f, M = 06, P = 07
+At time 7605: READ mem[07] = 40
+A = 10, B = 2f, M = 06, P = 08
+At time 7635: READ mem[08] = 41
+A = 01, B = 2f, M = 06, P = 09
+At time 7665: READ mem[09] = 80
+A = 2f, B = 01, M = 06, P = 0a
+At time 7695: READ mem[0a] = 30
+A = 30, B = 01, M = 06, P = 0b
+At time 7725: READ mem[0b] = f0
+A = 30, B = 01, M = 06, P = 06
+At time 7755: READ mem[06] = 80
+A = 01, B = 30, M = 06, P = 07
+At time 7785: READ mem[07] = 40
+A = 10, B = 30, M = 06, P = 08
+At time 7815: READ mem[08] = 41
+A = 01, B = 30, M = 06, P = 09
+At time 7845: READ mem[09] = 80
+A = 30, B = 01, M = 06, P = 0a
+At time 7875: READ mem[0a] = 30
+A = 31, B = 01, M = 06, P = 0b
+At time 7905: READ mem[0b] = f0
+A = 31, B = 01, M = 06, P = 06
+At time 7935: READ mem[06] = 80
+A = 01, B = 31, M = 06, P = 07
+At time 7965: READ mem[07] = 40
+A = 10, B = 31, M = 06, P = 08
+At time 7995: READ mem[08] = 41
+A = 01, B = 31, M = 06, P = 09
+At time 8025: READ mem[09] = 80
+A = 31, B = 01, M = 06, P = 0a
+At time 8055: READ mem[0a] = 30
+A = 32, B = 01, M = 06, P = 0b
+At time 8085: READ mem[0b] = f0
+A = 32, B = 01, M = 06, P = 06
+At time 8115: READ mem[06] = 80
+A = 01, B = 32, M = 06, P = 07
+At time 8145: READ mem[07] = 40
+A = 10, B = 32, M = 06, P = 08
+At time 8175: READ mem[08] = 41
+A = 01, B = 32, M = 06, P = 09
+At time 8205: READ mem[09] = 80
+A = 32, B = 01, M = 06, P = 0a
+At time 8235: READ mem[0a] = 30
+A = 33, B = 01, M = 06, P = 0b
+At time 8265: READ mem[0b] = f0
+A = 33, B = 01, M = 06, P = 06
+At time 8295: READ mem[06] = 80
+A = 01, B = 33, M = 06, P = 07
+At time 8325: READ mem[07] = 40
+A = 10, B = 33, M = 06, P = 08
+At time 8355: READ mem[08] = 41
+A = 01, B = 33, M = 06, P = 09
+At time 8385: READ mem[09] = 80
+A = 33, B = 01, M = 06, P = 0a
+At time 8415: READ mem[0a] = 30
+A = 34, B = 01, M = 06, P = 0b
+At time 8445: READ mem[0b] = f0
+A = 34, B = 01, M = 06, P = 06
+At time 8475: READ mem[06] = 80
+A = 01, B = 34, M = 06, P = 07
+At time 8505: READ mem[07] = 40
+A = 10, B = 34, M = 06, P = 08
+At time 8535: READ mem[08] = 41
+A = 01, B = 34, M = 06, P = 09
+At time 8565: READ mem[09] = 80
+A = 34, B = 01, M = 06, P = 0a
+At time 8595: READ mem[0a] = 30
+A = 35, B = 01, M = 06, P = 0b
+At time 8625: READ mem[0b] = f0
+A = 35, B = 01, M = 06, P = 06
+At time 8655: READ mem[06] = 80
+A = 01, B = 35, M = 06, P = 07
+At time 8685: READ mem[07] = 40
+A = 10, B = 35, M = 06, P = 08
+At time 8715: READ mem[08] = 41
+A = 01, B = 35, M = 06, P = 09
+At time 8745: READ mem[09] = 80
+A = 35, B = 01, M = 06, P = 0a
+At time 8775: READ mem[0a] = 30
+A = 36, B = 01, M = 06, P = 0b
+At time 8805: READ mem[0b] = f0
+A = 36, B = 01, M = 06, P = 06
+At time 8835: READ mem[06] = 80
+A = 01, B = 36, M = 06, P = 07
+At time 8865: READ mem[07] = 40
+A = 10, B = 36, M = 06, P = 08
+At time 8895: READ mem[08] = 41
+A = 01, B = 36, M = 06, P = 09
+At time 8925: READ mem[09] = 80
+A = 36, B = 01, M = 06, P = 0a
+At time 8955: READ mem[0a] = 30
+A = 37, B = 01, M = 06, P = 0b
+At time 8985: READ mem[0b] = f0
+A = 37, B = 01, M = 06, P = 06
+At time 9015: READ mem[06] = 80
+A = 01, B = 37, M = 06, P = 07
+At time 9045: READ mem[07] = 40
+A = 10, B = 37, M = 06, P = 08
+At time 9075: READ mem[08] = 41
+A = 01, B = 37, M = 06, P = 09
+At time 9105: READ mem[09] = 80
+A = 37, B = 01, M = 06, P = 0a
+At time 9135: READ mem[0a] = 30
+A = 38, B = 01, M = 06, P = 0b
+At time 9165: READ mem[0b] = f0
+A = 38, B = 01, M = 06, P = 06
+At time 9195: READ mem[06] = 80
+A = 01, B = 38, M = 06, P = 07
+At time 9225: READ mem[07] = 40
+A = 10, B = 38, M = 06, P = 08
+At time 9255: READ mem[08] = 41
+A = 01, B = 38, M = 06, P = 09
+At time 9285: READ mem[09] = 80
+A = 38, B = 01, M = 06, P = 0a
+At time 9315: READ mem[0a] = 30
+A = 39, B = 01, M = 06, P = 0b
+At time 9345: READ mem[0b] = f0
+A = 39, B = 01, M = 06, P = 06
+At time 9375: READ mem[06] = 80
+A = 01, B = 39, M = 06, P = 07
+At time 9405: READ mem[07] = 40
+A = 10, B = 39, M = 06, P = 08
+At time 9435: READ mem[08] = 41
+A = 01, B = 39, M = 06, P = 09
+At time 9465: READ mem[09] = 80
+A = 39, B = 01, M = 06, P = 0a
+At time 9495: READ mem[0a] = 30
+A = 3a, B = 01, M = 06, P = 0b
+At time 9525: READ mem[0b] = f0
+A = 3a, B = 01, M = 06, P = 06
+At time 9555: READ mem[06] = 80
+A = 01, B = 3a, M = 06, P = 07
+At time 9585: READ mem[07] = 40
+A = 10, B = 3a, M = 06, P = 08
+At time 9615: READ mem[08] = 41
+A = 01, B = 3a, M = 06, P = 09
+At time 9645: READ mem[09] = 80
+A = 3a, B = 01, M = 06, P = 0a
+At time 9675: READ mem[0a] = 30
+A = 3b, B = 01, M = 06, P = 0b
+At time 9705: READ mem[0b] = f0
+A = 3b, B = 01, M = 06, P = 06
+At time 9735: READ mem[06] = 80
+A = 01, B = 3b, M = 06, P = 07
+At time 9765: READ mem[07] = 40
+A = 10, B = 3b, M = 06, P = 08
+At time 9795: READ mem[08] = 41
+A = 01, B = 3b, M = 06, P = 09
+At time 9825: READ mem[09] = 80
+A = 3b, B = 01, M = 06, P = 0a
+At time 9855: READ mem[0a] = 30
+A = 3c, B = 01, M = 06, P = 0b
+At time 9885: READ mem[0b] = f0
+A = 3c, B = 01, M = 06, P = 06
+At time 9915: READ mem[06] = 80
+A = 01, B = 3c, M = 06, P = 07
+At time 9945: READ mem[07] = 40
+A = 10, B = 3c, M = 06, P = 08
+At time 9975: READ mem[08] = 41
+A = 01, B = 3c, M = 06, P = 09
+At time 10005: READ mem[09] = 80
+A = 3c, B = 01, M = 06, P = 0a
+At time 10035: READ mem[0a] = 30
+A = 3d, B = 01, M = 06, P = 0b
+At time 10065: READ mem[0b] = f0
+A = 3d, B = 01, M = 06, P = 06
+At time 10095: READ mem[06] = 80
+A = 01, B = 3d, M = 06, P = 07
+At time 10125: READ mem[07] = 40
+A = 10, B = 3d, M = 06, P = 08
+At time 10155: READ mem[08] = 41
+A = 01, B = 3d, M = 06, P = 09
+At time 10185: READ mem[09] = 80
+A = 3d, B = 01, M = 06, P = 0a
+At time 10215: READ mem[0a] = 30
+A = 3e, B = 01, M = 06, P = 0b
+At time 10245: READ mem[0b] = f0
+A = 3e, B = 01, M = 06, P = 06
+At time 10275: READ mem[06] = 80
+A = 01, B = 3e, M = 06, P = 07
+At time 10305: READ mem[07] = 40
+A = 10, B = 3e, M = 06, P = 08
+At time 10335: READ mem[08] = 41
+A = 01, B = 3e, M = 06, P = 09
+At time 10365: READ mem[09] = 80
+A = 3e, B = 01, M = 06, P = 0a
+At time 10395: READ mem[0a] = 30
+A = 3f, B = 01, M = 06, P = 0b
+At time 10425: READ mem[0b] = f0
+A = 3f, B = 01, M = 06, P = 06
+At time 10455: READ mem[06] = 80
+A = 01, B = 3f, M = 06, P = 07
+At time 10485: READ mem[07] = 40
+A = 10, B = 3f, M = 06, P = 08
+At time 10515: READ mem[08] = 41
+A = 01, B = 3f, M = 06, P = 09
+At time 10545: READ mem[09] = 80
+A = 3f, B = 01, M = 06, P = 0a
+At time 10575: READ mem[0a] = 30
+A = 40, B = 01, M = 06, P = 0b
+At time 10605: READ mem[0b] = f0
+A = 40, B = 01, M = 06, P = 06
+At time 10635: READ mem[06] = 80
+A = 01, B = 40, M = 06, P = 07
+At time 10665: READ mem[07] = 40
+A = 10, B = 40, M = 06, P = 08
+At time 10695: READ mem[08] = 41
+A = 01, B = 40, M = 06, P = 09
+At time 10725: READ mem[09] = 80
+A = 40, B = 01, M = 06, P = 0a
+At time 10755: READ mem[0a] = 30
+A = 41, B = 01, M = 06, P = 0b
+At time 10785: READ mem[0b] = f0
+A = 41, B = 01, M = 06, P = 06
+At time 10815: READ mem[06] = 80
+A = 01, B = 41, M = 06, P = 07
+At time 10845: READ mem[07] = 40
+A = 10, B = 41, M = 06, P = 08
+At time 10875: READ mem[08] = 41
+A = 01, B = 41, M = 06, P = 09
+At time 10905: READ mem[09] = 80
+A = 41, B = 01, M = 06, P = 0a
+At time 10935: READ mem[0a] = 30
+A = 42, B = 01, M = 06, P = 0b
+At time 10965: READ mem[0b] = f0
+A = 42, B = 01, M = 06, P = 06
+At time 10995: READ mem[06] = 80
+A = 01, B = 42, M = 06, P = 07
+At time 11025: READ mem[07] = 40
+A = 10, B = 42, M = 06, P = 08
+At time 11055: READ mem[08] = 41
+A = 01, B = 42, M = 06, P = 09
+At time 11085: READ mem[09] = 80
+A = 42, B = 01, M = 06, P = 0a
+At time 11115: READ mem[0a] = 30
+A = 43, B = 01, M = 06, P = 0b
+At time 11145: READ mem[0b] = f0
+A = 43, B = 01, M = 06, P = 06
+At time 11175: READ mem[06] = 80
+A = 01, B = 43, M = 06, P = 07
+At time 11205: READ mem[07] = 40
+A = 10, B = 43, M = 06, P = 08
+At time 11235: READ mem[08] = 41
+A = 01, B = 43, M = 06, P = 09
+At time 11265: READ mem[09] = 80
+A = 43, B = 01, M = 06, P = 0a
+At time 11295: READ mem[0a] = 30
+A = 44, B = 01, M = 06, P = 0b
+At time 11325: READ mem[0b] = f0
+A = 44, B = 01, M = 06, P = 06
+At time 11355: READ mem[06] = 80
+A = 01, B = 44, M = 06, P = 07
+At time 11385: READ mem[07] = 40
+A = 10, B = 44, M = 06, P = 08
+At time 11415: READ mem[08] = 41
+A = 01, B = 44, M = 06, P = 09
+At time 11445: READ mem[09] = 80
+A = 44, B = 01, M = 06, P = 0a
+At time 11475: READ mem[0a] = 30
+A = 45, B = 01, M = 06, P = 0b
+At time 11505: READ mem[0b] = f0
+A = 45, B = 01, M = 06, P = 06
+At time 11535: READ mem[06] = 80
+A = 01, B = 45, M = 06, P = 07
+At time 11565: READ mem[07] = 40
+A = 10, B = 45, M = 06, P = 08
+At time 11595: READ mem[08] = 41
+A = 01, B = 45, M = 06, P = 09
+At time 11625: READ mem[09] = 80
+A = 45, B = 01, M = 06, P = 0a
+At time 11655: READ mem[0a] = 30
+A = 46, B = 01, M = 06, P = 0b
+At time 11685: READ mem[0b] = f0
+A = 46, B = 01, M = 06, P = 06
+At time 11715: READ mem[06] = 80
+A = 01, B = 46, M = 06, P = 07
+At time 11745: READ mem[07] = 40
+A = 10, B = 46, M = 06, P = 08
+At time 11775: READ mem[08] = 41
+A = 01, B = 46, M = 06, P = 09
+At time 11805: READ mem[09] = 80
+A = 46, B = 01, M = 06, P = 0a
+At time 11835: READ mem[0a] = 30
+A = 47, B = 01, M = 06, P = 0b
+At time 11865: READ mem[0b] = f0
+A = 47, B = 01, M = 06, P = 06
+At time 11895: READ mem[06] = 80
+A = 01, B = 47, M = 06, P = 07
+At time 11925: READ mem[07] = 40
+A = 10, B = 47, M = 06, P = 08
+At time 11955: READ mem[08] = 41
+A = 01, B = 47, M = 06, P = 09
+At time 11985: READ mem[09] = 80
+A = 47, B = 01, M = 06, P = 0a
+At time 12015: READ mem[0a] = 30
+A = 48, B = 01, M = 06, P = 0b
+At time 12045: READ mem[0b] = f0
+A = 48, B = 01, M = 06, P = 06
+At time 12075: READ mem[06] = 80
+A = 01, B = 48, M = 06, P = 07
+At time 12105: READ mem[07] = 40
+A = 10, B = 48, M = 06, P = 08
+At time 12135: READ mem[08] = 41
+A = 01, B = 48, M = 06, P = 09
+At time 12165: READ mem[09] = 80
+A = 48, B = 01, M = 06, P = 0a
+At time 12195: READ mem[0a] = 30
+A = 49, B = 01, M = 06, P = 0b
+At time 12225: READ mem[0b] = f0
+A = 49, B = 01, M = 06, P = 06
+At time 12255: READ mem[06] = 80
+A = 01, B = 49, M = 06, P = 07
+At time 12285: READ mem[07] = 40
+A = 10, B = 49, M = 06, P = 08
+At time 12315: READ mem[08] = 41
+A = 01, B = 49, M = 06, P = 09
+At time 12345: READ mem[09] = 80
+A = 49, B = 01, M = 06, P = 0a
+At time 12375: READ mem[0a] = 30
+A = 4a, B = 01, M = 06, P = 0b
+At time 12405: READ mem[0b] = f0
+A = 4a, B = 01, M = 06, P = 06
+At time 12435: READ mem[06] = 80
+A = 01, B = 4a, M = 06, P = 07
+At time 12465: READ mem[07] = 40
+A = 10, B = 4a, M = 06, P = 08
+At time 12495: READ mem[08] = 41
+A = 01, B = 4a, M = 06, P = 09
+At time 12525: READ mem[09] = 80
+A = 4a, B = 01, M = 06, P = 0a
+At time 12555: READ mem[0a] = 30
+A = 4b, B = 01, M = 06, P = 0b
+At time 12585: READ mem[0b] = f0
+A = 4b, B = 01, M = 06, P = 06
+At time 12615: READ mem[06] = 80
+A = 01, B = 4b, M = 06, P = 07
+At time 12645: READ mem[07] = 40
+A = 10, B = 4b, M = 06, P = 08
+At time 12675: READ mem[08] = 41
+A = 01, B = 4b, M = 06, P = 09
+At time 12705: READ mem[09] = 80
+A = 4b, B = 01, M = 06, P = 0a
+At time 12735: READ mem[0a] = 30
+A = 4c, B = 01, M = 06, P = 0b
+At time 12765: READ mem[0b] = f0
+A = 4c, B = 01, M = 06, P = 06
+At time 12795: READ mem[06] = 80
+A = 01, B = 4c, M = 06, P = 07
+At time 12825: READ mem[07] = 40
+A = 10, B = 4c, M = 06, P = 08
+At time 12855: READ mem[08] = 41
+A = 01, B = 4c, M = 06, P = 09
+At time 12885: READ mem[09] = 80
+A = 4c, B = 01, M = 06, P = 0a
+At time 12915: READ mem[0a] = 30
+A = 4d, B = 01, M = 06, P = 0b
+At time 12945: READ mem[0b] = f0
+A = 4d, B = 01, M = 06, P = 06
+At time 12975: READ mem[06] = 80
+A = 01, B = 4d, M = 06, P = 07
+At time 13005: READ mem[07] = 40
+A = 10, B = 4d, M = 06, P = 08
+At time 13035: READ mem[08] = 41
+A = 01, B = 4d, M = 06, P = 09
+At time 13065: READ mem[09] = 80
+A = 4d, B = 01, M = 06, P = 0a
+At time 13095: READ mem[0a] = 30
+A = 4e, B = 01, M = 06, P = 0b
+At time 13125: READ mem[0b] = f0
+A = 4e, B = 01, M = 06, P = 06
+At time 13155: READ mem[06] = 80
+A = 01, B = 4e, M = 06, P = 07
+At time 13185: READ mem[07] = 40
+A = 10, B = 4e, M = 06, P = 08
+At time 13215: READ mem[08] = 41
+A = 01, B = 4e, M = 06, P = 09
+At time 13245: READ mem[09] = 80
+A = 4e, B = 01, M = 06, P = 0a
+At time 13275: READ mem[0a] = 30
+A = 4f, B = 01, M = 06, P = 0b
+At time 13305: READ mem[0b] = f0
+A = 4f, B = 01, M = 06, P = 06
+At time 13335: READ mem[06] = 80
+A = 01, B = 4f, M = 06, P = 07
+At time 13365: READ mem[07] = 40
+A = 10, B = 4f, M = 06, P = 08
+At time 13395: READ mem[08] = 41
+A = 01, B = 4f, M = 06, P = 09
+At time 13425: READ mem[09] = 80
+A = 4f, B = 01, M = 06, P = 0a
+At time 13455: READ mem[0a] = 30
+A = 50, B = 01, M = 06, P = 0b
+At time 13485: READ mem[0b] = f0
+A = 50, B = 01, M = 06, P = 06
+At time 13515: READ mem[06] = 80
+A = 01, B = 50, M = 06, P = 07
+At time 13545: READ mem[07] = 40
+A = 10, B = 50, M = 06, P = 08
+At time 13575: READ mem[08] = 41
+A = 01, B = 50, M = 06, P = 09
+At time 13605: READ mem[09] = 80
+A = 50, B = 01, M = 06, P = 0a
+At time 13635: READ mem[0a] = 30
+A = 51, B = 01, M = 06, P = 0b
+At time 13665: READ mem[0b] = f0
+A = 51, B = 01, M = 06, P = 06
+At time 13695: READ mem[06] = 80
+A = 01, B = 51, M = 06, P = 07
+At time 13725: READ mem[07] = 40
+A = 10, B = 51, M = 06, P = 08
+At time 13755: READ mem[08] = 41
+A = 01, B = 51, M = 06, P = 09
+At time 13785: READ mem[09] = 80
+A = 51, B = 01, M = 06, P = 0a
+At time 13815: READ mem[0a] = 30
+A = 52, B = 01, M = 06, P = 0b
+At time 13845: READ mem[0b] = f0
+A = 52, B = 01, M = 06, P = 06
+At time 13875: READ mem[06] = 80
+A = 01, B = 52, M = 06, P = 07
+At time 13905: READ mem[07] = 40
+A = 10, B = 52, M = 06, P = 08
+At time 13935: READ mem[08] = 41
+A = 01, B = 52, M = 06, P = 09
+At time 13965: READ mem[09] = 80
+A = 52, B = 01, M = 06, P = 0a
+At time 13995: READ mem[0a] = 30
+A = 53, B = 01, M = 06, P = 0b
+At time 14025: READ mem[0b] = f0
+A = 53, B = 01, M = 06, P = 06
+At time 14055: READ mem[06] = 80
+A = 01, B = 53, M = 06, P = 07
+At time 14085: READ mem[07] = 40
+A = 10, B = 53, M = 06, P = 08
+At time 14115: READ mem[08] = 41
+A = 01, B = 53, M = 06, P = 09
+At time 14145: READ mem[09] = 80
+A = 53, B = 01, M = 06, P = 0a
+At time 14175: READ mem[0a] = 30
+A = 54, B = 01, M = 06, P = 0b
+At time 14205: READ mem[0b] = f0
+A = 54, B = 01, M = 06, P = 06
+At time 14235: READ mem[06] = 80
+A = 01, B = 54, M = 06, P = 07
+At time 14265: READ mem[07] = 40
+A = 10, B = 54, M = 06, P = 08
+At time 14295: READ mem[08] = 41
+A = 01, B = 54, M = 06, P = 09
+At time 14325: READ mem[09] = 80
+A = 54, B = 01, M = 06, P = 0a
+At time 14355: READ mem[0a] = 30
+A = 55, B = 01, M = 06, P = 0b
+At time 14385: READ mem[0b] = f0
+A = 55, B = 01, M = 06, P = 06
+At time 14415: READ mem[06] = 80
+A = 01, B = 55, M = 06, P = 07
+At time 14445: READ mem[07] = 40
+A = 10, B = 55, M = 06, P = 08
+At time 14475: READ mem[08] = 41
+A = 01, B = 55, M = 06, P = 09
+At time 14505: READ mem[09] = 80
+A = 55, B = 01, M = 06, P = 0a
+At time 14535: READ mem[0a] = 30
+A = 56, B = 01, M = 06, P = 0b
+At time 14565: READ mem[0b] = f0
+A = 56, B = 01, M = 06, P = 06
+At time 14595: READ mem[06] = 80
+A = 01, B = 56, M = 06, P = 07
+At time 14625: READ mem[07] = 40
+A = 10, B = 56, M = 06, P = 08
+At time 14655: READ mem[08] = 41
+A = 01, B = 56, M = 06, P = 09
+At time 14685: READ mem[09] = 80
+A = 56, B = 01, M = 06, P = 0a
+At time 14715: READ mem[0a] = 30
+A = 57, B = 01, M = 06, P = 0b
+At time 14745: READ mem[0b] = f0
+A = 57, B = 01, M = 06, P = 06
+At time 14775: READ mem[06] = 80
+A = 01, B = 57, M = 06, P = 07
+At time 14805: READ mem[07] = 40
+A = 10, B = 57, M = 06, P = 08
+At time 14835: READ mem[08] = 41
+A = 01, B = 57, M = 06, P = 09
+At time 14865: READ mem[09] = 80
+A = 57, B = 01, M = 06, P = 0a
+At time 14895: READ mem[0a] = 30
+A = 58, B = 01, M = 06, P = 0b
+At time 14925: READ mem[0b] = f0
+A = 58, B = 01, M = 06, P = 06
+At time 14955: READ mem[06] = 80
+A = 01, B = 58, M = 06, P = 07
+At time 14985: READ mem[07] = 40
+A = 10, B = 58, M = 06, P = 08
+At time 15015: READ mem[08] = 41
+A = 01, B = 58, M = 06, P = 09
+At time 15045: READ mem[09] = 80
+A = 58, B = 01, M = 06, P = 0a
+At time 15075: READ mem[0a] = 30
+A = 59, B = 01, M = 06, P = 0b
+At time 15105: READ mem[0b] = f0
+A = 59, B = 01, M = 06, P = 06
+At time 15135: READ mem[06] = 80
+A = 01, B = 59, M = 06, P = 07
+At time 15165: READ mem[07] = 40
+A = 10, B = 59, M = 06, P = 08
+At time 15195: READ mem[08] = 41
+A = 01, B = 59, M = 06, P = 09
+At time 15225: READ mem[09] = 80
+A = 59, B = 01, M = 06, P = 0a
+At time 15255: READ mem[0a] = 30
+A = 5a, B = 01, M = 06, P = 0b
+At time 15285: READ mem[0b] = f0
+A = 5a, B = 01, M = 06, P = 06
+At time 15315: READ mem[06] = 80
+A = 01, B = 5a, M = 06, P = 07
+At time 15345: READ mem[07] = 40
+A = 10, B = 5a, M = 06, P = 08
+At time 15375: READ mem[08] = 41
+A = 01, B = 5a, M = 06, P = 09
+At time 15405: READ mem[09] = 80
+A = 5a, B = 01, M = 06, P = 0a
+At time 15435: READ mem[0a] = 30
+A = 5b, B = 01, M = 06, P = 0b
+At time 15465: READ mem[0b] = f0
+A = 5b, B = 01, M = 06, P = 06
+At time 15495: READ mem[06] = 80
+A = 01, B = 5b, M = 06, P = 07
+At time 15525: READ mem[07] = 40
+A = 10, B = 5b, M = 06, P = 08
+At time 15555: READ mem[08] = 41
+A = 01, B = 5b, M = 06, P = 09
+At time 15585: READ mem[09] = 80
+A = 5b, B = 01, M = 06, P = 0a
+At time 15615: READ mem[0a] = 30
+A = 5c, B = 01, M = 06, P = 0b
+At time 15645: READ mem[0b] = f0
+A = 5c, B = 01, M = 06, P = 06
+At time 15675: READ mem[06] = 80
+A = 01, B = 5c, M = 06, P = 07
+At time 15705: READ mem[07] = 40
+A = 10, B = 5c, M = 06, P = 08
+At time 15735: READ mem[08] = 41
+A = 01, B = 5c, M = 06, P = 09
+At time 15765: READ mem[09] = 80
+A = 5c, B = 01, M = 06, P = 0a
+At time 15795: READ mem[0a] = 30
+A = 5d, B = 01, M = 06, P = 0b
+At time 15825: READ mem[0b] = f0
+A = 5d, B = 01, M = 06, P = 06
+At time 15855: READ mem[06] = 80
+A = 01, B = 5d, M = 06, P = 07
+At time 15885: READ mem[07] = 40
+A = 10, B = 5d, M = 06, P = 08
+At time 15915: READ mem[08] = 41
+A = 01, B = 5d, M = 06, P = 09
+At time 15945: READ mem[09] = 80
+A = 5d, B = 01, M = 06, P = 0a
+At time 15975: READ mem[0a] = 30
+A = 5e, B = 01, M = 06, P = 0b
+At time 16005: READ mem[0b] = f0
+A = 5e, B = 01, M = 06, P = 06
+At time 16035: READ mem[06] = 80
+A = 01, B = 5e, M = 06, P = 07
+At time 16065: READ mem[07] = 40
+A = 10, B = 5e, M = 06, P = 08
+At time 16095: READ mem[08] = 41
+A = 01, B = 5e, M = 06, P = 09
+At time 16125: READ mem[09] = 80
+A = 5e, B = 01, M = 06, P = 0a
+At time 16155: READ mem[0a] = 30
+A = 5f, B = 01, M = 06, P = 0b
+At time 16185: READ mem[0b] = f0
+A = 5f, B = 01, M = 06, P = 06
+At time 16215: READ mem[06] = 80
+A = 01, B = 5f, M = 06, P = 07
+At time 16245: READ mem[07] = 40
+A = 10, B = 5f, M = 06, P = 08
+At time 16275: READ mem[08] = 41
+A = 01, B = 5f, M = 06, P = 09
+At time 16305: READ mem[09] = 80
+A = 5f, B = 01, M = 06, P = 0a
+At time 16335: READ mem[0a] = 30
+A = 60, B = 01, M = 06, P = 0b
+At time 16365: READ mem[0b] = f0
+A = 60, B = 01, M = 06, P = 06
+At time 16395: READ mem[06] = 80
+A = 01, B = 60, M = 06, P = 07
+At time 16425: READ mem[07] = 40
+A = 10, B = 60, M = 06, P = 08
+At time 16455: READ mem[08] = 41
+A = 01, B = 60, M = 06, P = 09
+At time 16485: READ mem[09] = 80
+A = 60, B = 01, M = 06, P = 0a
+At time 16515: READ mem[0a] = 30
+A = 61, B = 01, M = 06, P = 0b
+At time 16545: READ mem[0b] = f0
+A = 61, B = 01, M = 06, P = 06
+At time 16575: READ mem[06] = 80
+A = 01, B = 61, M = 06, P = 07
+At time 16605: READ mem[07] = 40
+A = 10, B = 61, M = 06, P = 08
+At time 16635: READ mem[08] = 41
+A = 01, B = 61, M = 06, P = 09
+At time 16665: READ mem[09] = 80
+A = 61, B = 01, M = 06, P = 0a
+At time 16695: READ mem[0a] = 30
+A = 62, B = 01, M = 06, P = 0b
+At time 16725: READ mem[0b] = f0
+A = 62, B = 01, M = 06, P = 06
+At time 16755: READ mem[06] = 80
+A = 01, B = 62, M = 06, P = 07
+At time 16785: READ mem[07] = 40
+A = 10, B = 62, M = 06, P = 08
+At time 16815: READ mem[08] = 41
+A = 01, B = 62, M = 06, P = 09
+At time 16845: READ mem[09] = 80
+A = 62, B = 01, M = 06, P = 0a
+At time 16875: READ mem[0a] = 30
+A = 63, B = 01, M = 06, P = 0b
+At time 16905: READ mem[0b] = f0
+A = 63, B = 01, M = 06, P = 06
+At time 16935: READ mem[06] = 80
+A = 01, B = 63, M = 06, P = 07
+At time 16965: READ mem[07] = 40
+A = 10, B = 63, M = 06, P = 08
+At time 16995: READ mem[08] = 41
+A = 01, B = 63, M = 06, P = 09
+At time 17025: READ mem[09] = 80
+A = 63, B = 01, M = 06, P = 0a
+At time 17055: READ mem[0a] = 30
+A = 64, B = 01, M = 06, P = 0b
+At time 17085: READ mem[0b] = f0
+A = 64, B = 01, M = 06, P = 06
+At time 17115: READ mem[06] = 80
+A = 01, B = 64, M = 06, P = 07
+At time 17145: READ mem[07] = 40
+A = 10, B = 64, M = 06, P = 08
+At time 17175: READ mem[08] = 41
+A = 01, B = 64, M = 06, P = 09
+At time 17205: READ mem[09] = 80
+A = 64, B = 01, M = 06, P = 0a
+At time 17235: READ mem[0a] = 30
+A = 65, B = 01, M = 06, P = 0b
+At time 17265: READ mem[0b] = f0
+A = 65, B = 01, M = 06, P = 06
+At time 17295: READ mem[06] = 80
+A = 01, B = 65, M = 06, P = 07
+At time 17325: READ mem[07] = 40
+A = 10, B = 65, M = 06, P = 08
+At time 17355: READ mem[08] = 41
+A = 01, B = 65, M = 06, P = 09
+At time 17385: READ mem[09] = 80
+A = 65, B = 01, M = 06, P = 0a
+At time 17415: READ mem[0a] = 30
+A = 66, B = 01, M = 06, P = 0b
+At time 17445: READ mem[0b] = f0
+A = 66, B = 01, M = 06, P = 06
+At time 17475: READ mem[06] = 80
+A = 01, B = 66, M = 06, P = 07
+At time 17505: READ mem[07] = 40
+A = 10, B = 66, M = 06, P = 08
+At time 17535: READ mem[08] = 41
+A = 01, B = 66, M = 06, P = 09
+At time 17565: READ mem[09] = 80
+A = 66, B = 01, M = 06, P = 0a
+At time 17595: READ mem[0a] = 30
+A = 67, B = 01, M = 06, P = 0b
+At time 17625: READ mem[0b] = f0
+A = 67, B = 01, M = 06, P = 06
+At time 17655: READ mem[06] = 80
+A = 01, B = 67, M = 06, P = 07
+At time 17685: READ mem[07] = 40
+A = 10, B = 67, M = 06, P = 08
+At time 17715: READ mem[08] = 41
+A = 01, B = 67, M = 06, P = 09
+At time 17745: READ mem[09] = 80
+A = 67, B = 01, M = 06, P = 0a
+At time 17775: READ mem[0a] = 30
+A = 68, B = 01, M = 06, P = 0b
+At time 17805: READ mem[0b] = f0
+A = 68, B = 01, M = 06, P = 06
+At time 17835: READ mem[06] = 80
+A = 01, B = 68, M = 06, P = 07
+At time 17865: READ mem[07] = 40
+A = 10, B = 68, M = 06, P = 08
+At time 17895: READ mem[08] = 41
+A = 01, B = 68, M = 06, P = 09
+At time 17925: READ mem[09] = 80
+A = 68, B = 01, M = 06, P = 0a
+At time 17955: READ mem[0a] = 30
+A = 69, B = 01, M = 06, P = 0b
+At time 17985: READ mem[0b] = f0
+A = 69, B = 01, M = 06, P = 06
+At time 18015: READ mem[06] = 80
+A = 01, B = 69, M = 06, P = 07
+At time 18045: READ mem[07] = 40
+A = 10, B = 69, M = 06, P = 08
+At time 18075: READ mem[08] = 41
+A = 01, B = 69, M = 06, P = 09
+At time 18105: READ mem[09] = 80
+A = 69, B = 01, M = 06, P = 0a
+At time 18135: READ mem[0a] = 30
+A = 6a, B = 01, M = 06, P = 0b
+At time 18165: READ mem[0b] = f0
+A = 6a, B = 01, M = 06, P = 06
+At time 18195: READ mem[06] = 80
+A = 01, B = 6a, M = 06, P = 07
+At time 18225: READ mem[07] = 40
+A = 10, B = 6a, M = 06, P = 08
+At time 18255: READ mem[08] = 41
+A = 01, B = 6a, M = 06, P = 09
+At time 18285: READ mem[09] = 80
+A = 6a, B = 01, M = 06, P = 0a
+At time 18315: READ mem[0a] = 30
+A = 6b, B = 01, M = 06, P = 0b
+At time 18345: READ mem[0b] = f0
+A = 6b, B = 01, M = 06, P = 06
+At time 18375: READ mem[06] = 80
+A = 01, B = 6b, M = 06, P = 07
+At time 18405: READ mem[07] = 40
+A = 10, B = 6b, M = 06, P = 08
+At time 18435: READ mem[08] = 41
+A = 01, B = 6b, M = 06, P = 09
+At time 18465: READ mem[09] = 80
+A = 6b, B = 01, M = 06, P = 0a
+At time 18495: READ mem[0a] = 30
+A = 6c, B = 01, M = 06, P = 0b
+At time 18525: READ mem[0b] = f0
+A = 6c, B = 01, M = 06, P = 06
+At time 18555: READ mem[06] = 80
+A = 01, B = 6c, M = 06, P = 07
+At time 18585: READ mem[07] = 40
+A = 10, B = 6c, M = 06, P = 08
+At time 18615: READ mem[08] = 41
+A = 01, B = 6c, M = 06, P = 09
+At time 18645: READ mem[09] = 80
+A = 6c, B = 01, M = 06, P = 0a
+At time 18675: READ mem[0a] = 30
+A = 6d, B = 01, M = 06, P = 0b
+At time 18705: READ mem[0b] = f0
+A = 6d, B = 01, M = 06, P = 06
+At time 18735: READ mem[06] = 80
+A = 01, B = 6d, M = 06, P = 07
+At time 18765: READ mem[07] = 40
+A = 10, B = 6d, M = 06, P = 08
+At time 18795: READ mem[08] = 41
+A = 01, B = 6d, M = 06, P = 09
+At time 18825: READ mem[09] = 80
+A = 6d, B = 01, M = 06, P = 0a
+At time 18855: READ mem[0a] = 30
+A = 6e, B = 01, M = 06, P = 0b
+At time 18885: READ mem[0b] = f0
+A = 6e, B = 01, M = 06, P = 06
+At time 18915: READ mem[06] = 80
+A = 01, B = 6e, M = 06, P = 07
+At time 18945: READ mem[07] = 40
+A = 10, B = 6e, M = 06, P = 08
+At time 18975: READ mem[08] = 41
+A = 01, B = 6e, M = 06, P = 09
+At time 19005: READ mem[09] = 80
+A = 6e, B = 01, M = 06, P = 0a
+At time 19035: READ mem[0a] = 30
+A = 6f, B = 01, M = 06, P = 0b
+At time 19065: READ mem[0b] = f0
+A = 6f, B = 01, M = 06, P = 06
+At time 19095: READ mem[06] = 80
+A = 01, B = 6f, M = 06, P = 07
+At time 19125: READ mem[07] = 40
+A = 10, B = 6f, M = 06, P = 08
+At time 19155: READ mem[08] = 41
+A = 01, B = 6f, M = 06, P = 09
+At time 19185: READ mem[09] = 80
+A = 6f, B = 01, M = 06, P = 0a
+At time 19215: READ mem[0a] = 30
+A = 70, B = 01, M = 06, P = 0b
+At time 19245: READ mem[0b] = f0
+A = 70, B = 01, M = 06, P = 06
+At time 19275: READ mem[06] = 80
+A = 01, B = 70, M = 06, P = 07
+At time 19305: READ mem[07] = 40
+A = 10, B = 70, M = 06, P = 08
+At time 19335: READ mem[08] = 41
+A = 01, B = 70, M = 06, P = 09
+At time 19365: READ mem[09] = 80
+A = 70, B = 01, M = 06, P = 0a
+At time 19395: READ mem[0a] = 30
+A = 71, B = 01, M = 06, P = 0b
+At time 19425: READ mem[0b] = f0
+A = 71, B = 01, M = 06, P = 06
+At time 19455: READ mem[06] = 80
+A = 01, B = 71, M = 06, P = 07
+At time 19485: READ mem[07] = 40
+A = 10, B = 71, M = 06, P = 08
+At time 19515: READ mem[08] = 41
+A = 01, B = 71, M = 06, P = 09
+At time 19545: READ mem[09] = 80
+A = 71, B = 01, M = 06, P = 0a
+At time 19575: READ mem[0a] = 30
+A = 72, B = 01, M = 06, P = 0b
+At time 19605: READ mem[0b] = f0
+A = 72, B = 01, M = 06, P = 06
+At time 19635: READ mem[06] = 80
+A = 01, B = 72, M = 06, P = 07
+At time 19665: READ mem[07] = 40
+A = 10, B = 72, M = 06, P = 08
+At time 19695: READ mem[08] = 41
+A = 01, B = 72, M = 06, P = 09
+At time 19725: READ mem[09] = 80
+A = 72, B = 01, M = 06, P = 0a
+At time 19755: READ mem[0a] = 30
+A = 73, B = 01, M = 06, P = 0b
+At time 19785: READ mem[0b] = f0
+A = 73, B = 01, M = 06, P = 06
+At time 19815: READ mem[06] = 80
+A = 01, B = 73, M = 06, P = 07
+At time 19845: READ mem[07] = 40
+A = 10, B = 73, M = 06, P = 08
+At time 19875: READ mem[08] = 41
+A = 01, B = 73, M = 06, P = 09
+At time 19905: READ mem[09] = 80
+A = 73, B = 01, M = 06, P = 0a
+At time 19935: READ mem[0a] = 30
+A = 74, B = 01, M = 06, P = 0b
+At time 19965: READ mem[0b] = f0
+A = 74, B = 01, M = 06, P = 06
+At time 19995: READ mem[06] = 80
+A = 01, B = 74, M = 06, P = 07
+At time 20025: READ mem[07] = 40
+A = 10, B = 74, M = 06, P = 08
+At time 20055: READ mem[08] = 41
+A = 01, B = 74, M = 06, P = 09
+At time 20085: READ mem[09] = 80
+A = 74, B = 01, M = 06, P = 0a
+At time 20115: READ mem[0a] = 30
+A = 75, B = 01, M = 06, P = 0b
+At time 20145: READ mem[0b] = f0
+A = 75, B = 01, M = 06, P = 06
+At time 20175: READ mem[06] = 80
+A = 01, B = 75, M = 06, P = 07
+At time 20205: READ mem[07] = 40
+A = 10, B = 75, M = 06, P = 08
+At time 20235: READ mem[08] = 41
+A = 01, B = 75, M = 06, P = 09
+At time 20265: READ mem[09] = 80
+A = 75, B = 01, M = 06, P = 0a
+At time 20295: READ mem[0a] = 30
+A = 76, B = 01, M = 06, P = 0b
+At time 20325: READ mem[0b] = f0
+A = 76, B = 01, M = 06, P = 06
+At time 20355: READ mem[06] = 80
+A = 01, B = 76, M = 06, P = 07
+At time 20385: READ mem[07] = 40
+A = 10, B = 76, M = 06, P = 08
+At time 20415: READ mem[08] = 41
+A = 01, B = 76, M = 06, P = 09
+At time 20445: READ mem[09] = 80
+A = 76, B = 01, M = 06, P = 0a
+At time 20475: READ mem[0a] = 30
+A = 77, B = 01, M = 06, P = 0b
+At time 20505: READ mem[0b] = f0
+A = 77, B = 01, M = 06, P = 06
+At time 20535: READ mem[06] = 80
+A = 01, B = 77, M = 06, P = 07
+At time 20565: READ mem[07] = 40
+A = 10, B = 77, M = 06, P = 08
+At time 20595: READ mem[08] = 41
+A = 01, B = 77, M = 06, P = 09
+At time 20625: READ mem[09] = 80
+A = 77, B = 01, M = 06, P = 0a
+At time 20655: READ mem[0a] = 30
+A = 78, B = 01, M = 06, P = 0b
+At time 20685: READ mem[0b] = f0
+A = 78, B = 01, M = 06, P = 06
+At time 20715: READ mem[06] = 80
+A = 01, B = 78, M = 06, P = 07
+At time 20745: READ mem[07] = 40
+A = 10, B = 78, M = 06, P = 08
+At time 20775: READ mem[08] = 41
+A = 01, B = 78, M = 06, P = 09
+At time 20805: READ mem[09] = 80
+A = 78, B = 01, M = 06, P = 0a
+At time 20835: READ mem[0a] = 30
+A = 79, B = 01, M = 06, P = 0b
+At time 20865: READ mem[0b] = f0
+A = 79, B = 01, M = 06, P = 06
+At time 20895: READ mem[06] = 80
+A = 01, B = 79, M = 06, P = 07
+At time 20925: READ mem[07] = 40
+A = 10, B = 79, M = 06, P = 08
+At time 20955: READ mem[08] = 41
+A = 01, B = 79, M = 06, P = 09
+At time 20985: READ mem[09] = 80
+A = 79, B = 01, M = 06, P = 0a
+At time 21015: READ mem[0a] = 30
+A = 7a, B = 01, M = 06, P = 0b
+At time 21045: READ mem[0b] = f0
+A = 7a, B = 01, M = 06, P = 06
+At time 21075: READ mem[06] = 80
+A = 01, B = 7a, M = 06, P = 07
+At time 21105: READ mem[07] = 40
+A = 10, B = 7a, M = 06, P = 08
+At time 21135: READ mem[08] = 41
+A = 01, B = 7a, M = 06, P = 09
+At time 21165: READ mem[09] = 80
+A = 7a, B = 01, M = 06, P = 0a
+At time 21195: READ mem[0a] = 30
+A = 7b, B = 01, M = 06, P = 0b
+At time 21225: READ mem[0b] = f0
+A = 7b, B = 01, M = 06, P = 06
+At time 21255: READ mem[06] = 80
+A = 01, B = 7b, M = 06, P = 07
+At time 21285: READ mem[07] = 40
+A = 10, B = 7b, M = 06, P = 08
+At time 21315: READ mem[08] = 41
+A = 01, B = 7b, M = 06, P = 09
+At time 21345: READ mem[09] = 80
+A = 7b, B = 01, M = 06, P = 0a
+At time 21375: READ mem[0a] = 30
+A = 7c, B = 01, M = 06, P = 0b
+At time 21405: READ mem[0b] = f0
+A = 7c, B = 01, M = 06, P = 06
+At time 21435: READ mem[06] = 80
+A = 01, B = 7c, M = 06, P = 07
+At time 21465: READ mem[07] = 40
+A = 10, B = 7c, M = 06, P = 08
+At time 21495: READ mem[08] = 41
+A = 01, B = 7c, M = 06, P = 09
+At time 21525: READ mem[09] = 80
+A = 7c, B = 01, M = 06, P = 0a
+At time 21555: READ mem[0a] = 30
+A = 7d, B = 01, M = 06, P = 0b
+At time 21585: READ mem[0b] = f0
+A = 7d, B = 01, M = 06, P = 06
+At time 21615: READ mem[06] = 80
+A = 01, B = 7d, M = 06, P = 07
+At time 21645: READ mem[07] = 40
+A = 10, B = 7d, M = 06, P = 08
+At time 21675: READ mem[08] = 41
+A = 01, B = 7d, M = 06, P = 09
+At time 21705: READ mem[09] = 80
+A = 7d, B = 01, M = 06, P = 0a
+At time 21735: READ mem[0a] = 30
+A = 7e, B = 01, M = 06, P = 0b
+At time 21765: READ mem[0b] = f0
+A = 7e, B = 01, M = 06, P = 06
+At time 21795: READ mem[06] = 80
+A = 01, B = 7e, M = 06, P = 07
+At time 21825: READ mem[07] = 40
+A = 10, B = 7e, M = 06, P = 08
+At time 21855: READ mem[08] = 41
+A = 01, B = 7e, M = 06, P = 09
+At time 21885: READ mem[09] = 80
+A = 7e, B = 01, M = 06, P = 0a
+At time 21915: READ mem[0a] = 30
+A = 7f, B = 01, M = 06, P = 0b
+At time 21945: READ mem[0b] = f0
+A = 7f, B = 01, M = 06, P = 06
+At time 21975: READ mem[06] = 80
+A = 01, B = 7f, M = 06, P = 07
+At time 22005: READ mem[07] = 40
+A = 10, B = 7f, M = 06, P = 08
+At time 22035: READ mem[08] = 41
+A = 01, B = 7f, M = 06, P = 09
+At time 22065: READ mem[09] = 80
+A = 7f, B = 01, M = 06, P = 0a
+At time 22095: READ mem[0a] = 30
+A = 80, B = 01, M = 06, P = 0b
+At time 22125: READ mem[0b] = f0
+A = 80, B = 01, M = 06, P = 06
+At time 22155: READ mem[06] = 80
+A = 01, B = 80, M = 06, P = 07
+At time 22185: READ mem[07] = 40
+A = 10, B = 80, M = 06, P = 08
+At time 22215: READ mem[08] = 41
+A = 01, B = 80, M = 06, P = 09
+At time 22245: READ mem[09] = 80
+A = 80, B = 01, M = 06, P = 0a
+At time 22275: READ mem[0a] = 30
+A = 81, B = 01, M = 06, P = 0b
+At time 22305: READ mem[0b] = f0
+A = 81, B = 01, M = 06, P = 06
+At time 22335: READ mem[06] = 80
+A = 01, B = 81, M = 06, P = 07
+At time 22365: READ mem[07] = 40
+A = 10, B = 81, M = 06, P = 08
+At time 22395: READ mem[08] = 41
+A = 01, B = 81, M = 06, P = 09
+At time 22425: READ mem[09] = 80
+A = 81, B = 01, M = 06, P = 0a
+At time 22455: READ mem[0a] = 30
+A = 82, B = 01, M = 06, P = 0b
+At time 22485: READ mem[0b] = f0
+A = 82, B = 01, M = 06, P = 06
+At time 22515: READ mem[06] = 80
+A = 01, B = 82, M = 06, P = 07
+At time 22545: READ mem[07] = 40
+A = 10, B = 82, M = 06, P = 08
+At time 22575: READ mem[08] = 41
+A = 01, B = 82, M = 06, P = 09
+At time 22605: READ mem[09] = 80
+A = 82, B = 01, M = 06, P = 0a
+At time 22635: READ mem[0a] = 30
+A = 83, B = 01, M = 06, P = 0b
+At time 22665: READ mem[0b] = f0
+A = 83, B = 01, M = 06, P = 06
+At time 22695: READ mem[06] = 80
+A = 01, B = 83, M = 06, P = 07
+At time 22725: READ mem[07] = 40
+A = 10, B = 83, M = 06, P = 08
+At time 22755: READ mem[08] = 41
+A = 01, B = 83, M = 06, P = 09
+At time 22785: READ mem[09] = 80
+A = 83, B = 01, M = 06, P = 0a
+At time 22815: READ mem[0a] = 30
+A = 84, B = 01, M = 06, P = 0b
+At time 22845: READ mem[0b] = f0
+A = 84, B = 01, M = 06, P = 06
+At time 22875: READ mem[06] = 80
+A = 01, B = 84, M = 06, P = 07
+At time 22905: READ mem[07] = 40
+A = 10, B = 84, M = 06, P = 08
+At time 22935: READ mem[08] = 41
+A = 01, B = 84, M = 06, P = 09
+At time 22965: READ mem[09] = 80
+A = 84, B = 01, M = 06, P = 0a
+At time 22995: READ mem[0a] = 30
+A = 85, B = 01, M = 06, P = 0b
+At time 23025: READ mem[0b] = f0
+A = 85, B = 01, M = 06, P = 06
+At time 23055: READ mem[06] = 80
+A = 01, B = 85, M = 06, P = 07
+At time 23085: READ mem[07] = 40
+A = 10, B = 85, M = 06, P = 08
+At time 23115: READ mem[08] = 41
+A = 01, B = 85, M = 06, P = 09
+At time 23145: READ mem[09] = 80
+A = 85, B = 01, M = 06, P = 0a
+At time 23175: READ mem[0a] = 30
+A = 86, B = 01, M = 06, P = 0b
+At time 23205: READ mem[0b] = f0
+A = 86, B = 01, M = 06, P = 06
+At time 23235: READ mem[06] = 80
+A = 01, B = 86, M = 06, P = 07
+At time 23265: READ mem[07] = 40
+A = 10, B = 86, M = 06, P = 08
+At time 23295: READ mem[08] = 41
+A = 01, B = 86, M = 06, P = 09
+At time 23325: READ mem[09] = 80
+A = 86, B = 01, M = 06, P = 0a
+At time 23355: READ mem[0a] = 30
+A = 87, B = 01, M = 06, P = 0b
+At time 23385: READ mem[0b] = f0
+A = 87, B = 01, M = 06, P = 06
+At time 23415: READ mem[06] = 80
+A = 01, B = 87, M = 06, P = 07
+At time 23445: READ mem[07] = 40
+A = 10, B = 87, M = 06, P = 08
+At time 23475: READ mem[08] = 41
+A = 01, B = 87, M = 06, P = 09
+At time 23505: READ mem[09] = 80
+A = 87, B = 01, M = 06, P = 0a
+At time 23535: READ mem[0a] = 30
+A = 88, B = 01, M = 06, P = 0b
+At time 23565: READ mem[0b] = f0
+A = 88, B = 01, M = 06, P = 06
+At time 23595: READ mem[06] = 80
+A = 01, B = 88, M = 06, P = 07
+At time 23625: READ mem[07] = 40
+A = 10, B = 88, M = 06, P = 08
+At time 23655: READ mem[08] = 41
+A = 01, B = 88, M = 06, P = 09
+At time 23685: READ mem[09] = 80
+A = 88, B = 01, M = 06, P = 0a
+At time 23715: READ mem[0a] = 30
+A = 89, B = 01, M = 06, P = 0b
+At time 23745: READ mem[0b] = f0
+A = 89, B = 01, M = 06, P = 06
+At time 23775: READ mem[06] = 80
+A = 01, B = 89, M = 06, P = 07
+At time 23805: READ mem[07] = 40
+A = 10, B = 89, M = 06, P = 08
+At time 23835: READ mem[08] = 41
+A = 01, B = 89, M = 06, P = 09
+At time 23865: READ mem[09] = 80
+A = 89, B = 01, M = 06, P = 0a
+At time 23895: READ mem[0a] = 30
+A = 8a, B = 01, M = 06, P = 0b
+At time 23925: READ mem[0b] = f0
+A = 8a, B = 01, M = 06, P = 06
+At time 23955: READ mem[06] = 80
+A = 01, B = 8a, M = 06, P = 07
+At time 23985: READ mem[07] = 40
+A = 10, B = 8a, M = 06, P = 08
+At time 24015: READ mem[08] = 41
+A = 01, B = 8a, M = 06, P = 09
+At time 24045: READ mem[09] = 80
+A = 8a, B = 01, M = 06, P = 0a
+At time 24075: READ mem[0a] = 30
+A = 8b, B = 01, M = 06, P = 0b
+At time 24105: READ mem[0b] = f0
+A = 8b, B = 01, M = 06, P = 06
+At time 24135: READ mem[06] = 80
+A = 01, B = 8b, M = 06, P = 07
+At time 24165: READ mem[07] = 40
+A = 10, B = 8b, M = 06, P = 08
+At time 24195: READ mem[08] = 41
+A = 01, B = 8b, M = 06, P = 09
+At time 24225: READ mem[09] = 80
+A = 8b, B = 01, M = 06, P = 0a
+At time 24255: READ mem[0a] = 30
+A = 8c, B = 01, M = 06, P = 0b
+At time 24285: READ mem[0b] = f0
+A = 8c, B = 01, M = 06, P = 06
+At time 24315: READ mem[06] = 80
+A = 01, B = 8c, M = 06, P = 07
+At time 24345: READ mem[07] = 40
+A = 10, B = 8c, M = 06, P = 08
+At time 24375: READ mem[08] = 41
+A = 01, B = 8c, M = 06, P = 09
+At time 24405: READ mem[09] = 80
+A = 8c, B = 01, M = 06, P = 0a
+At time 24435: READ mem[0a] = 30
+A = 8d, B = 01, M = 06, P = 0b
+At time 24465: READ mem[0b] = f0
+A = 8d, B = 01, M = 06, P = 06
+At time 24495: READ mem[06] = 80
+A = 01, B = 8d, M = 06, P = 07
+At time 24525: READ mem[07] = 40
+A = 10, B = 8d, M = 06, P = 08
+At time 24555: READ mem[08] = 41
+A = 01, B = 8d, M = 06, P = 09
+At time 24585: READ mem[09] = 80
+A = 8d, B = 01, M = 06, P = 0a
+At time 24615: READ mem[0a] = 30
+A = 8e, B = 01, M = 06, P = 0b
+At time 24645: READ mem[0b] = f0
+A = 8e, B = 01, M = 06, P = 06
+At time 24675: READ mem[06] = 80
+A = 01, B = 8e, M = 06, P = 07
+At time 24705: READ mem[07] = 40
+A = 10, B = 8e, M = 06, P = 08
+At time 24735: READ mem[08] = 41
+A = 01, B = 8e, M = 06, P = 09
+At time 24765: READ mem[09] = 80
+A = 8e, B = 01, M = 06, P = 0a
+At time 24795: READ mem[0a] = 30
+A = 8f, B = 01, M = 06, P = 0b
+At time 24825: READ mem[0b] = f0
+A = 8f, B = 01, M = 06, P = 06
+At time 24855: READ mem[06] = 80
+A = 01, B = 8f, M = 06, P = 07
+At time 24885: READ mem[07] = 40
+A = 10, B = 8f, M = 06, P = 08
+At time 24915: READ mem[08] = 41
+A = 01, B = 8f, M = 06, P = 09
+At time 24945: READ mem[09] = 80
+A = 8f, B = 01, M = 06, P = 0a
+At time 24975: READ mem[0a] = 30
+A = 90, B = 01, M = 06, P = 0b
+At time 25005: READ mem[0b] = f0
+A = 90, B = 01, M = 06, P = 06
+At time 25035: READ mem[06] = 80
+A = 01, B = 90, M = 06, P = 07
+At time 25065: READ mem[07] = 40
+A = 10, B = 90, M = 06, P = 08
+At time 25095: READ mem[08] = 41
+A = 01, B = 90, M = 06, P = 09
+At time 25125: READ mem[09] = 80
+A = 90, B = 01, M = 06, P = 0a
+At time 25155: READ mem[0a] = 30
+A = 91, B = 01, M = 06, P = 0b
+At time 25185: READ mem[0b] = f0
+A = 91, B = 01, M = 06, P = 06
+At time 25215: READ mem[06] = 80
+A = 01, B = 91, M = 06, P = 07
+At time 25245: READ mem[07] = 40
+A = 10, B = 91, M = 06, P = 08
+At time 25275: READ mem[08] = 41
+A = 01, B = 91, M = 06, P = 09
+At time 25305: READ mem[09] = 80
+A = 91, B = 01, M = 06, P = 0a
+At time 25335: READ mem[0a] = 30
+A = 92, B = 01, M = 06, P = 0b
+At time 25365: READ mem[0b] = f0
+A = 92, B = 01, M = 06, P = 06
+At time 25395: READ mem[06] = 80
+A = 01, B = 92, M = 06, P = 07
+At time 25425: READ mem[07] = 40
+A = 10, B = 92, M = 06, P = 08
+At time 25455: READ mem[08] = 41
+A = 01, B = 92, M = 06, P = 09
+At time 25485: READ mem[09] = 80
+A = 92, B = 01, M = 06, P = 0a
+At time 25515: READ mem[0a] = 30
+A = 93, B = 01, M = 06, P = 0b
+At time 25545: READ mem[0b] = f0
+A = 93, B = 01, M = 06, P = 06
+At time 25575: READ mem[06] = 80
+A = 01, B = 93, M = 06, P = 07
+At time 25605: READ mem[07] = 40
+A = 10, B = 93, M = 06, P = 08
+At time 25635: READ mem[08] = 41
+A = 01, B = 93, M = 06, P = 09
+At time 25665: READ mem[09] = 80
+A = 93, B = 01, M = 06, P = 0a
+At time 25695: READ mem[0a] = 30
+A = 94, B = 01, M = 06, P = 0b
+At time 25725: READ mem[0b] = f0
+A = 94, B = 01, M = 06, P = 06
+At time 25755: READ mem[06] = 80
+A = 01, B = 94, M = 06, P = 07
+At time 25785: READ mem[07] = 40
+A = 10, B = 94, M = 06, P = 08
+At time 25815: READ mem[08] = 41
+A = 01, B = 94, M = 06, P = 09
+At time 25845: READ mem[09] = 80
+A = 94, B = 01, M = 06, P = 0a
+At time 25875: READ mem[0a] = 30
+A = 95, B = 01, M = 06, P = 0b
+At time 25905: READ mem[0b] = f0
+A = 95, B = 01, M = 06, P = 06
+At time 25935: READ mem[06] = 80
+A = 01, B = 95, M = 06, P = 07
+At time 25965: READ mem[07] = 40
+A = 10, B = 95, M = 06, P = 08
+At time 25995: READ mem[08] = 41
+A = 01, B = 95, M = 06, P = 09
+At time 26025: READ mem[09] = 80
+A = 95, B = 01, M = 06, P = 0a
+At time 26055: READ mem[0a] = 30
+A = 96, B = 01, M = 06, P = 0b
+At time 26085: READ mem[0b] = f0
+A = 96, B = 01, M = 06, P = 06
+At time 26115: READ mem[06] = 80
+A = 01, B = 96, M = 06, P = 07
+At time 26145: READ mem[07] = 40
+A = 10, B = 96, M = 06, P = 08
+At time 26175: READ mem[08] = 41
+A = 01, B = 96, M = 06, P = 09
+At time 26205: READ mem[09] = 80
+A = 96, B = 01, M = 06, P = 0a
+At time 26235: READ mem[0a] = 30
+A = 97, B = 01, M = 06, P = 0b
+At time 26265: READ mem[0b] = f0
+A = 97, B = 01, M = 06, P = 06
+At time 26295: READ mem[06] = 80
+A = 01, B = 97, M = 06, P = 07
+At time 26325: READ mem[07] = 40
+A = 10, B = 97, M = 06, P = 08
+At time 26355: READ mem[08] = 41
+A = 01, B = 97, M = 06, P = 09
+At time 26385: READ mem[09] = 80
+A = 97, B = 01, M = 06, P = 0a
+At time 26415: READ mem[0a] = 30
+A = 98, B = 01, M = 06, P = 0b
+At time 26445: READ mem[0b] = f0
+A = 98, B = 01, M = 06, P = 06
+At time 26475: READ mem[06] = 80
+A = 01, B = 98, M = 06, P = 07
+At time 26505: READ mem[07] = 40
+A = 10, B = 98, M = 06, P = 08
+At time 26535: READ mem[08] = 41
+A = 01, B = 98, M = 06, P = 09
+At time 26565: READ mem[09] = 80
+A = 98, B = 01, M = 06, P = 0a
+At time 26595: READ mem[0a] = 30
+A = 99, B = 01, M = 06, P = 0b
+At time 26625: READ mem[0b] = f0
+A = 99, B = 01, M = 06, P = 06
+At time 26655: READ mem[06] = 80
+A = 01, B = 99, M = 06, P = 07
+At time 26685: READ mem[07] = 40
+A = 10, B = 99, M = 06, P = 08
+At time 26715: READ mem[08] = 41
+A = 01, B = 99, M = 06, P = 09
+At time 26745: READ mem[09] = 80
+A = 99, B = 01, M = 06, P = 0a
+At time 26775: READ mem[0a] = 30
+A = 9a, B = 01, M = 06, P = 0b
+At time 26805: READ mem[0b] = f0
+A = 9a, B = 01, M = 06, P = 06
+At time 26835: READ mem[06] = 80
+A = 01, B = 9a, M = 06, P = 07
+At time 26865: READ mem[07] = 40
+A = 10, B = 9a, M = 06, P = 08
+At time 26895: READ mem[08] = 41
+A = 01, B = 9a, M = 06, P = 09
+At time 26925: READ mem[09] = 80
+A = 9a, B = 01, M = 06, P = 0a
+At time 26955: READ mem[0a] = 30
+A = 9b, B = 01, M = 06, P = 0b
+At time 26985: READ mem[0b] = f0
+A = 9b, B = 01, M = 06, P = 06
+At time 27015: READ mem[06] = 80
+A = 01, B = 9b, M = 06, P = 07
+At time 27045: READ mem[07] = 40
+A = 10, B = 9b, M = 06, P = 08
+At time 27075: READ mem[08] = 41
+A = 01, B = 9b, M = 06, P = 09
+At time 27105: READ mem[09] = 80
+A = 9b, B = 01, M = 06, P = 0a
+At time 27135: READ mem[0a] = 30
+A = 9c, B = 01, M = 06, P = 0b
+At time 27165: READ mem[0b] = f0
+A = 9c, B = 01, M = 06, P = 06
+At time 27195: READ mem[06] = 80
+A = 01, B = 9c, M = 06, P = 07
+At time 27225: READ mem[07] = 40
+A = 10, B = 9c, M = 06, P = 08
+At time 27255: READ mem[08] = 41
+A = 01, B = 9c, M = 06, P = 09
+At time 27285: READ mem[09] = 80
+A = 9c, B = 01, M = 06, P = 0a
+At time 27315: READ mem[0a] = 30
+A = 9d, B = 01, M = 06, P = 0b
+At time 27345: READ mem[0b] = f0
+A = 9d, B = 01, M = 06, P = 06
+At time 27375: READ mem[06] = 80
+A = 01, B = 9d, M = 06, P = 07
+At time 27405: READ mem[07] = 40
+A = 10, B = 9d, M = 06, P = 08
+At time 27435: READ mem[08] = 41
+A = 01, B = 9d, M = 06, P = 09
+At time 27465: READ mem[09] = 80
+A = 9d, B = 01, M = 06, P = 0a
+At time 27495: READ mem[0a] = 30
+A = 9e, B = 01, M = 06, P = 0b
+At time 27525: READ mem[0b] = f0
+A = 9e, B = 01, M = 06, P = 06
+At time 27555: READ mem[06] = 80
+A = 01, B = 9e, M = 06, P = 07
+At time 27585: READ mem[07] = 40
+A = 10, B = 9e, M = 06, P = 08
+At time 27615: READ mem[08] = 41
+A = 01, B = 9e, M = 06, P = 09
+At time 27645: READ mem[09] = 80
+A = 9e, B = 01, M = 06, P = 0a
+At time 27675: READ mem[0a] = 30
+A = 9f, B = 01, M = 06, P = 0b
+At time 27705: READ mem[0b] = f0
+A = 9f, B = 01, M = 06, P = 06
+At time 27735: READ mem[06] = 80
+A = 01, B = 9f, M = 06, P = 07
+At time 27765: READ mem[07] = 40
+A = 10, B = 9f, M = 06, P = 08
+At time 27795: READ mem[08] = 41
+A = 01, B = 9f, M = 06, P = 09
+At time 27825: READ mem[09] = 80
+A = 9f, B = 01, M = 06, P = 0a
+At time 27855: READ mem[0a] = 30
+A = a0, B = 01, M = 06, P = 0b
+At time 27885: READ mem[0b] = f0
+A = a0, B = 01, M = 06, P = 06
+At time 27915: READ mem[06] = 80
+A = 01, B = a0, M = 06, P = 07
+At time 27945: READ mem[07] = 40
+A = 10, B = a0, M = 06, P = 08
+At time 27975: READ mem[08] = 41
+A = 01, B = a0, M = 06, P = 09
+At time 28005: READ mem[09] = 80
+A = a0, B = 01, M = 06, P = 0a
+At time 28035: READ mem[0a] = 30
+A = a1, B = 01, M = 06, P = 0b
+At time 28065: READ mem[0b] = f0
+A = a1, B = 01, M = 06, P = 06
+At time 28095: READ mem[06] = 80
+A = 01, B = a1, M = 06, P = 07
+At time 28125: READ mem[07] = 40
+A = 10, B = a1, M = 06, P = 08
+At time 28155: READ mem[08] = 41
+A = 01, B = a1, M = 06, P = 09
+At time 28185: READ mem[09] = 80
+A = a1, B = 01, M = 06, P = 0a
+At time 28215: READ mem[0a] = 30
+A = a2, B = 01, M = 06, P = 0b
+At time 28245: READ mem[0b] = f0
+A = a2, B = 01, M = 06, P = 06
+At time 28275: READ mem[06] = 80
+A = 01, B = a2, M = 06, P = 07
+At time 28305: READ mem[07] = 40
+A = 10, B = a2, M = 06, P = 08
+At time 28335: READ mem[08] = 41
+A = 01, B = a2, M = 06, P = 09
+At time 28365: READ mem[09] = 80
+A = a2, B = 01, M = 06, P = 0a
+At time 28395: READ mem[0a] = 30
+A = a3, B = 01, M = 06, P = 0b
+At time 28425: READ mem[0b] = f0
+A = a3, B = 01, M = 06, P = 06
+At time 28455: READ mem[06] = 80
+A = 01, B = a3, M = 06, P = 07
+At time 28485: READ mem[07] = 40
+A = 10, B = a3, M = 06, P = 08
+At time 28515: READ mem[08] = 41
+A = 01, B = a3, M = 06, P = 09
+At time 28545: READ mem[09] = 80
+A = a3, B = 01, M = 06, P = 0a
+At time 28575: READ mem[0a] = 30
+A = a4, B = 01, M = 06, P = 0b
+At time 28605: READ mem[0b] = f0
+A = a4, B = 01, M = 06, P = 06
+At time 28635: READ mem[06] = 80
+A = 01, B = a4, M = 06, P = 07
+At time 28665: READ mem[07] = 40
+A = 10, B = a4, M = 06, P = 08
+At time 28695: READ mem[08] = 41
+A = 01, B = a4, M = 06, P = 09
+At time 28725: READ mem[09] = 80
+A = a4, B = 01, M = 06, P = 0a
+At time 28755: READ mem[0a] = 30
+A = a5, B = 01, M = 06, P = 0b
+At time 28785: READ mem[0b] = f0
+A = a5, B = 01, M = 06, P = 06
+At time 28815: READ mem[06] = 80
+A = 01, B = a5, M = 06, P = 07
+At time 28845: READ mem[07] = 40
+A = 10, B = a5, M = 06, P = 08
+At time 28875: READ mem[08] = 41
+A = 01, B = a5, M = 06, P = 09
+At time 28905: READ mem[09] = 80
+A = a5, B = 01, M = 06, P = 0a
+At time 28935: READ mem[0a] = 30
+A = a6, B = 01, M = 06, P = 0b
+At time 28965: READ mem[0b] = f0
+A = a6, B = 01, M = 06, P = 06
+At time 28995: READ mem[06] = 80
+A = 01, B = a6, M = 06, P = 07
+At time 29025: READ mem[07] = 40
+A = 10, B = a6, M = 06, P = 08
+At time 29055: READ mem[08] = 41
+A = 01, B = a6, M = 06, P = 09
+At time 29085: READ mem[09] = 80
+A = a6, B = 01, M = 06, P = 0a
+At time 29115: READ mem[0a] = 30
+A = a7, B = 01, M = 06, P = 0b
+At time 29145: READ mem[0b] = f0
+A = a7, B = 01, M = 06, P = 06
+At time 29175: READ mem[06] = 80
+A = 01, B = a7, M = 06, P = 07
+At time 29205: READ mem[07] = 40
+A = 10, B = a7, M = 06, P = 08
+At time 29235: READ mem[08] = 41
+A = 01, B = a7, M = 06, P = 09
+At time 29265: READ mem[09] = 80
+A = a7, B = 01, M = 06, P = 0a
+At time 29295: READ mem[0a] = 30
+A = a8, B = 01, M = 06, P = 0b
+At time 29325: READ mem[0b] = f0
+A = a8, B = 01, M = 06, P = 06
+At time 29355: READ mem[06] = 80
+A = 01, B = a8, M = 06, P = 07
+At time 29385: READ mem[07] = 40
+A = 10, B = a8, M = 06, P = 08
+At time 29415: READ mem[08] = 41
+A = 01, B = a8, M = 06, P = 09
+At time 29445: READ mem[09] = 80
+A = a8, B = 01, M = 06, P = 0a
+At time 29475: READ mem[0a] = 30
+A = a9, B = 01, M = 06, P = 0b
+At time 29505: READ mem[0b] = f0
+A = a9, B = 01, M = 06, P = 06
+At time 29535: READ mem[06] = 80
+A = 01, B = a9, M = 06, P = 07
+At time 29565: READ mem[07] = 40
+A = 10, B = a9, M = 06, P = 08
+At time 29595: READ mem[08] = 41
+A = 01, B = a9, M = 06, P = 09
+At time 29625: READ mem[09] = 80
+A = a9, B = 01, M = 06, P = 0a
+At time 29655: READ mem[0a] = 30
+A = aa, B = 01, M = 06, P = 0b
+At time 29685: READ mem[0b] = f0
+A = aa, B = 01, M = 06, P = 06
+At time 29715: READ mem[06] = 80
+A = 01, B = aa, M = 06, P = 07
+At time 29745: READ mem[07] = 40
+A = 10, B = aa, M = 06, P = 08
+At time 29775: READ mem[08] = 41
+A = 01, B = aa, M = 06, P = 09
+At time 29805: READ mem[09] = 80
+A = aa, B = 01, M = 06, P = 0a
+At time 29835: READ mem[0a] = 30
+A = ab, B = 01, M = 06, P = 0b
+At time 29865: READ mem[0b] = f0
+A = ab, B = 01, M = 06, P = 06
+At time 29895: READ mem[06] = 80
+A = 01, B = ab, M = 06, P = 07
+At time 29925: READ mem[07] = 40
+A = 10, B = ab, M = 06, P = 08
+At time 29955: READ mem[08] = 41
+A = 01, B = ab, M = 06, P = 09
+At time 29985: READ mem[09] = 80
+A = ab, B = 01, M = 06, P = 0a
+At time 30015: READ mem[0a] = 30
+A = ac, B = 01, M = 06, P = 0b
+At time 30045: READ mem[0b] = f0
+A = ac, B = 01, M = 06, P = 06
+At time 30075: READ mem[06] = 80
+A = 01, B = ac, M = 06, P = 07
+At time 30105: READ mem[07] = 40
+A = 10, B = ac, M = 06, P = 08
+At time 30135: READ mem[08] = 41
+A = 01, B = ac, M = 06, P = 09
+At time 30165: READ mem[09] = 80
+A = ac, B = 01, M = 06, P = 0a
+At time 30195: READ mem[0a] = 30
+A = ad, B = 01, M = 06, P = 0b
+At time 30225: READ mem[0b] = f0
+A = ad, B = 01, M = 06, P = 06
+At time 30255: READ mem[06] = 80
+A = 01, B = ad, M = 06, P = 07
+At time 30285: READ mem[07] = 40
+A = 10, B = ad, M = 06, P = 08
+At time 30315: READ mem[08] = 41
+A = 01, B = ad, M = 06, P = 09
+At time 30345: READ mem[09] = 80
+A = ad, B = 01, M = 06, P = 0a
+At time 30375: READ mem[0a] = 30
+A = ae, B = 01, M = 06, P = 0b
+At time 30405: READ mem[0b] = f0
+A = ae, B = 01, M = 06, P = 06
+At time 30435: READ mem[06] = 80
+A = 01, B = ae, M = 06, P = 07
+At time 30465: READ mem[07] = 40
+A = 10, B = ae, M = 06, P = 08
+At time 30495: READ mem[08] = 41
+A = 01, B = ae, M = 06, P = 09
+At time 30525: READ mem[09] = 80
+A = ae, B = 01, M = 06, P = 0a
+At time 30555: READ mem[0a] = 30
+A = af, B = 01, M = 06, P = 0b
+At time 30585: READ mem[0b] = f0
+A = af, B = 01, M = 06, P = 06
+At time 30615: READ mem[06] = 80
+A = 01, B = af, M = 06, P = 07
+At time 30645: READ mem[07] = 40
+A = 10, B = af, M = 06, P = 08
+At time 30675: READ mem[08] = 41
+A = 01, B = af, M = 06, P = 09
+At time 30705: READ mem[09] = 80
+A = af, B = 01, M = 06, P = 0a
+At time 30735: READ mem[0a] = 30
+A = b0, B = 01, M = 06, P = 0b
+At time 30765: READ mem[0b] = f0
+A = b0, B = 01, M = 06, P = 06
+At time 30795: READ mem[06] = 80
+A = 01, B = b0, M = 06, P = 07
+At time 30825: READ mem[07] = 40
+A = 10, B = b0, M = 06, P = 08
+At time 30855: READ mem[08] = 41
+A = 01, B = b0, M = 06, P = 09
+At time 30885: READ mem[09] = 80
+A = b0, B = 01, M = 06, P = 0a
+At time 30915: READ mem[0a] = 30
+A = b1, B = 01, M = 06, P = 0b
+At time 30945: READ mem[0b] = f0
+A = b1, B = 01, M = 06, P = 06
+At time 30975: READ mem[06] = 80
+A = 01, B = b1, M = 06, P = 07
+At time 31005: READ mem[07] = 40
+A = 10, B = b1, M = 06, P = 08
+At time 31035: READ mem[08] = 41
+A = 01, B = b1, M = 06, P = 09
+At time 31065: READ mem[09] = 80
+A = b1, B = 01, M = 06, P = 0a
+At time 31095: READ mem[0a] = 30
+A = b2, B = 01, M = 06, P = 0b
+At time 31125: READ mem[0b] = f0
+A = b2, B = 01, M = 06, P = 06
+At time 31155: READ mem[06] = 80
+A = 01, B = b2, M = 06, P = 07
+At time 31185: READ mem[07] = 40
+A = 10, B = b2, M = 06, P = 08
+At time 31215: READ mem[08] = 41
+A = 01, B = b2, M = 06, P = 09
+At time 31245: READ mem[09] = 80
+A = b2, B = 01, M = 06, P = 0a
+At time 31275: READ mem[0a] = 30
+A = b3, B = 01, M = 06, P = 0b
+At time 31305: READ mem[0b] = f0
+A = b3, B = 01, M = 06, P = 06
+At time 31335: READ mem[06] = 80
+A = 01, B = b3, M = 06, P = 07
+At time 31365: READ mem[07] = 40
+A = 10, B = b3, M = 06, P = 08
+At time 31395: READ mem[08] = 41
+A = 01, B = b3, M = 06, P = 09
+At time 31425: READ mem[09] = 80
+A = b3, B = 01, M = 06, P = 0a
+At time 31455: READ mem[0a] = 30
+A = b4, B = 01, M = 06, P = 0b
+At time 31485: READ mem[0b] = f0
+A = b4, B = 01, M = 06, P = 06
+At time 31515: READ mem[06] = 80
+A = 01, B = b4, M = 06, P = 07
+At time 31545: READ mem[07] = 40
+A = 10, B = b4, M = 06, P = 08
+At time 31575: READ mem[08] = 41
+A = 01, B = b4, M = 06, P = 09
+At time 31605: READ mem[09] = 80
+A = b4, B = 01, M = 06, P = 0a
+At time 31635: READ mem[0a] = 30
+A = b5, B = 01, M = 06, P = 0b
+At time 31665: READ mem[0b] = f0
+A = b5, B = 01, M = 06, P = 06
+At time 31695: READ mem[06] = 80
+A = 01, B = b5, M = 06, P = 07
+At time 31725: READ mem[07] = 40
+A = 10, B = b5, M = 06, P = 08
+At time 31755: READ mem[08] = 41
+A = 01, B = b5, M = 06, P = 09
+At time 31785: READ mem[09] = 80
+A = b5, B = 01, M = 06, P = 0a
+At time 31815: READ mem[0a] = 30
+A = b6, B = 01, M = 06, P = 0b
+At time 31845: READ mem[0b] = f0
+A = b6, B = 01, M = 06, P = 06
+At time 31875: READ mem[06] = 80
+A = 01, B = b6, M = 06, P = 07
+At time 31905: READ mem[07] = 40
+A = 10, B = b6, M = 06, P = 08
+At time 31935: READ mem[08] = 41
+A = 01, B = b6, M = 06, P = 09
+At time 31965: READ mem[09] = 80
+A = b6, B = 01, M = 06, P = 0a
+At time 31995: READ mem[0a] = 30
+A = b7, B = 01, M = 06, P = 0b
+At time 32025: READ mem[0b] = f0
+A = b7, B = 01, M = 06, P = 06
+At time 32055: READ mem[06] = 80
+A = 01, B = b7, M = 06, P = 07
+At time 32085: READ mem[07] = 40
+A = 10, B = b7, M = 06, P = 08
+At time 32115: READ mem[08] = 41
+A = 01, B = b7, M = 06, P = 09
+At time 32145: READ mem[09] = 80
+A = b7, B = 01, M = 06, P = 0a
+At time 32175: READ mem[0a] = 30
+A = b8, B = 01, M = 06, P = 0b
+At time 32205: READ mem[0b] = f0
+A = b8, B = 01, M = 06, P = 06
+At time 32235: READ mem[06] = 80
+A = 01, B = b8, M = 06, P = 07
+At time 32265: READ mem[07] = 40
+A = 10, B = b8, M = 06, P = 08
+At time 32295: READ mem[08] = 41
+A = 01, B = b8, M = 06, P = 09
+At time 32325: READ mem[09] = 80
+A = b8, B = 01, M = 06, P = 0a
+At time 32355: READ mem[0a] = 30
+A = b9, B = 01, M = 06, P = 0b
+At time 32385: READ mem[0b] = f0
+A = b9, B = 01, M = 06, P = 06
+At time 32415: READ mem[06] = 80
+A = 01, B = b9, M = 06, P = 07
+At time 32445: READ mem[07] = 40
+A = 10, B = b9, M = 06, P = 08
+At time 32475: READ mem[08] = 41
+A = 01, B = b9, M = 06, P = 09
+At time 32505: READ mem[09] = 80
+A = b9, B = 01, M = 06, P = 0a
+At time 32535: READ mem[0a] = 30
+A = ba, B = 01, M = 06, P = 0b
+At time 32565: READ mem[0b] = f0
+A = ba, B = 01, M = 06, P = 06
+At time 32595: READ mem[06] = 80
+A = 01, B = ba, M = 06, P = 07
+At time 32625: READ mem[07] = 40
+A = 10, B = ba, M = 06, P = 08
+At time 32655: READ mem[08] = 41
+A = 01, B = ba, M = 06, P = 09
+At time 32685: READ mem[09] = 80
+A = ba, B = 01, M = 06, P = 0a
+At time 32715: READ mem[0a] = 30
+A = bb, B = 01, M = 06, P = 0b
+At time 32745: READ mem[0b] = f0
+A = bb, B = 01, M = 06, P = 06
+At time 32775: READ mem[06] = 80
+A = 01, B = bb, M = 06, P = 07
+At time 32805: READ mem[07] = 40
+A = 10, B = bb, M = 06, P = 08
+At time 32835: READ mem[08] = 41
+A = 01, B = bb, M = 06, P = 09
+At time 32865: READ mem[09] = 80
+A = bb, B = 01, M = 06, P = 0a
+At time 32895: READ mem[0a] = 30
+A = bc, B = 01, M = 06, P = 0b
+At time 32925: READ mem[0b] = f0
+A = bc, B = 01, M = 06, P = 06
+At time 32955: READ mem[06] = 80
+A = 01, B = bc, M = 06, P = 07
+At time 32985: READ mem[07] = 40
+A = 10, B = bc, M = 06, P = 08
+At time 33015: READ mem[08] = 41
+A = 01, B = bc, M = 06, P = 09
+At time 33045: READ mem[09] = 80
+A = bc, B = 01, M = 06, P = 0a
+At time 33075: READ mem[0a] = 30
+A = bd, B = 01, M = 06, P = 0b
+At time 33105: READ mem[0b] = f0
+A = bd, B = 01, M = 06, P = 06
+At time 33135: READ mem[06] = 80
+A = 01, B = bd, M = 06, P = 07
+At time 33165: READ mem[07] = 40
+A = 10, B = bd, M = 06, P = 08
+At time 33195: READ mem[08] = 41
+A = 01, B = bd, M = 06, P = 09
+At time 33225: READ mem[09] = 80
+A = bd, B = 01, M = 06, P = 0a
+At time 33255: READ mem[0a] = 30
+A = be, B = 01, M = 06, P = 0b
+At time 33285: READ mem[0b] = f0
+A = be, B = 01, M = 06, P = 06
+At time 33315: READ mem[06] = 80
+A = 01, B = be, M = 06, P = 07
+At time 33345: READ mem[07] = 40
+A = 10, B = be, M = 06, P = 08
+At time 33375: READ mem[08] = 41
+A = 01, B = be, M = 06, P = 09
+At time 33405: READ mem[09] = 80
+A = be, B = 01, M = 06, P = 0a
+At time 33435: READ mem[0a] = 30
+A = bf, B = 01, M = 06, P = 0b
+At time 33465: READ mem[0b] = f0
+A = bf, B = 01, M = 06, P = 06
+At time 33495: READ mem[06] = 80
+A = 01, B = bf, M = 06, P = 07
+At time 33525: READ mem[07] = 40
+A = 10, B = bf, M = 06, P = 08
+At time 33555: READ mem[08] = 41
+A = 01, B = bf, M = 06, P = 09
+At time 33585: READ mem[09] = 80
+A = bf, B = 01, M = 06, P = 0a
+At time 33615: READ mem[0a] = 30
+A = c0, B = 01, M = 06, P = 0b
+At time 33645: READ mem[0b] = f0
+A = c0, B = 01, M = 06, P = 06
+At time 33675: READ mem[06] = 80
+A = 01, B = c0, M = 06, P = 07
+At time 33705: READ mem[07] = 40
+A = 10, B = c0, M = 06, P = 08
+At time 33735: READ mem[08] = 41
+A = 01, B = c0, M = 06, P = 09
+At time 33765: READ mem[09] = 80
+A = c0, B = 01, M = 06, P = 0a
+At time 33795: READ mem[0a] = 30
+A = c1, B = 01, M = 06, P = 0b
+At time 33825: READ mem[0b] = f0
+A = c1, B = 01, M = 06, P = 06
+At time 33855: READ mem[06] = 80
+A = 01, B = c1, M = 06, P = 07
+At time 33885: READ mem[07] = 40
+A = 10, B = c1, M = 06, P = 08
+At time 33915: READ mem[08] = 41
+A = 01, B = c1, M = 06, P = 09
+At time 33945: READ mem[09] = 80
+A = c1, B = 01, M = 06, P = 0a
+At time 33975: READ mem[0a] = 30
+A = c2, B = 01, M = 06, P = 0b
+At time 34005: READ mem[0b] = f0
+A = c2, B = 01, M = 06, P = 06
+At time 34035: READ mem[06] = 80
+A = 01, B = c2, M = 06, P = 07
+At time 34065: READ mem[07] = 40
+A = 10, B = c2, M = 06, P = 08
+At time 34095: READ mem[08] = 41
+A = 01, B = c2, M = 06, P = 09
+At time 34125: READ mem[09] = 80
+A = c2, B = 01, M = 06, P = 0a
+At time 34155: READ mem[0a] = 30
+A = c3, B = 01, M = 06, P = 0b
+At time 34185: READ mem[0b] = f0
+A = c3, B = 01, M = 06, P = 06
+At time 34215: READ mem[06] = 80
+A = 01, B = c3, M = 06, P = 07
+At time 34245: READ mem[07] = 40
+A = 10, B = c3, M = 06, P = 08
+At time 34275: READ mem[08] = 41
+A = 01, B = c3, M = 06, P = 09
+At time 34305: READ mem[09] = 80
+A = c3, B = 01, M = 06, P = 0a
+At time 34335: READ mem[0a] = 30
+A = c4, B = 01, M = 06, P = 0b
+At time 34365: READ mem[0b] = f0
+A = c4, B = 01, M = 06, P = 06
+At time 34395: READ mem[06] = 80
+A = 01, B = c4, M = 06, P = 07
+At time 34425: READ mem[07] = 40
+A = 10, B = c4, M = 06, P = 08
+At time 34455: READ mem[08] = 41
+A = 01, B = c4, M = 06, P = 09
+At time 34485: READ mem[09] = 80
+A = c4, B = 01, M = 06, P = 0a
+At time 34515: READ mem[0a] = 30
+A = c5, B = 01, M = 06, P = 0b
+At time 34545: READ mem[0b] = f0
+A = c5, B = 01, M = 06, P = 06
+At time 34575: READ mem[06] = 80
+A = 01, B = c5, M = 06, P = 07
+At time 34605: READ mem[07] = 40
+A = 10, B = c5, M = 06, P = 08
+At time 34635: READ mem[08] = 41
+A = 01, B = c5, M = 06, P = 09
+At time 34665: READ mem[09] = 80
+A = c5, B = 01, M = 06, P = 0a
+At time 34695: READ mem[0a] = 30
+A = c6, B = 01, M = 06, P = 0b
+At time 34725: READ mem[0b] = f0
+A = c6, B = 01, M = 06, P = 06
+At time 34755: READ mem[06] = 80
+A = 01, B = c6, M = 06, P = 07
+At time 34785: READ mem[07] = 40
+A = 10, B = c6, M = 06, P = 08
+At time 34815: READ mem[08] = 41
+A = 01, B = c6, M = 06, P = 09
+At time 34845: READ mem[09] = 80
+A = c6, B = 01, M = 06, P = 0a
+At time 34875: READ mem[0a] = 30
+A = c7, B = 01, M = 06, P = 0b
+At time 34905: READ mem[0b] = f0
+A = c7, B = 01, M = 06, P = 06
+At time 34935: READ mem[06] = 80
+A = 01, B = c7, M = 06, P = 07
+At time 34965: READ mem[07] = 40
+A = 10, B = c7, M = 06, P = 08
+At time 34995: READ mem[08] = 41
+A = 01, B = c7, M = 06, P = 09
+At time 35025: READ mem[09] = 80
+A = c7, B = 01, M = 06, P = 0a
+At time 35055: READ mem[0a] = 30
+A = c8, B = 01, M = 06, P = 0b
+At time 35085: READ mem[0b] = f0
+A = c8, B = 01, M = 06, P = 06
+At time 35115: READ mem[06] = 80
+A = 01, B = c8, M = 06, P = 07
+At time 35145: READ mem[07] = 40
+A = 10, B = c8, M = 06, P = 08
+At time 35175: READ mem[08] = 41
+A = 01, B = c8, M = 06, P = 09
+At time 35205: READ mem[09] = 80
+A = c8, B = 01, M = 06, P = 0a
+At time 35235: READ mem[0a] = 30
+A = c9, B = 01, M = 06, P = 0b
+At time 35265: READ mem[0b] = f0
+A = c9, B = 01, M = 06, P = 06
+At time 35295: READ mem[06] = 80
+A = 01, B = c9, M = 06, P = 07
+At time 35325: READ mem[07] = 40
+A = 10, B = c9, M = 06, P = 08
+At time 35355: READ mem[08] = 41
+A = 01, B = c9, M = 06, P = 09
+At time 35385: READ mem[09] = 80
+A = c9, B = 01, M = 06, P = 0a
+At time 35415: READ mem[0a] = 30
+A = ca, B = 01, M = 06, P = 0b
+At time 35445: READ mem[0b] = f0
+A = ca, B = 01, M = 06, P = 06
+At time 35475: READ mem[06] = 80
+A = 01, B = ca, M = 06, P = 07
+At time 35505: READ mem[07] = 40
+A = 10, B = ca, M = 06, P = 08
+At time 35535: READ mem[08] = 41
+A = 01, B = ca, M = 06, P = 09
+At time 35565: READ mem[09] = 80
+A = ca, B = 01, M = 06, P = 0a
+At time 35595: READ mem[0a] = 30
+A = cb, B = 01, M = 06, P = 0b
+At time 35625: READ mem[0b] = f0
+A = cb, B = 01, M = 06, P = 06
+At time 35655: READ mem[06] = 80
+A = 01, B = cb, M = 06, P = 07
+At time 35685: READ mem[07] = 40
+A = 10, B = cb, M = 06, P = 08
+At time 35715: READ mem[08] = 41
+A = 01, B = cb, M = 06, P = 09
+At time 35745: READ mem[09] = 80
+A = cb, B = 01, M = 06, P = 0a
+At time 35775: READ mem[0a] = 30
+A = cc, B = 01, M = 06, P = 0b
+At time 35805: READ mem[0b] = f0
+A = cc, B = 01, M = 06, P = 06
+At time 35835: READ mem[06] = 80
+A = 01, B = cc, M = 06, P = 07
+At time 35865: READ mem[07] = 40
+A = 10, B = cc, M = 06, P = 08
+At time 35895: READ mem[08] = 41
+A = 01, B = cc, M = 06, P = 09
+At time 35925: READ mem[09] = 80
+A = cc, B = 01, M = 06, P = 0a
+At time 35955: READ mem[0a] = 30
+A = cd, B = 01, M = 06, P = 0b
+At time 35985: READ mem[0b] = f0
+A = cd, B = 01, M = 06, P = 06
+At time 36015: READ mem[06] = 80
+A = 01, B = cd, M = 06, P = 07
+At time 36045: READ mem[07] = 40
+A = 10, B = cd, M = 06, P = 08
+At time 36075: READ mem[08] = 41
+A = 01, B = cd, M = 06, P = 09
+At time 36105: READ mem[09] = 80
+A = cd, B = 01, M = 06, P = 0a
+At time 36135: READ mem[0a] = 30
+A = ce, B = 01, M = 06, P = 0b
+At time 36165: READ mem[0b] = f0
+A = ce, B = 01, M = 06, P = 06
+At time 36195: READ mem[06] = 80
+A = 01, B = ce, M = 06, P = 07
+At time 36225: READ mem[07] = 40
+A = 10, B = ce, M = 06, P = 08
+At time 36255: READ mem[08] = 41
+A = 01, B = ce, M = 06, P = 09
+At time 36285: READ mem[09] = 80
+A = ce, B = 01, M = 06, P = 0a
+At time 36315: READ mem[0a] = 30
+A = cf, B = 01, M = 06, P = 0b
+At time 36345: READ mem[0b] = f0
+A = cf, B = 01, M = 06, P = 06
+At time 36375: READ mem[06] = 80
+A = 01, B = cf, M = 06, P = 07
+At time 36405: READ mem[07] = 40
+A = 10, B = cf, M = 06, P = 08
+At time 36435: READ mem[08] = 41
+A = 01, B = cf, M = 06, P = 09
+At time 36465: READ mem[09] = 80
+A = cf, B = 01, M = 06, P = 0a
+At time 36495: READ mem[0a] = 30
+A = d0, B = 01, M = 06, P = 0b
+At time 36525: READ mem[0b] = f0
+A = d0, B = 01, M = 06, P = 06
+At time 36555: READ mem[06] = 80
+A = 01, B = d0, M = 06, P = 07
+At time 36585: READ mem[07] = 40
+A = 10, B = d0, M = 06, P = 08
+At time 36615: READ mem[08] = 41
+A = 01, B = d0, M = 06, P = 09
+At time 36645: READ mem[09] = 80
+A = d0, B = 01, M = 06, P = 0a
+At time 36675: READ mem[0a] = 30
+A = d1, B = 01, M = 06, P = 0b
+At time 36705: READ mem[0b] = f0
+A = d1, B = 01, M = 06, P = 06
+At time 36735: READ mem[06] = 80
+A = 01, B = d1, M = 06, P = 07
+At time 36765: READ mem[07] = 40
+A = 10, B = d1, M = 06, P = 08
+At time 36795: READ mem[08] = 41
+A = 01, B = d1, M = 06, P = 09
+At time 36825: READ mem[09] = 80
+A = d1, B = 01, M = 06, P = 0a
+At time 36855: READ mem[0a] = 30
+A = d2, B = 01, M = 06, P = 0b
+At time 36885: READ mem[0b] = f0
+A = d2, B = 01, M = 06, P = 06
+At time 36915: READ mem[06] = 80
+A = 01, B = d2, M = 06, P = 07
+At time 36945: READ mem[07] = 40
+A = 10, B = d2, M = 06, P = 08
+At time 36975: READ mem[08] = 41
+A = 01, B = d2, M = 06, P = 09
+At time 37005: READ mem[09] = 80
+A = d2, B = 01, M = 06, P = 0a
+At time 37035: READ mem[0a] = 30
+A = d3, B = 01, M = 06, P = 0b
+At time 37065: READ mem[0b] = f0
+A = d3, B = 01, M = 06, P = 06
+At time 37095: READ mem[06] = 80
+A = 01, B = d3, M = 06, P = 07
+At time 37125: READ mem[07] = 40
+A = 10, B = d3, M = 06, P = 08
+At time 37155: READ mem[08] = 41
+A = 01, B = d3, M = 06, P = 09
+At time 37185: READ mem[09] = 80
+A = d3, B = 01, M = 06, P = 0a
+At time 37215: READ mem[0a] = 30
+A = d4, B = 01, M = 06, P = 0b
+At time 37245: READ mem[0b] = f0
+A = d4, B = 01, M = 06, P = 06
+At time 37275: READ mem[06] = 80
+A = 01, B = d4, M = 06, P = 07
+At time 37305: READ mem[07] = 40
+A = 10, B = d4, M = 06, P = 08
+At time 37335: READ mem[08] = 41
+A = 01, B = d4, M = 06, P = 09
+At time 37365: READ mem[09] = 80
+A = d4, B = 01, M = 06, P = 0a
+At time 37395: READ mem[0a] = 30
+A = d5, B = 01, M = 06, P = 0b
+At time 37425: READ mem[0b] = f0
+A = d5, B = 01, M = 06, P = 06
+At time 37455: READ mem[06] = 80
+A = 01, B = d5, M = 06, P = 07
+At time 37485: READ mem[07] = 40
+A = 10, B = d5, M = 06, P = 08
+At time 37515: READ mem[08] = 41
+A = 01, B = d5, M = 06, P = 09
+At time 37545: READ mem[09] = 80
+A = d5, B = 01, M = 06, P = 0a
+At time 37575: READ mem[0a] = 30
+A = d6, B = 01, M = 06, P = 0b
+At time 37605: READ mem[0b] = f0
+A = d6, B = 01, M = 06, P = 06
+At time 37635: READ mem[06] = 80
+A = 01, B = d6, M = 06, P = 07
+At time 37665: READ mem[07] = 40
+A = 10, B = d6, M = 06, P = 08
+At time 37695: READ mem[08] = 41
+A = 01, B = d6, M = 06, P = 09
+At time 37725: READ mem[09] = 80
+A = d6, B = 01, M = 06, P = 0a
+At time 37755: READ mem[0a] = 30
+A = d7, B = 01, M = 06, P = 0b
+At time 37785: READ mem[0b] = f0
+A = d7, B = 01, M = 06, P = 06
+At time 37815: READ mem[06] = 80
+A = 01, B = d7, M = 06, P = 07
+At time 37845: READ mem[07] = 40
+A = 10, B = d7, M = 06, P = 08
+At time 37875: READ mem[08] = 41
+A = 01, B = d7, M = 06, P = 09
+At time 37905: READ mem[09] = 80
+A = d7, B = 01, M = 06, P = 0a
+At time 37935: READ mem[0a] = 30
+A = d8, B = 01, M = 06, P = 0b
+At time 37965: READ mem[0b] = f0
+A = d8, B = 01, M = 06, P = 06
+At time 37995: READ mem[06] = 80
+A = 01, B = d8, M = 06, P = 07
+At time 38025: READ mem[07] = 40
+A = 10, B = d8, M = 06, P = 08
+At time 38055: READ mem[08] = 41
+A = 01, B = d8, M = 06, P = 09
+At time 38085: READ mem[09] = 80
+A = d8, B = 01, M = 06, P = 0a
+At time 38115: READ mem[0a] = 30
+A = d9, B = 01, M = 06, P = 0b
+At time 38145: READ mem[0b] = f0
+A = d9, B = 01, M = 06, P = 06
+At time 38175: READ mem[06] = 80
+A = 01, B = d9, M = 06, P = 07
+At time 38205: READ mem[07] = 40
+A = 10, B = d9, M = 06, P = 08
+At time 38235: READ mem[08] = 41
+A = 01, B = d9, M = 06, P = 09
+At time 38265: READ mem[09] = 80
+A = d9, B = 01, M = 06, P = 0a
+At time 38295: READ mem[0a] = 30
+A = da, B = 01, M = 06, P = 0b
+At time 38325: READ mem[0b] = f0
+A = da, B = 01, M = 06, P = 06
+At time 38355: READ mem[06] = 80
+A = 01, B = da, M = 06, P = 07
+At time 38385: READ mem[07] = 40
+A = 10, B = da, M = 06, P = 08
+At time 38415: READ mem[08] = 41
+A = 01, B = da, M = 06, P = 09
+At time 38445: READ mem[09] = 80
+A = da, B = 01, M = 06, P = 0a
+At time 38475: READ mem[0a] = 30
+A = db, B = 01, M = 06, P = 0b
+At time 38505: READ mem[0b] = f0
+A = db, B = 01, M = 06, P = 06
+At time 38535: READ mem[06] = 80
+A = 01, B = db, M = 06, P = 07
+At time 38565: READ mem[07] = 40
+A = 10, B = db, M = 06, P = 08
+At time 38595: READ mem[08] = 41
+A = 01, B = db, M = 06, P = 09
+At time 38625: READ mem[09] = 80
+A = db, B = 01, M = 06, P = 0a
+At time 38655: READ mem[0a] = 30
+A = dc, B = 01, M = 06, P = 0b
+At time 38685: READ mem[0b] = f0
+A = dc, B = 01, M = 06, P = 06
+At time 38715: READ mem[06] = 80
+A = 01, B = dc, M = 06, P = 07
+At time 38745: READ mem[07] = 40
+A = 10, B = dc, M = 06, P = 08
+At time 38775: READ mem[08] = 41
+A = 01, B = dc, M = 06, P = 09
+At time 38805: READ mem[09] = 80
+A = dc, B = 01, M = 06, P = 0a
+At time 38835: READ mem[0a] = 30
+A = dd, B = 01, M = 06, P = 0b
+At time 38865: READ mem[0b] = f0
+A = dd, B = 01, M = 06, P = 06
+At time 38895: READ mem[06] = 80
+A = 01, B = dd, M = 06, P = 07
+At time 38925: READ mem[07] = 40
+A = 10, B = dd, M = 06, P = 08
+At time 38955: READ mem[08] = 41
+A = 01, B = dd, M = 06, P = 09
+At time 38985: READ mem[09] = 80
+A = dd, B = 01, M = 06, P = 0a
+At time 39015: READ mem[0a] = 30
+A = de, B = 01, M = 06, P = 0b
+At time 39045: READ mem[0b] = f0
+A = de, B = 01, M = 06, P = 06
+At time 39075: READ mem[06] = 80
+A = 01, B = de, M = 06, P = 07
+At time 39105: READ mem[07] = 40
+A = 10, B = de, M = 06, P = 08
+At time 39135: READ mem[08] = 41
+A = 01, B = de, M = 06, P = 09
+At time 39165: READ mem[09] = 80
+A = de, B = 01, M = 06, P = 0a
+At time 39195: READ mem[0a] = 30
+A = df, B = 01, M = 06, P = 0b
+At time 39225: READ mem[0b] = f0
+A = df, B = 01, M = 06, P = 06
+At time 39255: READ mem[06] = 80
+A = 01, B = df, M = 06, P = 07
+At time 39285: READ mem[07] = 40
+A = 10, B = df, M = 06, P = 08
+At time 39315: READ mem[08] = 41
+A = 01, B = df, M = 06, P = 09
+At time 39345: READ mem[09] = 80
+A = df, B = 01, M = 06, P = 0a
+At time 39375: READ mem[0a] = 30
+A = e0, B = 01, M = 06, P = 0b
+At time 39405: READ mem[0b] = f0
+A = e0, B = 01, M = 06, P = 06
+At time 39435: READ mem[06] = 80
+A = 01, B = e0, M = 06, P = 07
+At time 39465: READ mem[07] = 40
+A = 10, B = e0, M = 06, P = 08
+At time 39495: READ mem[08] = 41
+A = 01, B = e0, M = 06, P = 09
+At time 39525: READ mem[09] = 80
+A = e0, B = 01, M = 06, P = 0a
+At time 39555: READ mem[0a] = 30
+A = e1, B = 01, M = 06, P = 0b
+At time 39585: READ mem[0b] = f0
+A = e1, B = 01, M = 06, P = 06
+At time 39615: READ mem[06] = 80
+A = 01, B = e1, M = 06, P = 07
+At time 39645: READ mem[07] = 40
+A = 10, B = e1, M = 06, P = 08
+At time 39675: READ mem[08] = 41
+A = 01, B = e1, M = 06, P = 09
+At time 39705: READ mem[09] = 80
+A = e1, B = 01, M = 06, P = 0a
+At time 39735: READ mem[0a] = 30
+A = e2, B = 01, M = 06, P = 0b
+At time 39765: READ mem[0b] = f0
+A = e2, B = 01, M = 06, P = 06
+At time 39795: READ mem[06] = 80
+A = 01, B = e2, M = 06, P = 07
+At time 39825: READ mem[07] = 40
+A = 10, B = e2, M = 06, P = 08
+At time 39855: READ mem[08] = 41
+A = 01, B = e2, M = 06, P = 09
+At time 39885: READ mem[09] = 80
+A = e2, B = 01, M = 06, P = 0a
+At time 39915: READ mem[0a] = 30
+A = e3, B = 01, M = 06, P = 0b
+At time 39945: READ mem[0b] = f0
+A = e3, B = 01, M = 06, P = 06
+At time 39975: READ mem[06] = 80
+A = 01, B = e3, M = 06, P = 07
+At time 40005: READ mem[07] = 40
+A = 10, B = e3, M = 06, P = 08
+At time 40035: READ mem[08] = 41
+A = 01, B = e3, M = 06, P = 09
+At time 40065: READ mem[09] = 80
+A = e3, B = 01, M = 06, P = 0a
+At time 40095: READ mem[0a] = 30
+A = e4, B = 01, M = 06, P = 0b
+At time 40125: READ mem[0b] = f0
+A = e4, B = 01, M = 06, P = 06
+At time 40155: READ mem[06] = 80
+A = 01, B = e4, M = 06, P = 07
+At time 40185: READ mem[07] = 40
+A = 10, B = e4, M = 06, P = 08
+At time 40215: READ mem[08] = 41
+A = 01, B = e4, M = 06, P = 09
+At time 40245: READ mem[09] = 80
+A = e4, B = 01, M = 06, P = 0a
+At time 40275: READ mem[0a] = 30
+A = e5, B = 01, M = 06, P = 0b
+At time 40305: READ mem[0b] = f0
+A = e5, B = 01, M = 06, P = 06
+At time 40335: READ mem[06] = 80
+A = 01, B = e5, M = 06, P = 07
+At time 40365: READ mem[07] = 40
+A = 10, B = e5, M = 06, P = 08
+At time 40395: READ mem[08] = 41
+A = 01, B = e5, M = 06, P = 09
+At time 40425: READ mem[09] = 80
+A = e5, B = 01, M = 06, P = 0a
+At time 40455: READ mem[0a] = 30
+A = e6, B = 01, M = 06, P = 0b
+At time 40485: READ mem[0b] = f0
+A = e6, B = 01, M = 06, P = 06
+At time 40515: READ mem[06] = 80
+A = 01, B = e6, M = 06, P = 07
+At time 40545: READ mem[07] = 40
+A = 10, B = e6, M = 06, P = 08
+At time 40575: READ mem[08] = 41
+A = 01, B = e6, M = 06, P = 09
+At time 40605: READ mem[09] = 80
+A = e6, B = 01, M = 06, P = 0a
+At time 40635: READ mem[0a] = 30
+A = e7, B = 01, M = 06, P = 0b
+At time 40665: READ mem[0b] = f0
+A = e7, B = 01, M = 06, P = 06
+At time 40695: READ mem[06] = 80
+A = 01, B = e7, M = 06, P = 07
+At time 40725: READ mem[07] = 40
+A = 10, B = e7, M = 06, P = 08
+At time 40755: READ mem[08] = 41
+A = 01, B = e7, M = 06, P = 09
+At time 40785: READ mem[09] = 80
+A = e7, B = 01, M = 06, P = 0a
+At time 40815: READ mem[0a] = 30
+A = e8, B = 01, M = 06, P = 0b
+At time 40845: READ mem[0b] = f0
+A = e8, B = 01, M = 06, P = 06
+At time 40875: READ mem[06] = 80
+A = 01, B = e8, M = 06, P = 07
+At time 40905: READ mem[07] = 40
+A = 10, B = e8, M = 06, P = 08
+At time 40935: READ mem[08] = 41
+A = 01, B = e8, M = 06, P = 09
+At time 40965: READ mem[09] = 80
+A = e8, B = 01, M = 06, P = 0a
+At time 40995: READ mem[0a] = 30
+A = e9, B = 01, M = 06, P = 0b
+At time 41025: READ mem[0b] = f0
+A = e9, B = 01, M = 06, P = 06
+At time 41055: READ mem[06] = 80
+A = 01, B = e9, M = 06, P = 07
+At time 41085: READ mem[07] = 40
+A = 10, B = e9, M = 06, P = 08
+At time 41115: READ mem[08] = 41
+A = 01, B = e9, M = 06, P = 09
+At time 41145: READ mem[09] = 80
+A = e9, B = 01, M = 06, P = 0a
+At time 41175: READ mem[0a] = 30
+A = ea, B = 01, M = 06, P = 0b
+At time 41205: READ mem[0b] = f0
+A = ea, B = 01, M = 06, P = 06
+At time 41235: READ mem[06] = 80
+A = 01, B = ea, M = 06, P = 07
+At time 41265: READ mem[07] = 40
+A = 10, B = ea, M = 06, P = 08
+At time 41295: READ mem[08] = 41
+A = 01, B = ea, M = 06, P = 09
+At time 41325: READ mem[09] = 80
+A = ea, B = 01, M = 06, P = 0a
+At time 41355: READ mem[0a] = 30
+A = eb, B = 01, M = 06, P = 0b
+At time 41385: READ mem[0b] = f0
+A = eb, B = 01, M = 06, P = 06
+At time 41415: READ mem[06] = 80
+A = 01, B = eb, M = 06, P = 07
+At time 41445: READ mem[07] = 40
+A = 10, B = eb, M = 06, P = 08
+At time 41475: READ mem[08] = 41
+A = 01, B = eb, M = 06, P = 09
+At time 41505: READ mem[09] = 80
+A = eb, B = 01, M = 06, P = 0a
+At time 41535: READ mem[0a] = 30
+A = ec, B = 01, M = 06, P = 0b
+At time 41565: READ mem[0b] = f0
+A = ec, B = 01, M = 06, P = 06
+At time 41595: READ mem[06] = 80
+A = 01, B = ec, M = 06, P = 07
+At time 41625: READ mem[07] = 40
+A = 10, B = ec, M = 06, P = 08
+At time 41655: READ mem[08] = 41
+A = 01, B = ec, M = 06, P = 09
+At time 41685: READ mem[09] = 80
+A = ec, B = 01, M = 06, P = 0a
+At time 41715: READ mem[0a] = 30
+A = ed, B = 01, M = 06, P = 0b
+At time 41745: READ mem[0b] = f0
+A = ed, B = 01, M = 06, P = 06
+At time 41775: READ mem[06] = 80
+A = 01, B = ed, M = 06, P = 07
+At time 41805: READ mem[07] = 40
+A = 10, B = ed, M = 06, P = 08
+At time 41835: READ mem[08] = 41
+A = 01, B = ed, M = 06, P = 09
+At time 41865: READ mem[09] = 80
+A = ed, B = 01, M = 06, P = 0a
+At time 41895: READ mem[0a] = 30
+A = ee, B = 01, M = 06, P = 0b
+At time 41925: READ mem[0b] = f0
+A = ee, B = 01, M = 06, P = 06
+At time 41955: READ mem[06] = 80
+A = 01, B = ee, M = 06, P = 07
+At time 41985: READ mem[07] = 40
+A = 10, B = ee, M = 06, P = 08
+At time 42015: READ mem[08] = 41
+A = 01, B = ee, M = 06, P = 09
+At time 42045: READ mem[09] = 80
+A = ee, B = 01, M = 06, P = 0a
+At time 42075: READ mem[0a] = 30
+A = ef, B = 01, M = 06, P = 0b
+At time 42105: READ mem[0b] = f0
+A = ef, B = 01, M = 06, P = 06
+At time 42135: READ mem[06] = 80
+A = 01, B = ef, M = 06, P = 07
+At time 42165: READ mem[07] = 40
+A = 10, B = ef, M = 06, P = 08
+At time 42195: READ mem[08] = 41
+A = 01, B = ef, M = 06, P = 09
+At time 42225: READ mem[09] = 80
+A = ef, B = 01, M = 06, P = 0a
+At time 42255: READ mem[0a] = 30
+A = f0, B = 01, M = 06, P = 0b
+At time 42285: READ mem[0b] = f0
+A = f0, B = 01, M = 06, P = 06
+At time 42315: READ mem[06] = 80
+A = 01, B = f0, M = 06, P = 07
+At time 42345: READ mem[07] = 40
+A = 10, B = f0, M = 06, P = 08
+At time 42375: READ mem[08] = 41
+A = 01, B = f0, M = 06, P = 09
+At time 42405: READ mem[09] = 80
+A = f0, B = 01, M = 06, P = 0a
+At time 42435: READ mem[0a] = 30
+A = f1, B = 01, M = 06, P = 0b
+At time 42465: READ mem[0b] = f0
+A = f1, B = 01, M = 06, P = 06
+At time 42495: READ mem[06] = 80
+A = 01, B = f1, M = 06, P = 07
+At time 42525: READ mem[07] = 40
+A = 10, B = f1, M = 06, P = 08
+At time 42555: READ mem[08] = 41
+A = 01, B = f1, M = 06, P = 09
+At time 42585: READ mem[09] = 80
+A = f1, B = 01, M = 06, P = 0a
+At time 42615: READ mem[0a] = 30
+A = f2, B = 01, M = 06, P = 0b
+At time 42645: READ mem[0b] = f0
+A = f2, B = 01, M = 06, P = 06
+At time 42675: READ mem[06] = 80
+A = 01, B = f2, M = 06, P = 07
+At time 42705: READ mem[07] = 40
+A = 10, B = f2, M = 06, P = 08
+At time 42735: READ mem[08] = 41
+A = 01, B = f2, M = 06, P = 09
+At time 42765: READ mem[09] = 80
+A = f2, B = 01, M = 06, P = 0a
+At time 42795: READ mem[0a] = 30
+A = f3, B = 01, M = 06, P = 0b
+At time 42825: READ mem[0b] = f0
+A = f3, B = 01, M = 06, P = 06
+At time 42855: READ mem[06] = 80
+A = 01, B = f3, M = 06, P = 07
+At time 42885: READ mem[07] = 40
+A = 10, B = f3, M = 06, P = 08
+At time 42915: READ mem[08] = 41
+A = 01, B = f3, M = 06, P = 09
+At time 42945: READ mem[09] = 80
+A = f3, B = 01, M = 06, P = 0a
+At time 42975: READ mem[0a] = 30
+A = f4, B = 01, M = 06, P = 0b
+At time 43005: READ mem[0b] = f0
+A = f4, B = 01, M = 06, P = 06
+At time 43035: READ mem[06] = 80
+A = 01, B = f4, M = 06, P = 07
+At time 43065: READ mem[07] = 40
+A = 10, B = f4, M = 06, P = 08
+At time 43095: READ mem[08] = 41
+A = 01, B = f4, M = 06, P = 09
+At time 43125: READ mem[09] = 80
+A = f4, B = 01, M = 06, P = 0a
+At time 43155: READ mem[0a] = 30
+A = f5, B = 01, M = 06, P = 0b
+At time 43185: READ mem[0b] = f0
+A = f5, B = 01, M = 06, P = 06
+At time 43215: READ mem[06] = 80
+A = 01, B = f5, M = 06, P = 07
+At time 43245: READ mem[07] = 40
+A = 10, B = f5, M = 06, P = 08
+At time 43275: READ mem[08] = 41
+A = 01, B = f5, M = 06, P = 09
+At time 43305: READ mem[09] = 80
+A = f5, B = 01, M = 06, P = 0a
+At time 43335: READ mem[0a] = 30
+A = f6, B = 01, M = 06, P = 0b
+At time 43365: READ mem[0b] = f0
+A = f6, B = 01, M = 06, P = 06
+At time 43395: READ mem[06] = 80
+A = 01, B = f6, M = 06, P = 07
+At time 43425: READ mem[07] = 40
+A = 10, B = f6, M = 06, P = 08
+At time 43455: READ mem[08] = 41
+A = 01, B = f6, M = 06, P = 09
+At time 43485: READ mem[09] = 80
+A = f6, B = 01, M = 06, P = 0a
+At time 43515: READ mem[0a] = 30
+A = f7, B = 01, M = 06, P = 0b
+At time 43545: READ mem[0b] = f0
+A = f7, B = 01, M = 06, P = 06
+At time 43575: READ mem[06] = 80
+A = 01, B = f7, M = 06, P = 07
+At time 43605: READ mem[07] = 40
+A = 10, B = f7, M = 06, P = 08
+At time 43635: READ mem[08] = 41
+A = 01, B = f7, M = 06, P = 09
+At time 43665: READ mem[09] = 80
+A = f7, B = 01, M = 06, P = 0a
+At time 43695: READ mem[0a] = 30
+A = f8, B = 01, M = 06, P = 0b
+At time 43725: READ mem[0b] = f0
+A = f8, B = 01, M = 06, P = 06
+At time 43755: READ mem[06] = 80
+A = 01, B = f8, M = 06, P = 07
+At time 43785: READ mem[07] = 40
+A = 10, B = f8, M = 06, P = 08
+At time 43815: READ mem[08] = 41
+A = 01, B = f8, M = 06, P = 09
+At time 43845: READ mem[09] = 80
+A = f8, B = 01, M = 06, P = 0a
+At time 43875: READ mem[0a] = 30
+A = f9, B = 01, M = 06, P = 0b
+At time 43905: READ mem[0b] = f0
+A = f9, B = 01, M = 06, P = 06
+At time 43935: READ mem[06] = 80
+A = 01, B = f9, M = 06, P = 07
+At time 43965: READ mem[07] = 40
+A = 10, B = f9, M = 06, P = 08
+At time 43995: READ mem[08] = 41
+A = 01, B = f9, M = 06, P = 09
+At time 44025: READ mem[09] = 80
+A = f9, B = 01, M = 06, P = 0a
+At time 44055: READ mem[0a] = 30
+A = fa, B = 01, M = 06, P = 0b
+At time 44085: READ mem[0b] = f0
+A = fa, B = 01, M = 06, P = 06
+At time 44115: READ mem[06] = 80
+A = 01, B = fa, M = 06, P = 07
+At time 44145: READ mem[07] = 40
+A = 10, B = fa, M = 06, P = 08
+At time 44175: READ mem[08] = 41
+A = 01, B = fa, M = 06, P = 09
+At time 44205: READ mem[09] = 80
+A = fa, B = 01, M = 06, P = 0a
+At time 44235: READ mem[0a] = 30
+A = fb, B = 01, M = 06, P = 0b
+At time 44265: READ mem[0b] = f0
+A = fb, B = 01, M = 06, P = 06
+At time 44295: READ mem[06] = 80
+A = 01, B = fb, M = 06, P = 07
+At time 44325: READ mem[07] = 40
+A = 10, B = fb, M = 06, P = 08
+At time 44355: READ mem[08] = 41
+A = 01, B = fb, M = 06, P = 09
+At time 44385: READ mem[09] = 80
+A = fb, B = 01, M = 06, P = 0a
+At time 44415: READ mem[0a] = 30
+A = fc, B = 01, M = 06, P = 0b
+At time 44445: READ mem[0b] = f0
+A = fc, B = 01, M = 06, P = 06
+At time 44475: READ mem[06] = 80
+A = 01, B = fc, M = 06, P = 07
+At time 44505: READ mem[07] = 40
+A = 10, B = fc, M = 06, P = 08
+At time 44535: READ mem[08] = 41
+A = 01, B = fc, M = 06, P = 09
+At time 44565: READ mem[09] = 80
+A = fc, B = 01, M = 06, P = 0a
+At time 44595: READ mem[0a] = 30
+A = fd, B = 01, M = 06, P = 0b
+At time 44625: READ mem[0b] = f0
+A = fd, B = 01, M = 06, P = 06
+At time 44655: READ mem[06] = 80
+A = 01, B = fd, M = 06, P = 07
+At time 44685: READ mem[07] = 40
+A = 10, B = fd, M = 06, P = 08
+At time 44715: READ mem[08] = 41
+A = 01, B = fd, M = 06, P = 09
+At time 44745: READ mem[09] = 80
+A = fd, B = 01, M = 06, P = 0a
+At time 44775: READ mem[0a] = 30
+A = fe, B = 01, M = 06, P = 0b
+At time 44805: READ mem[0b] = f0
+A = fe, B = 01, M = 06, P = 06
+At time 44835: READ mem[06] = 80
+A = 01, B = fe, M = 06, P = 07
+At time 44865: READ mem[07] = 40
+A = 10, B = fe, M = 06, P = 08
+At time 44895: READ mem[08] = 41
+A = 01, B = fe, M = 06, P = 09
+At time 44925: READ mem[09] = 80
+A = fe, B = 01, M = 06, P = 0a
+At time 44955: READ mem[0a] = 30
+A = ff, B = 01, M = 06, P = 0b
+At time 44985: READ mem[0b] = f0
+A = ff, B = 01, M = 06, P = 06
+At time 45015: READ mem[06] = 80
+A = 01, B = ff, M = 06, P = 07
+At time 45045: READ mem[07] = 40
+A = 10, B = ff, M = 06, P = 08
+At time 45075: READ mem[08] = 41
+A = 01, B = ff, M = 06, P = 09
+At time 45105: READ mem[09] = 80
+A = ff, B = 01, M = 06, P = 0a
+At time 45135: READ mem[0a] = 30
+A = 00, B = 01, M = 06, P = 0b
+At time 45165: READ mem[0b] = f0
+A = 00, B = 01, M = 06, P = 0c
+At time 45195: READ mem[0c] = 40
+A = 00, B = 01, M = 06, P = 0d
+At time 45225: READ mem[0d] = 42
+A = 02, B = 01, M = 06, P = 0e
+At time 45255: READ mem[0e] = 80
+A = 01, B = 02, M = 06, P = 0f
+At time 45285: READ mem[0f] = a0
+A = 10, B = 02, M = 06, P = 10
+At time 45315: READ mem[10] = 30
+A = 12, B = 02, M = 06, P = 11
+At time 45345: READ mem[11] = b0
+A = 12, B = 02, M = 12, P = 12
+At time 45375: READ mem[12] = c0
+Detected forever loop, halting CPU.

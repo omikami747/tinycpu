@@ -1,6 +1,6 @@
 module sim_env(
                input clk,
-               input rst
+               input reset
                );
 
    wire 		     cen;
@@ -10,7 +10,7 @@ module sim_env(
    wire [7:0] 		     dq;
 
    toplevel toplevel(
-		     .rst(rst),
+		     .rst(reset),
 		     .clk(clk),
 		     .addr(addr),
 		     .cen(cen),
