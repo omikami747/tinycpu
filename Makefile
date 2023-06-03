@@ -15,9 +15,9 @@ bin.out:
 emulog: prog/asm/asm prog/emu/emu $(SOURCES) bin.out
 	./prog/emu/emu artifacts/bin.out > artifacts/emulog
 
-rtllog: model/tinycpu.v model/sram.v model/tinycpu_test.v bin.out
+rtllog: model/tinycpu.v sim/sram.v test/tinycpu_test.v bin.out
 	./prog/bin2readmemh/bin2readmemh artifacts/bin.out > program.mem
-	iverilog -o model_vvp model/*.v
+	iverilog -o model_vvp model/*.v sim/sram.v test/tinycpu_test.v
 	./model_vvp > tmp
 	tail -n +2 tmp > rtllog
 	rm tmp

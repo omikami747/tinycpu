@@ -1,5 +1,5 @@
 * =asm=, the assembler for TinyCPU
-An example program is reproduced below:
+An example program accepted by =asm= is reproduced below:
 #+begin_src txt
   load_arr_0:
           LDI array          # An interesting note about the design of labels in
@@ -15,8 +15,18 @@ An example program is reproduced below:
           .word 42
 #+end_src
 
-** Notes on the assembler
+This program demonstrates the primary features of =asm=: comments,
+labels, indirect loads (loading label addresses), and jumps to labels.
 
+** Usage
+#+begin_src sh
+  asm file.s [-o output_file]
+#+end_src
+
+If =output_file= isn't provided, the output binary is written to
+=a.out=. This command line interface is stable.
+
+** Notes on the assembler
 *** Rules
 Any violations of the rules below is undefined behavior, though most
 of these should be caught by the assembler.
