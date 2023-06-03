@@ -5,61 +5,81 @@ EMU=../prog/emu/emu
 TEST_DIR=../prog/src/
 if [[ -n $1 ]]; then
     if [[ $1 == "-h" ]]; then
-	echo -e "This script supports cases of no options, --design option and -h option, When run using no options, it would display basic function and method of usage of the script. The -h option provides detailed use cases of the script. The --design should be followed by a valid test source code name. Valid indicating that it should be present in the ../prog/src/ directory. There are 3 cases of --design namely beh, str, str74. In the case of --design=beh would indicate the script to test the behavioural model, --design=str would indicate the structural mode and --design=str74 would indicate the structural in 74 series model.\nExample usage is ../scripts/tctst --design=str src_code.s   ";
+        echo -e "This script supports --design option, -h option and -dbg, When run using no options, it would display basic function and method of usage of the script. The -h option provides detailed use cases of the script. The --design should be followed by a valid test source code name. Valid indicating that it should be present in the ../prog/src/ directory. There are 3 cases of --design namely beh, str, str74. In the case of --design=beh would indicate the script to test the behavioural model, --design=str would indicate the structural mode and --design=str74 would indicate the structural in 74 series model. The -dbg option is to enable RAM debug, the output of the same getting stored in the trace files. When -dbg option is used, the design wouldnt be compared against emulator (god reference design).
+\nExample usage is ../scripts/tctst --design=str src_code.s \n                 ../scripts/tctst --design=str -dbg src_code.s";
     else
-	if [[ -n $2 ]] ; then
-	    if [[ $2 == "-dbg" ]]; then
-		TESTNAME=$3;
-	        OUTNAME=beh_dbg.out;
-		DBG=1;
-	    else TESTNAME=$2;
-		 OUTNAME=beh.out;
-		 DBG=0;
-	    fi
-	else echo "invalid option value, retry with correct value";
-	fi
-	case $1 in
-	    "--design=beh")
-		if test -e $TEST_DIR$TESTNAME ; then
-		    $ASM $TEST_DIR$TESTNAME -o bin.out
-		    $EMU bin.out > emu.trace
-		    
-		    ../prog/bin2readmemh/bin2readmemh bin.out > program.mem
-		    make $OUTNAME -f ../scripts/makefile 2> beherrorlog
-		    if grep -qi -e "error" -e "stop" -e "no such" -e "unable" beherrorlog ; then
-		    	echo "Compilation Error detected, test failed, see beherrorlog file for more details, please solve this issue and retry";
-			exit 5;
-		    fi
-		    vvp $OUTNAME -vcd beh.vcd > behtmp
-		    tail -n +2 behtmp > beh.trace
-		    if diff -q emu.trace beh.trace ; then
-			echo "rtl passed "$TESTNAME" test"; 
-		    else "rtl failed "$TESTNAME" test";
-		    fi;
-		else echo "Invalid Test name, please try again with a valid test";
-		fi;;
-	    "--design=str")
-		if test -e $TEST_DIR$2 ; then
-		    $ASM $TEST_DIR$2 -o bin.out
-		    $EMU bin.out > emu.trace
-		    
-		    ../prog/bin2readmemh/bin2readmemh bin.out > program.mem
-		    make str.out -f ../scripts/makefile 2> strerrorlog
-		    if grep -qi -e "error" -e "stop" -e "no such" -e "unable" strerrorlog ; then
-		    	echo "Compilation Error detected, test failed, see strerrorlog file for more details, please solve this issue and retry";
-			exit 5;
-		    fi
-		    vvp str.out -vcd beh.vcd > strtmp
-		    tail -n +2 strtmp > str.trace
-		    if diff -s emu.trace str.trace ; then
-			echo "structural passed "$2" test"; 
-		    else "structural failed "$2" test";
-		    fi;
-		else echo "Invalid Test name, please try again with a valid test";
-		fi;;
-	    "--design=str74")echo "Structural74 is work in progress try a different option";;	    
-	    *)echo "invalid option, supported --design option values are beh, str and str74";;
-	esac;	
+        if [[ -n $2 ]] ; then
+            if [[ $2 == "-dbg" ]]; then
+                TESTNAME=$3;
+                OUTNAME=beh_dbg.out;
+                DBG=1;
+            else TESTNAME=$2;
+                 OUTNAME=beh.out;
+                 DBG=0;
+            fi
+        else echo "invalid option value, retry with correct value";
+        fi
+        case $1 in
+            "--design=beh")
+                if test -e $TEST_DIR$TESTNAME ; then
+                    $ASM $TEST_DIR$TESTNAME -o bin.out
+                    $EMU bin.out > emu.trace
+
+                    ../prog/bin2readmemh/bin2readmemh bin.out > program.mem
+                    make $OUTNAME -f ../scripts/makefile 2> beherrorlog
+                    if grep -qi -e "error" -e "stop" -e "no such" -e "unable" beherrorlog ; then
+                        echo "Compilation Error detected, test failed, see beherrorlog file for more details, please solve this issue and retry";
+                        exit 5;
+                    fi
+                    vvp $OUTNAME -vcd beh.vcd > behtmp
+                    tail -n +2 behtmp > beh.trace
+                    if [[ $DBG == 1 ]]; then
+                        exit 0;
+                    fi
+                    if diff -q emu.trace beh.trace ; then
+                        echo "behavioural passed "$TESTNAME" test";
+                        echo "behavioural passed "$TESTNAME" test" > beh_$TESTNAME.log;
+                    else "behavioural failed "$TESTNAME" test";
+                    fi;
+                else echo "Invalid Test name, please try again with a valid test";
+                fi;;
+            "--design=str")
+                if [[ -n $2 ]] ; then
+                    if [[ $2 == "-dbg" ]]; then
+                        TESTNAME=$3;
+                        OUTNAME=str_dbg.out;
+                        DBG=1;
+                    else TESTNAME=$2;
+                         OUTNAME=str.out;
+                         DBG=0;
+                    fi
+                else echo "invalid option value, retry with correct value";
+                fi
+                if test -e $TEST_DIR$TESTNAME ; then
+                    $ASM $TEST_DIR$TESTNAME -o bin.out
+                    $EMU bin.out > emu.trace
+
+                    ../prog/bin2readmemh/bin2readmemh bin.out > program.mem
+                    make str.out -f ../scripts/makefile 2> strerrorlog
+                    if grep -qi -e "error" -e "stop" -e "no such" -e "unable" strerrorlog ; then
+                        echo "Compilation Error detected, test failed, see strerrorlog file for more details, please solve this issue and retry";
+                        exit 5;
+                    fi
+                    vvp str.out -vcd beh.vcd > strtmp
+                    tail -n +2 strtmp > str.trace
+                    if [[ $DBG == 1 ]]; then
+                        exit 0;
+                    fi
+                    if diff -s emu.trace str.trace ; then
+                        echo "structural passed "$TESTNAME" test";
+                        echo "structural passed "$TESTNAME" test" > str_$TESTNAME.log;
+                    else "structural failed "$TESTNAME" test";
+                    fi;
+                else echo "Invalid Test name, please try again with a valid test";
+                fi;;
+            "--design=str74")echo "Structural74 is work in progress try a different option";;
+            *)echo "invalid option, supported --design option values are beh, str and str74";;
+        esac;
     fi;
 else echo "This script generates log files for both the emulator and behavioural models and compares them against each other to measure correctness for a particular test, the first argument provided should be the test code file that is present in the ../prog/src/ directory, use -h option to know more.";
 fi
