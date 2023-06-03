@@ -13,3 +13,4 @@ str_dbg.out: $(ALL_STRUCT) program.mem
 	iverilog -DDEBUG $(ALL_STRUCT) -o str_dbg.out
 clean:
 	rm -rf ../run/*
+	touch .gitignore
