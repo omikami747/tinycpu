@@ -39,7 +39,7 @@ while [ : ]; do
             shift
             ;;
 	-h | --help)
-            echo -e "The use of the script is in the following format - \n../scripts/tctst [option] [option_with argument] argument testname. \n\nIf -h option (an argument-less option) is used, then no testname is allowed.\nThe script supports 3 options:-\n\n -D (--DEBUG long format) - This option enables the debug mode in the SRAM  module, the debug messages (SRAM I/O values) are stored in 'design'_'testname'.trace file.\n\n -d (--design long format) - This option requires an argument that must be one of the following three choices\n a) beh - Behavioural Model\n b) str - Structural Model\n c) str74 - Structural in 74 Model\nIn absence of -h (--help) option, a testfile should be provided which is present in the directory ../prog/src/ and should be an Assembly code file adhering to Instruction Format specified in specs doc." | fold -w 80 -s
+            echo -e "The use of the script is in the following format - \n../scripts/tctst [option] [option_with argument] argument testname.\nThe script supports 3 options:-\n\n -h (--help) option provides detailed methods of using the tool.If -h option (an argument-less option) is used, then no testname is allowed.\n\n -D (--DEBUG long format) - This option enables the debug mode in the SRAM  module, the debug messages (SRAM I/O values) are stored in 'design'_'testname'.trace file.\n\n -d (--design long format) - This option requires an argument that must be one of the following three choices\n a) beh - Behavioural Model\n b) str - Structural Model\n c) str74 - Structural in 74 Model\nIn absence of -h (--help) option, a testfile should be provided which is present in the directory ../prog/src/ and should be an Assembly code file adhering to Instruction Format specified in specs doc." | fold -w 80 -s
 	    exit 0;
             shift
             ;;
@@ -65,7 +65,6 @@ if [[ -s error.log ]]; then
     echo -e "Error: $TESTNAME test contains errors, please refer to specs doc\nand correct the issue.\nFatal";
     exit 12;
 else echo -e "$TESTNAME test code contains no errors, proceeding to next step.";
-     #echo -e "Error: test contains errors, please refer to specs doc\nand correct the issue.\nFatal" > error.log;
 fi
 $EMU bin.out > emu_${TESTNAME}.trace
 ../prog/bin2readmemh/bin2readmemh bin.out > program.mem
@@ -82,10 +81,3 @@ if diff -q emu_${TESTNAME}.trace ${DESIGN}_${TESTNAME}.trace ; then
 else echo -e "${DESIGN} design failed ${TESTNAME}.s test" > ${DESIGN}_${TESTNAME}.log;
 fi
 exit 0
-#         echo -e "This script supports --design option, -h option and -dbg, When run using no options, it would display basic function and method of usage of the script. The -h option provides detailed use cases of the script. The --design should be followed by a valid test source code name. Valid indicating that it should be present in the ../prog/src/ directory. There are 3 cases of --design namely beh, str, str74. In the case of --design=beh would indicate the script to test the behavioural model, --design=str would indicate the structural mode and --design=str74 would indicate the structural in 74 series model. The -dbg option is to enable RAM debug, the output of the same getting stored in the trace files. When -dbg option is used, the design wouldnt be compared against emulator (god reference design).
-# \nExample usage is ../scripts/tctst --design=str src_code.s \n                 ../scripts/tctst --design=str -dbg src_code.s";
-#echo -e "This script generates log files for both the emulator and behavioural\n
-#            models and compares them against each other to measure correctness for a\n
-# 	   particular test, the first argument provided should be the test code file that\n
-# 	   is present in the ../prog/src/ directory, use -h option to know more.";
-# 
