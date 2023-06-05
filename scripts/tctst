@@ -6,6 +6,11 @@ TEST_DIR=../prog/src/
 DBG=""
 TRACE=""
 DESIGN=""
+if [[ $1 == "" ]] ; then
+    echo "brief help message";
+    exit 0;
+fi
+    
 exec 2> error.log
 VALID_ARGS=$(getopt --options d:Dh --long design:,DEBUG,help -- "$@")
 if [[ -s error.log ]] ; then                       #-s returns true if file exists with size greater than zero otherwise false
