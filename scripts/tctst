@@ -39,7 +39,7 @@ while [ : ]; do
             shift
             ;;
 	-h | --help)
-            echo "help in progress"
+            echo -e "The use of the script is in the following format - \n../scripts/tctst [option] [option_with argument] argument testname. \n\nIf -h option (an argument-less option) is used, then no testname is allowed.\nThe script supports 3 options:-\n\n -D (--DEBUG long format) - This option enables the debug mode in the SRAM  module, the debug messages (SRAM I/O values) are stored in 'design'_'testname'.trace file.\n\n -d (--design long format) - This option requires an argument that must be one of the following three choices\n a) beh - Behavioural Model\n b) str - Structural Model\n c) str74 - Structural in 74 Model\nIn absence of -h (--help) option, a testfile should be provided which is present in the directory ../prog/src/ and should be an Assembly code file adhering to Instruction Format specified in specs doc." | fold -w 80 -s
 	    exit 0;
             shift
             ;;
