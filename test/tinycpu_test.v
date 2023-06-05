@@ -1,6 +1,7 @@
 module tinycpu_test;
 
 `ifdef BEH
+   `define DUMP_NAME "beh_dump.vcd"
    `define TOPLEVEL tinycpu
    `define STATE cpumodel.exec_state
    `define INSTR cpumodel.instr[7:6]
@@ -9,6 +10,7 @@ module tinycpu_test;
    `define RM cpumodel.rM
    `define RP cpumodel.rP
   `else
+   `define DUMP_NAME "str_dump.vcd"
    `define TOPLEVEL sim_env
    `define STATE cpumodel.toplevel.cpu_ctrl.state
    `define INSTR cpumodel.toplevel.cpu_ctrl.inst[7:6]
@@ -25,7 +27,7 @@ module tinycpu_test;
 
    initial
      begin
-        $dumpfile("model_dump.vcd");
+        $dumpfile(`DUMP_NAME);
         $dumpvars;
         clk <= 1'b0;
         reset <= 1'b0;
