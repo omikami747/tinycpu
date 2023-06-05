@@ -6,8 +6,10 @@ TEST_DIR=../prog/src/
 DBG=""
 TRACE=""
 DESIGN=""
+BRIEF_HELP="A simple tool that tests and compares results of emu design against either one of the 3 (beh, str or str74) and provides a short report on the same. Use '-h' (--help long form) option to know more about 'tctst' tool." 
+FILL80=| fold -w 80 -s
 if [[ $1 == "" ]] ; then
-    echo -e "A simple tool that tests and compares results of emu design against either\none of the 3 (beh, str or str74) and provides a short report on the same.\nUse '-h; (--help long form) option to know more about 'tctst' tool.";
+    printf "%-80s\n" "${BRIEF_HELP}" | fold -w 80 -s;
     exit 0;
 fi
     
@@ -16,7 +18,7 @@ VALID_ARGS=$(getopt --options d:Dh --long design:,DEBUG,help -- "$@")
 if [[ -s error.log ]] ; then                       #-s returns true if file exists with size greater than zero otherwise false
     echo -e "error.log is non empty, hence error has occured in getopt\nstage, fatal.";
     exit ;
-else echo -e "error.log is empty hence no error has occured in getopt\nstage, continuing.";
+# else echo -e "error.log is empty hence no error has occured in getopt stage, continuing." | fold -w 80 -s;
 fi
 
 eval set -- "$VALID_ARGS"
@@ -37,7 +39,8 @@ while [ : ]; do
             shift
             ;;
 	-h | --help)
-            echo ""
+            echo "help in progress"
+	    exit 0;
             shift
             ;;
 	--) shift; 
