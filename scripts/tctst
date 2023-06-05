@@ -7,7 +7,7 @@ DBG=""
 TRACE=""
 DESIGN=""
 if [[ $1 == "" ]] ; then
-    echo "brief help message";
+    echo -e "A simple tool that tests and compares results of emu design against either\none of the 3 (beh, str or str74) and provides a short report on the same.\nUse '-h; (--help long form) option to know more about 'tctst' tool.";
     exit 0;
 fi
     
@@ -16,7 +16,7 @@ VALID_ARGS=$(getopt --options d:Dh --long design:,DEBUG,help -- "$@")
 if [[ -s error.log ]] ; then                       #-s returns true if file exists with size greater than zero otherwise false
     echo -e "error.log is non empty, hence error has occured in getopt\nstage, fatal.";
     exit ;
-else echo -e "error.log is empty hence no error has occured in getopt\nstage, continuing";
+else echo -e "error.log is empty hence no error has occured in getopt\nstage, continuing.";
 fi
 
 eval set -- "$VALID_ARGS"
@@ -26,9 +26,8 @@ while [ : ]; do
 	    if [[ $2 == "beh" ]] || [[ $2 == "str" ]] || [[ $2 == "str74" ]]; then
 		DESIGN=$2
 		OUTNAME=$2.out;
-		echo -e "$DESIGN $OUTNAME";
-	    else echo -e "The above value '$2' for --design/-d option is invalid,\nuse -h or --help to know more about the option --design values";
-		 echo -e "test failed due to invalid design name.\nTest+Design specific log file not produced.\nFatal." > error.log
+	    else echo -e "The above value '$2' for --design/-d option is invalid,\nuse -h or --help to know more about the option --design values.";
+		 echo -e "Error: test failed due to invalid design name.\nTest+Design specific log file not produced.\nFatal." > error.log
 		 exit 10;
 	    fi
             shift 2
@@ -38,7 +37,7 @@ while [ : ]; do
             shift
             ;;
 	-h | --help)
-            echo "help in progress"
+            echo ""
             shift
             ;;
 	--) shift; 
@@ -49,11 +48,9 @@ done
 if [[ $DBG == "" ]] ; then
     DBG="." ;
 fi
-echo $DBG
 OUTNAME=$(gawk -F '.' --assign dbg=$DBG '{ print ($1 dbg $2) }' <<< $OUTNAME)
-echo -e "$OUTNAME"
 if [[ -s $TEST_DIR$1 ]]; then
-    echo -e "test name is valid and exists in ../prog/src/ directory";
+    echo -e "Test name is valid and exists in ../prog/src/ directory";
 else echo -e "Error: test name is not valid and doesnt exist in ../prog/src/ directory.\nFatal";
      echo -e "Error: test name is not valid and doesnt exist in ../prog/src/ directory.\nFatal" > error.log;
      exit 11;
@@ -73,12 +70,10 @@ make $OUTNAME -f ../scripts/makefile
 vvp $OUTNAME > ${DESIGN}_${TESTNAME}tmp
 tail -n +2 ${DESIGN}_${TESTNAME}tmp > ${DESIGN}_${TESTNAME}.trace
 rm ${DESIGN}_${TESTNAME}tmp
-echo -e "${DESIGN}_${TESTNAME}.trace"
 if [[ $DBG == "_dbg." ]] ; then
-    echo -e "debug option enabled, simulation stopped, debug values\nin ${DESIGN}_${TESTNAME}.trace file"
+    echo -e "Debug option enabled, script stopped, debug values\nin ${DESIGN}_${TESTNAME}.trace file"
     exit 0;
 fi
-echo "diff -q emu_${TESTNAME}.trace ${DESIGN}_${TESTNAME}.trace"
 if diff -q emu_${TESTNAME}.trace ${DESIGN}_${TESTNAME}.trace ; then
     echo -e "${DESIGN} design passed ${TESTNAME}.s test" > ${DESIGN}_${TESTNAME}.log;
 else echo -e "${DESIGN} design failed ${TESTNAME}.s test" > ${DESIGN}_${TESTNAME}.log;
