@@ -1,7 +1,7 @@
 #!/bin/bash
 TEST_DIR=../prog/src/
 TESTS=$(ls $TEST_DIR)
-DESIGN=$1
+DESIGN=$2
 
 BRIEF_HELP="A simple tool that regression tests and compares results of emu design against either one of the 3 (beh, str or str74) and provides a short report on the same. Use '-h' (--help long form) option to know more about 'tcregtst' tool."
 FILL80=| fold -w 80 -s
@@ -10,6 +10,7 @@ if [[ $1 == "" ]] ; then
     printf "%-80s\n" "${BRIEF_HELP}" | fold -w 80 -s;
     exit 0;
 fi
+rm -f ${DESIGN}_reg.log
 exec 2> regrerror.log
 VALID_ARGS=$(getopt --options d:h --long design:,help -- "$@")
 if [[ -s regrerror.log ]] ; then                       #-s returns true if file exists with size greater than zero otherwise false
@@ -32,7 +33,7 @@ while [ : ]; do
             shift 2
             ;;
         -h | --help)
-            echo -e "The use of the script is in the following format - \n../scripts/tctst [option] [option_with argument] argument testname.\nThe script supports 3 options:-\n\n -h (--help) option provides detailed methods of using the tool.If -h option (an argument-less option) is used, then no testname is allowed.\n\n -D (--DEBUG long format) - This option enables the debug mode in the SRAM  module, the debug messages (SRAM I/O values) are stored in 'design'_'testname'.trace file.\n\n -d (--design long format) - This option requires an argument that must be one of the following three choices\n a) beh - Behavioural Model\n b) str - Structural Model\n c) str74 - Structural in 74 Model\nIn absence of -h (--help) option, a testfile should be provided which is present in the directory ../prog/src/ and should be an Assembly code file adhering to Instruction Format specified in specs doc." | fold -w 80 -s
+            echo -e "'tcregtst' script allows you to test a particular design (beh or str or str74) using all tests in the directory ../prog/src/ against the emu reference design, it needs an argument -d and an argument that is among the mentioned 3 designs above (beh or str or str74), it generates a design_reg.log file along with a regrerror.log file, the first one contains information regarding all passing/failing of all the tests." | fold -w 80 -s
 	    exit 0;
             shift
             ;;
@@ -44,7 +45,7 @@ done
 
 eval set "" $TESTS	    
 while [[ $1 != "" ]]; do
-    echo "$1";
+    # echo "$1";
     ../scripts/tctst -d $DESIGN $1;
     if [[ -s error.log ]] ; then
 	echo -e "${DESIGN} design failed ${1}.s test" >> ${DESIGN}_reg.log;
@@ -53,7 +54,7 @@ while [[ $1 != "" ]]; do
     TESTNAME=$(gawk -F '.' '{ print $1 }' <<< $1);
     cat ${DESIGN}_${TESTNAME}.log >> ${DESIGN}_reg.log;
     rm -f ${DESIGN}_${TESTNAME}.log
-    find . -type f -not -name '.gitignore' -not -name "${DESIGN}_reg.log" -exec rm -f {} +
+    find . -type f -not -name '.gitignore' -not -name "${DESIGN}_reg.log" -not -name "regrerror.log"-exec rm -f {} +
 	shift;
 done
 
