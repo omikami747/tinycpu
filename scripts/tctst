@@ -15,7 +15,7 @@ fi
 
 exec 2> error.log
 VALID_ARGS=$(getopt --options d:Dh --long design:,DEBUG,help -- "$@")
-echo "$VALID_ARGS"
+
 if [[ -s error.log ]] ; then                       #-s returns true if file exists with size greater than zero otherwise false
     echo -e "error.log is non empty, hence error has occured in getopt\nstage, fatal.";
     exit ;
@@ -71,6 +71,10 @@ rm -f debug.trace
 $EMU bin.out > emu_${TESTNAME}.trace
 ../prog/bin2readmemh/bin2readmemh bin.out > program.mem
 make $OUTNAME -f ../scripts/makefile
+if [[ -s error.log ]]; then
+    echo -e "Error: Makefile reported an error, check error.log file for more details.\nFatal";
+    exit 13;
+fi
 vvp $OUTNAME > ${DESIGN}_${TESTNAME}tmp
 tail -n +2 ${DESIGN}_${TESTNAME}tmp > ${DESIGN}_${TESTNAME}.trace
 rm ${DESIGN}_${TESTNAME}tmp
