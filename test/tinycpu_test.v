@@ -21,7 +21,7 @@ module tinycpu_test;
  // `ifdef STR74
  // `endif  //space for STR74 implementation
 `endif // !`ifdef BEH
-   
+
    reg clk;
    reg reset;
 
