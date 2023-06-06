@@ -5,9 +5,13 @@ module sram
    input         oen,
    inout [7:0]   dq
   );
-
+   integer       file;
 `ifdef DEBUG
   localparam DEBUG_ON = 1;
+   initial
+     begin
+        file = $fopen("debug.trace","w");
+     end
 `else
   localparam DEBUG_ON = 0;
 `endif
@@ -93,7 +97,7 @@ module sram
 
           if (DEBUG_ON)
             begin
-              $display("At time %0t: CE Initiated Write cycle", $stime);
+              $fwrite(file,"At time %0t: CE Initiated Write cycle\n", $stime);
             end
 
           wait ((cen == 1'b1) || (wen == 1'b1));
@@ -102,11 +106,11 @@ module sram
             begin
               if (wen == 1'b1)
                 begin
-                  $display("At time %0t: WE Terminated Write Cycle, mem[%x] = %x", $stime, addr_reg, dq);
+                  $fwrite(file,"At time %0t: WE Terminated Write Cycle, mem[%x] = %x\n", $stime, addr_reg, dq);
                 end
               else
                 begin
-                  $display("At time %0t: CE Terminated Write Cycle, mem[%x] = %x", $stime, addr_reg, dq);
+                  $fwrite(file,"At time %0t: CE Terminated Write Cycle, mem[%x] = %x\n", $stime, addr_reg, dq);
                 end
             end
 
@@ -124,7 +128,7 @@ module sram
 
               if (DEBUG_ON)
                 begin
-                  $display("At time %0t: WE Initiated Write cycle", $stime);
+                  $fwrite(file,"At time %0t: WE Initiated Write cycle\n", $stime);
                 end
 
               wait ((cen == 1'b1) || (wen == 1'b1));
@@ -133,11 +137,11 @@ module sram
                 begin
                   if (wen == 1'b1)
                     begin
-                      $display("At time %0t: WE Terminated Write Cycle, mem[%x] = %x", $stime, addr_reg, dq);
+                      $fwrite(file,"At time %0t: WE Terminated Write Cycle, mem[%x] = %x\n", $stime, addr_reg, dq);
                     end
                   else
                     begin
-                      $display("At time %0t: CE Terminated Write Cycle, mem[%x] = %x", $stime, addr_reg, dq);
+                      $fwrite(file,"At time %0t: CE Terminated Write Cycle, mem[%x] = %x\n", $stime, addr_reg, dq);
                     end
                 end
 
@@ -151,7 +155,7 @@ module sram
               hizen <= 1'b1;
               if (DEBUG_ON)
                 begin
-                  $display("At time %0t: READ mem[%x] = %x", $stime, addr, q);
+                  $fwrite(file,"At time %0t: READ mem[%x] = %x\n", $stime, addr, q);
                 end
               wait ((oen == 1'b1) || (cen == 1'b1));
               hizen <= 1'b0;
