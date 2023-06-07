@@ -1,0 +1,1 @@
+todo: write TinyCPU emulator in Rust for fun
