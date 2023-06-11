@@ -10,19 +10,19 @@ jobs:
       - uses: actions/checkout@v3
       - name: Install dependencies
         run: |
-          sudo apt-get install iverilog tcsh
+          sudo apt-get install iverilog
       - name: Test reference model `model`
         if: success() || failure()
         run: |
           cd run
-          for f in $(ls ../prog/src/*.s); do ../scripts/tctst -d model $f; done
+          ../scripts/tcregrtst -d model
       - name: Test behavioral model `beh`
         if: success() || failure()
         run: |
           cd run
-          for f in $(ls ../prog/src/*.s); do ../scripts/tctst -d beh $f; done
+          ../scripts/tcregrtst -d beh
       - name: Test structural model `str`
         if: success() || failure()
         run: |
           cd run
-          for f in $(ls ../prog/src/*.s); do echo $f; done
+          ../scripts/tcregrtst -d str
