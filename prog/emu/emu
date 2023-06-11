@@ -83,7 +83,7 @@ while True:
     elif opcode == "LDI":
         imm = instr & 0xf
         reg["A"] &= 0xf
-        reg["A"] <<= 5
+        reg["A"] <<= 4
         reg["A"] |= imm
     elif opcode == "LDM":
         reg["A"] = ram[reg["M"]]
