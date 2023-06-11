@@ -62,7 +62,6 @@ while [[ $1 != "" ]]; do
     TESTNAME=$(gawk -F '.' '{ print $1 }' <<< $1);
     cat ${DESIGN}_${TESTNAME}.log >> ${DESIGN}_reg.log;
     rm -f ${DESIGN}_${TESTNAME}.log
-    find . -type f -not -name '.gitignore' -not -name "${DESIGN}_reg.log" -not -name "regrerror.log" -exec rm -f {} +
+    find . -type f -not -name '.gitignore' -not -name "*.txt" -not -name "${DESIGN}_reg.log" -not -name "regrerror.log" -exec rm -f {} +
 	shift;
 done
-
