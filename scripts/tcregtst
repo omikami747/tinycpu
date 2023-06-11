@@ -3,7 +3,7 @@ TEST_DIR=../prog/src/
 TESTS=$(ls $TEST_DIR)
 DESIGN=$2
 
-BRIEF_HELP="A simple tool that regression tests and compares results of emu design against either one of the 3 (beh, str or str74) and provides a short report on the same. Use '-h' (--help long form) option to know more about 'tcregtst' tool."
+BRIEF_HELP="A simple tool that regression tests and compares results of emu design against either one of the 3 (model or beh, str or str74) and provides a short report on the same. Use '-h' (--help long form) option to know more about 'tcregtst' tool."
 FILL80=| fold -w 80 -s
 
 if [[ $1 == "" ]] ; then
@@ -23,7 +23,7 @@ eval set -- "$VALID_ARGS"
 while [ : ]; do
     case "$1" in
         -d | --design)
-            if [[ $2 == "beh" ]] || [[ $2 == "str" ]] || [[ $2 == "str74" ]]; then
+            if [[ $2 == "model" ]] || [[ $2 == "beh" ]] || [[ $2 == "str" ]] || [[ $2 == "str74" ]]; then
                 DESIGN=$2
                 OUTNAME=$2.out;
             else echo -e "The above value '$2' for --design/-d option is invalid,\nuse -h or --help to know more about the option --design values.";
@@ -33,7 +33,7 @@ while [ : ]; do
             shift 2
             ;;
         -h | --help)
-            echo -e "'tcregtst' script allows you to test a particular design (beh or str or str74) using all tests in the directory ../prog/src/ against the emu reference design, it needs an argument -d and an argument that is among the mentioned 3 designs above (beh or str or str74), it generates a design_reg.log file along with a regrerror.log file, the first one contains information regarding all passing/failing of all the tests." | fold -w 80 -s
+            echo -e "'tcregtst' script allows you to test a particular design (beh or str or str74) using all tests in the directory ../prog/src/ against the emu reference design, it needs an argument -d and an argument that is among the mentioned 3 designs above (model or beh or str or str74), it generates a design_reg.log file along with a regrerror.log file, the first one contains information regarding all passing/failing of all the tests." | fold -w 80 -s
 	    exit 0;
             shift
             ;;
@@ -48,8 +48,9 @@ while [[ $1 != "" ]]; do
     # echo "$1";
     ../scripts/tctst -d $DESIGN $1;
     if [[ -s error.log ]] ; then
-	echo -e "ye test galat hai\n";
 	echo -e "${DESIGN} design failed ${1} test" >> ${DESIGN}_reg.log;
+	cat error.log >> regrerror.log;
+	echo -e "\n" >> regrerror.log;
 	# find . -type f -not -name '.gitignore' -not -name "${DESIGN}_reg.log" -not -name "regrerror.log" -exec rm -f {} +;
 	shift;
 	continue;

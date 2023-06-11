@@ -1,27 +1,36 @@
 module tinycpu_test;
 
-`ifdef BEH
-   `define DUMP_NAME "beh_dump.vcd"
-   `define TOPLEVEL tinycpu
-   `define STATE cpumodel.exec_state
-   `define INSTR cpumodel.instr[7:6]
-   `define RA cpumodel.rA
-   `define RB cpumodel.rB
-   `define RM cpumodel.rM
-   `define RP cpumodel.rP
-  `else
-   `define DUMP_NAME "str_dump.vcd"
-   `define TOPLEVEL sim_env
-   `define STATE cpumodel.toplevel.cpu_ctrl.state
-   `define INSTR cpumodel.toplevel.cpu_ctrl.inst[7:6]
-   `define RA cpumodel.toplevel.cpu_reg.rA_out
-   `define RB cpumodel.toplevel.cpu_reg.rB_out
-   `define RM cpumodel.toplevel.cpu_reg.rM_out
-   `define RP cpumodel.toplevel.cpu_reg.rP_out
- // `ifdef STR74
- // `endif  //space for STR74 implementation
-`endif // !`ifdef BEH
-
+`ifdef MODEL
+ `define DUMP_NAME "model_dump.vcd"
+ `define TOPLEVEL tinycpu
+ `define STATE cpumodel.exec_state
+ `define INSTR cpumodel.instr[7:6]
+ `define RA cpumodel.rA
+ `define RB cpumodel.rB
+ `define RM cpumodel.rM
+ `define RP cpumodel.rP
+`else
+ `ifdef BEH
+  `define DUMP_NAME "beh_dump.vcd"
+  `define TOPLEVEL sim_env
+  `define STATE cpumodel.toplevel.cpu_ctrl.state
+  `define INSTR cpumodel.toplevel.cpu_ctrl.inst[7:6]
+  `define RA cpumodel.toplevel.cpu_reg.rA_out
+  `define RB cpumodel.toplevel.cpu_reg.rB_out
+  `define RM cpumodel.toplevel.cpu_reg.rM_out
+  `define RP cpumodel.toplevel.cpu_reg.rP_out
+ `else
+  `define DUMP_NAME "str_dump.vcd"
+  `define TOPLEVEL sim_env
+  `define STATE cpumodel.toplevel.cpu_ctrl.state
+  `define INSTR cpumodel.toplevel.cpu_ctrl.inst[7:6]
+  `define RA cpumodel.toplevel.cpu_reg.rA_out
+  `define RB cpumodel.toplevel.cpu_reg.rB_out
+  `define RM cpumodel.toplevel.cpu_reg.rM_out
+  `define RP cpumodel.toplevel.cpu_reg.rP_out
+ `endif // !`ifdef BEH
+`endif // !`ifdef MODEL
+   
    reg clk;
    reg reset;
 
