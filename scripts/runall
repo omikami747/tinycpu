@@ -11,7 +11,6 @@ IT=1
 LC=1
 while IFS= read -r line1; do
     gawk '{print $4 " & " $3 " & "}' <<< "$line1" | sed 's/_/\\_/g' > $IT.txt;
-    cat $IT.txt;
     IT=$(($IT+1));
     LC=$(($LC+1));
 done < "$input_file1"
@@ -22,7 +21,6 @@ input_file2="beh_reg.log"
 IT=1
 while IFS= read -r line2; do
     (gawk '{print $3 " & "}' <<< "$line2" | sed 's/_/\\_/g') >> $IT.txt;
-    cat $IT.txt;
     IT=$(($IT+1));
 done < "$input_file2"
 
@@ -33,7 +31,6 @@ IT=1
 while IFS= read -r line3; do
     (gawk '{print $3 " \\\\ "}' <<< "$line3" | sed 's/_/\\_/g') >> $IT.txt;
     echo "\hline" >> $IT.txt;
-    cat $IT.txt;
     IT=$(($IT+1));
 done < "$input_file3"
 FILES=$(ls *.txt)

@@ -188,7 +188,7 @@ module cpu_ctrl (
    //--------------------------------------------------------------------
    // rA MUX and we control
    //--------------------------------------------------------------------
-   // assign mux_rA[2] = state[2] | (state[1] & state[0]);
+   assign mux_rA[2] = state[2] | (state[1] & state[0]);
   
    always@ (*)
      begin
