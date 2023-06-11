@@ -18,3 +18,4 @@ jobs:
       - name: Test structural model `str`
         run: |
           for f in $(ls ../prog/src); do ../scripts/tctst -d str $f; done
+          exit 1
