@@ -18,5 +18,4 @@ jobs:
       - name: Test structural model `str`
         run: |
           cd run
-          pwd
           for f in $(ls ../prog/src); do ../scripts/tctst -d str $f; done
