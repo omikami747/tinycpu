@@ -15,14 +15,14 @@ jobs:
         if: success() || failure()
         run: |
           cd run
-          for f in $(ls ../prog/src/*.s); do ../scripts/tctst -d model $f || true; done
+          for f in $(ls ../prog/src/*.s); do ../scripts/tctst -d model $f; done
       - name: Test behavioral model `beh`
         if: success() || failure()
         run: |
           cd run
-          for f in $(ls ../prog/src/*.s); do ../scripts/tctst -d beh $f || true; done
+          for f in $(ls ../prog/src/*.s); do ../scripts/tctst -d beh $f; done
       - name: Test structural model `str`
         if: success() || failure()
         run: |
           cd run
-          for f in $(ls ../prog/src/*.s); do ../scripts/tctst -d str $f || true; done
+          for f in $(ls ../prog/src/*.s); do ../scripts/tctst -d str $f; done
