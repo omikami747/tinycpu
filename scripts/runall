@@ -50,6 +50,6 @@ latexmk -pdf ../docs/status/dashboard.tex
 if [ $? -eq 0 ]; then
     echo "latexmk succeeded"
 else
-    echo "latexmk failed, error in input .tex file. Fatal."
+    echo "latexmk failed, error in input .tex file. Pdf not built."
     exit 33;
 fi
