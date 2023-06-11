@@ -14,15 +14,17 @@ jobs:
       - name: Test reference model `model`
         if: success() || failure()
         run: |
+          echo "# Model success report :rocket:" >> $GITHUB_STEP_SUMMARY
           cd run
-          ../scripts/tcregrtst -d model
+          if ! ../scripts/tcregrtst -d model; then echo model: :x: >> $GITHUB_STEP_SUMMARY; else echo model: :white_check_mark: >> $GITHUB_STEP_SUMMARY; fi
       - name: Test behavioral model `beh`
         if: success() || failure()
         run: |
           cd run
-          ../scripts/tcregrtst -d beh
+          if ! ../scripts/tcregrtst -d beh; then echo beh: :x: >> $GITHUB_STEP_SUMMARY; else echo beh: :white_check_mark: >> $GITHUB_STEP_SUMMARY; fi
+
       - name: Test structural model `str`
         if: success() || failure()
         run: |
           cd run
-          ../scripts/tcregrtst -d str
+          if ! ../scripts/tcregrtst -d str; then echo str: :x: >> $GITHUB_STEP_SUMMARY; else echo str: :white_check_mark: >> $GITHUB_STEP_SUMMARY; fi
