@@ -15,7 +15,7 @@ exec 2> regrerror.log
 VALID_ARGS=$(getopt --options d:h --long design:,help -- "$@")
 if [[ -s regrerror.log ]] ; then                       #-s returns true if file exists with size greater than zero otherwise false
     echo -e "regrerror.log is non empty, hence error has occured in getopt\nstage, fatal.";
-    exit ;
+    exit 3;
 # else echo -e "regrerror.log is empty hence no error has occured in getopt stage, continuing." | fold -w 80 -s;
 fi
 
@@ -34,7 +34,7 @@ while [ : ]; do
             ;;
         -h | --help)
             echo -e "'tcregtst' script allows you to test a particular design (beh or str or str74) using all tests in the directory ../prog/src/ against the emu reference design, it needs an argument -d and an argument that is among the mentioned 3 designs above (model or beh or str or str74), it generates a design_reg.log file along with a regrerror.log file, the first one contains information regarding all passing/failing of all the tests." | fold -w 80 -s
-	    exit 0;
+	    exit 1;
             shift
             ;;
         --) shift;
@@ -46,6 +46,10 @@ done
 eval set "" $TESTS	    
 while [[ $1 != "" ]]; do
     # echo "$1";
+    if [[ $1 != *.s ]] ; then
+        shift;
+        continue;
+    fi
     ../scripts/tctst -d $DESIGN $1;
     if [[ -s error.log ]] ; then
 	echo -e "${DESIGN} design failed ${1} test" >> ${DESIGN}_reg.log;
@@ -54,7 +58,7 @@ while [[ $1 != "" ]]; do
 	# find . -type f -not -name '.gitignore' -not -name "${DESIGN}_reg.log" -not -name "regrerror.log" -exec rm -f {} +;
 	shift;
 	continue;
-	fi
+    fi
     TESTNAME=$(gawk -F '.' '{ print $1 }' <<< $1);
     cat ${DESIGN}_${TESTNAME}.log >> ${DESIGN}_reg.log;
     rm -f ${DESIGN}_${TESTNAME}.log
