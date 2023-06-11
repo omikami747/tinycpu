@@ -11,6 +11,10 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get install iverilog tcsh
+      - name: Test reference model `model`
+        run: |
+          cd run
+          for f in $(ls ../prog/src); do ../scripts/tctst -d model $f; done
       - name: Test behavioral model `beh`
         run: |
           cd run
