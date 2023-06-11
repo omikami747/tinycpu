@@ -40,5 +40,16 @@ for file in $FILES; do
     echo -e "\n" >> ../docs/status/dashboard.tex;
 done
 echo "\end{tabular} \end{table} \end{document}" >> ../docs/status/dashboard.tex
+if command -v latexmk &>/dev/null; then
+    echo "latexmk is installed"
+else
+    echo "latexmk is not installed, install it then run the script. Fatal."
+    exit 34;
+fi
 latexmk -pdf ../docs/status/dashboard.tex
-evince dashboard.pdf
+if [ $? -eq 0 ]; then
+    echo "latexmk succeeded"
+else
+    echo "latexmk failed, error in input .tex file. Fatal."
+    exit 33;
+fi
