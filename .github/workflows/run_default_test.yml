@@ -14,11 +14,10 @@ jobs:
       - name: Dashboard prep
         if: success() || failure()
         run: |
-          echo "# CI Results" >> $GITHUB_STEP_SUMMARY
+          echo "# CI Results :rocket:" >> $GITHUB_STEP_SUMMARY
       - name: Test reference model `model`
         if: success() || failure()
         run: |
-          echo "# Model success report :rocket:" >> $GITHUB_STEP_SUMMARY
           cd run
           export GITHUB_STEP_SUMMARY
           ../scripts/tcregrtst -d model

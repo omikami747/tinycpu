@@ -68,7 +68,7 @@ while [[ $1 != "" ]]; do
         if [[ $RESULT != 0 ]] ; then
             echo -e "| ${1} | :x: |" >> $GITHUB_STEP_SUMMARY
         else
-            echo -e "| ${1} | :white_check_mark: |" >> $GITHUB_STEP_SUMMARY
+            echo -e "| ${1} | :heavy_check_mark: |" >> $GITHUB_STEP_SUMMARY
         fi
     fi
 
