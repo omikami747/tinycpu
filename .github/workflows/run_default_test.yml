@@ -3,7 +3,7 @@ name: regression test
 on: [push]
 
 jobs:
-  test:
+  regression:
 
     runs-on: ubuntu-latest
     steps:
