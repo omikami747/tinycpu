@@ -58,15 +58,17 @@ while [[ $1 != "" ]]; do
         continue;
     fi
     ../scripts/tctst -d $DESIGN $1;
-    if [[ $? != 0 ]] ; then
+    RESULT=$?;
+    echo "$RESULT"
+    if [[ $RESULT != 0 ]] ; then
         EXITFLAG=1;
     fi
     # Autogeneration logic for GitHub Action's dashboard.
     if [[ ! -z "${GITHUB_STEP_SUMMARY}" ]]; then
-        if [[ $? != 0 ]] ; then
-            echo -e "| `${1}` | :x: |" >> $GITHUB_STEP_SUMMARY
+        if [[ $RESULT != 0 ]] ; then
+            echo -e "| ${1} | :x: |" >> $GITHUB_STEP_SUMMARY
         else
-            echo -e "| `${1}` | :white_check_mark: |" >> $GITHUB_STEP_SUMMARY
+            echo -e "| ${1} | :white_check_mark: |" >> $GITHUB_STEP_SUMMARY
         fi
     fi
 
