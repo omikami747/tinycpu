@@ -43,6 +43,12 @@ while [ : ]; do
     esac
 done
 
+if [ ! -z "${GITHUB_STEP_SUMMARY}"] ; then
+    echo -e "## ${DESIGN}\n" >> $GITHUB_STEP_SUMMARY
+    echo "| Test File | Result |" >> $GITHUB_STEP_SUMMARY
+    echo "| --- | --- |" >> $GITHUB_STEP_SUMMARY
+fi
+
 eval set "" $TESTS
 while [[ $1 != "" ]]; do
     # echo "$1";
@@ -54,6 +60,15 @@ while [[ $1 != "" ]]; do
     if [[ $? != 0 ]] ; then
         EXITFLAG=1;
     fi
+    # Autogeneration logic for GitHub Action's dashboard.
+    if [ ! -z "${GITHUB_STEP_SUMMARY}"] ; then
+        if [[ $? != 0 ]] ; then
+            echo -e "| `${1}` | :x: |" >> $GITHUB_STEP_SUMMARY
+        else
+            echo -e "| `${1}` | :white_check_mark: |" >> $GITHUB_STEP_SUMMARY
+        fi
+    fi
+
     if [[ -s error.log ]] ; then
 	echo -e "${DESIGN} design failed ${1} test" >> ${DESIGN}_reg.log;
 	cat error.log >> regrerror.log;
@@ -61,12 +76,6 @@ while [[ $1 != "" ]]; do
 	# find . -type f -not -name '.gitignore' -not -name "${DESIGN}_reg.log" -not -name "regrerror.log" -exec rm -f {} +;
 	shift;
 	continue;
-    fi
-    # Autogeneration logic for GitHub Action's dashboard.
-    if [ -z "${GITHUB_STEP_SUMMARY}"] ; then
-        echo "no, gh var not set";
-    else
-        echo "yes, gh var set";
     fi
 
 

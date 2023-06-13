@@ -11,6 +11,10 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get install iverilog
+      - name: Dashboard prep
+        if: success() || failure()
+        run: |
+          echo "# CI Results" >> $GITHUB_STEP_SUMMARY
       - name: Test reference model `model`
         if: success() || failure()
         run: |
