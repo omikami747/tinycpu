@@ -79,7 +79,7 @@ while True:
     elif opcode == "OR":
         reg["A"] |= reg["B"]
     elif opcode == "INV":
-        reg["A"] = c_uint8(~reg["A"]).value
+        reg["A"] = c_uint8(!reg["A"]).value
     elif opcode == "LDI":
         imm = instr & 0xf
         reg["A"] &= 0xf
