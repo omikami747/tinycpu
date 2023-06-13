@@ -20,16 +20,15 @@ jobs:
         run: |
           echo "# Model success report :rocket:" >> $GITHUB_STEP_SUMMARY
           cd run
-          export GITHUB_STEP_SUMMARY
-          ../scripts/tcregrtst -d model
+          . ../scripts/tcregrtst -d model
       - name: Test behavioral model `beh`
         if: success() || failure()
         run: |
           cd run
-          ../scripts/tcregrtst -d beh
+          . ../scripts/tcregrtst -d beh
 
       - name: Test structural model `str`
         if: success() || failure()
         run: |
           cd run
-          ../scripts/tcregrtst -d str
+          . ../scripts/tcregrtst -d str
