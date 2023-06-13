@@ -128,7 +128,7 @@ module tinycpu
 
                 INV:
                   begin
-                    rA <= 1;//~rA;
+                    rA <= ~rA;
                   end
 
                 ADD:
