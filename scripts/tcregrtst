@@ -62,7 +62,7 @@ while [[ $1 != "" ]]; do
         EXITFLAG=1;
     fi
     # Autogeneration logic for GitHub Action's dashboard.
-    if [ ! -z "${GITHUB_STEP_SUMMARY}"] ; then
+    if [[ ! -z "${GITHUB_STEP_SUMMARY}" ]]; then
         if [[ $? != 0 ]] ; then
             echo -e "| `${1}` | :x: |" >> $GITHUB_STEP_SUMMARY
         else
