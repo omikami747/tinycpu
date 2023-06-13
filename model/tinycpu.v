@@ -128,7 +128,7 @@ module tinycpu
 
                 INV:
                   begin
-                    rA <= ~rA;
+                    rA <= 1;//~rA;
                   end
 
                 ADD:
@@ -252,14 +252,14 @@ module tinycpu
               wen        <= 1'b1;
               exec_state <= MEMACC3;
             end
-          
+
           MEMACC3:
             begin
               addr       <= rP;
               den        <= 1'b0;
               exec_state <= IDLE;
             end
-          
+
         endcase // case (exec_state)
 
       end // else: !if(!reset)
