@@ -43,7 +43,7 @@ while [ : ]; do
     esac
 done
 
-if [ -v "${GITHUB_STEP_SUMMARY}"] ; then
+if [[ ! -z "${GITHUB_STEP_SUMMARY}" ]]; then
     echo -e "gh_step_summary = $GITHUB_STEP_SUMMARY"
     echo -e "## ${DESIGN}\n" >> $GITHUB_STEP_SUMMARY
     echo "| Test File | Result |" >> $GITHUB_STEP_SUMMARY
