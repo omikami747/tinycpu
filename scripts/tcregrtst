@@ -59,7 +59,7 @@ while [[ $1 != "" ]]; do
     fi
     ../scripts/tctst -d $DESIGN $1;
     RESULT=$?;
-    echo "$RESULT"
+
     if [[ $RESULT != 0 ]] ; then
         EXITFLAG=1;
     fi
