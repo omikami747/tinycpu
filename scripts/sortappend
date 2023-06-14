@@ -1,5 +1,5 @@
 #!/bin/bash
-ARR_SIZE=$(od -vAn -N1 -tu1 < /dev/urandom | gawk '{ print ($1%52 + 3)}')
+ARR_SIZE=$(od -vAn -N1 -tu1 < /dev/urandom | gawk '{ print ($1%12 + 40)}')
 IT=0;
 SORT=../prog/src/sort.s
 rm -f $SORT
