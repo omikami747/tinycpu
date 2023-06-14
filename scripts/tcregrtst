@@ -57,9 +57,9 @@ while [[ $1 != "" ]]; do
         shift;
         continue;
     fi
-    if [[ $1 == "sort.s" ]] ; then
-        ../scripts/sortappend;
-    fi
+    # if [[ $1 == "sort.s" ]] ; then
+    #     ../scripts/sortappend;
+    # fi
     ../scripts/tctst -d $DESIGN $1;
     RESULT=$?;
     

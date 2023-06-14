@@ -80,7 +80,7 @@ module cpu_ctrl (
    //--------------------------------------------------------------------
    // Outputs
    //--------------------------------------------------------------------
-   output reg [2:0]  mux_rA;
+   output wire [2:0] mux_rA;
    output wire       mux_rB;
    output wire [1:0] mux_rM;
    output reg        den;
@@ -91,14 +91,14 @@ module cpu_ctrl (
    output wire       rP_inc;
    output wire       rP_load;
    output wire       addr_ctrl;
-   output reg        rA_we;
+   output wire       rA_we;
    output wire       rB_we;
    output wire       rM_we;
 
    //--------------------------------------------------------------------
    // Internals
    //--------------------------------------------------------------------
-   reg [3:0]         state;
+   reg [2:0]         state;
    reg [7:0]         inst;
 
    //--------------------------------------------------------------------
@@ -189,77 +189,69 @@ module cpu_ctrl (
    // rA MUX and we control
    //--------------------------------------------------------------------
    // assign mux_rA[2] = state[2] | (state[1] & state[0]);
-  
-   always@ (*)
-     begin
-        case (state)
-          EXEC :
-            begin
-               case (inst[7:4])
-                 LDI :
-                   begin
-                      mux_rA <= 'd0;
-                      rA_we  <= 'b1;
-                   end
-                 AND :
-                   begin
-                      mux_rA <= 'd1;
-                      rA_we  <= 'b1;
-                   end
-                 OR  :
-                   begin
-                      mux_rA <= 'd1;
-                      rA_we  <= 'b1;
-                   end
-                 INV :
-                   begin
-                      mux_rA <= 'd1;
-                      rA_we  <= 'b1;
-                   end
-                 ADD :
-                   begin
-                      mux_rA <= 'd1;
-                      rA_we  <= 'b1;
-                   end
-                 SWAB :
-                   begin
-                      mux_rA <= 'd2;
-                      rA_we  <= 'b1;
-                   end
-                 CPPA :
-                   begin
-                      mux_rA <= 'd3;
-                      rA_we  <= 'b1;
-                   end
-                 default :
-                   begin
-                      mux_rA <= 'd0;
-                      rA_we  <= 'b0;
-                   end
-               endcase
-            end // case: EXEC
-          MEMACC1 :
-            begin
-               mux_rA <= 'd4;
-               rA_we  <= 'b0;
-            end
-          MEMACC2 :
-            begin
-               mux_rA <= 'd4;
-               rA_we  <= 'b1;
-            end
-          MEMACC3 :
-            begin
-               mux_rA <= 'd4;
-               rA_we  <= 'b0;
-            end
-          default:
-            begin
-               mux_rA <= 'b0;
-               rA_we  <= 'b0;
-            end
-        endcase
-     end
+   assign rA_we = (~state[2]) & (state[1]) & (~state[0]) & ((~inst[7]) & (~inst[5]) & (~inst[4]) | (~inst[7]) & (~inst[6]) | (~inst[6]) & (~inst[4])) | (state[2]) & (~state[1]) & (~state[0]);
+   assign mux_rA[1] = (~state[2]) & (state[1]) & (~state[0]) & (inst[7]) & (~inst[6]) & (~inst[4]) ;
+   assign mux_rA[2] = (state[2]) | (~state[1]) | (state[0]);
+   assign mux_rA[0] = (~state[2]) & (state[1]) & (~state[0]) & ((~inst[6]) & (inst[5]) & (~inst[4]) | (~inst[7]) & (~inst[6]));
+   
+   // always@ (*)
+   //   begin
+   //      case (state)
+   //        EXEC :
+   //          begin
+   //             case (inst[7:4])
+   //               LDI :
+   //                 begin
+   //                    mux_rA <= 'd0;
+   //                 end
+   //               AND :
+   //                 begin
+   //                    mux_rA <= 'd1;
+   //                 end
+   //               OR  :
+   //                 begin
+   //                    mux_rA <= 'd1;
+   //                 end
+   //               INV :
+   //                 begin
+   //                    mux_rA <= 'd1;
+   //                 end
+   //               ADD :
+   //                 begin
+   //                    mux_rA <= 'd1;
+   //                 end
+   //               SWAB :
+   //                 begin
+   //                    mux_rA <= 'd2;
+   //                 end
+   //               CPPA :
+   //                 begin
+   //                    mux_rA <= 'd3;
+   //                 end
+   //               default :
+   //                 begin
+   //                    mux_rA <= 'd0;
+   //                 end
+   //             endcase
+   //          end // case: EXEC
+   //        MEMACC1 :
+   //          begin
+   //             mux_rA <= 'd4;
+   //          end
+   //        MEMACC2 :
+   //          begin
+   //             mux_rA <= 'd4;
+   //          end
+   //        MEMACC3 :
+   //          begin
+   //             mux_rA <= 'd4;
+   //          end
+   //        default:
+   //          begin
+   //             mux_rA <= 'b0;
+   //          end
+   //      endcase
+   //   end
 
    //--------------------------------------------------------------------
    // rB MUX and we control
