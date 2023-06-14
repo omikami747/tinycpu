@@ -1,0 +1,14 @@
+#!/bin/bash
+ARR_SIZE=$(od -vAn -N1 -tu1 < /dev/urandom | gawk '{ print ($1%52 + 3)}')
+IT=0;
+SORT=../prog/src/sort.s
+rm -f $SORT
+cat ../prog/src/sort_temp > ../prog/src/sort.s
+echo "strg:" >> $SORT
+# echo "$ARR_SIZE"
+while [[ $IT != $(($ARR_SIZE-1)) ]]; do
+    echo "        .word" $(od -vAn -N1 -tu1 < /dev/urandom) | tee -a $SORT;
+    IT=$(($IT+1));
+done
+echo "end:" >> $SORT
+echo "        .word" $(od -vAn -N1 -tu1 < /dev/urandom) | tee -a $SORT
