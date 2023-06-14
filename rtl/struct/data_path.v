@@ -45,158 +45,289 @@ module data_path (
    input wire 	    addr_ctrl;
 
    // Output signal from rA_mux
-   output reg [7:0] rA_out;
+   output wire [7:0] rA_out;
 
    // Output signal from rB_mux
-   output reg [7:0] rB_out;
+   output wire [7:0] rB_out;
 
    // Output signal for register rM
-   output reg [7:0] rM_out;
+   output wire [7:0] rM_out;
 
    // Output address for SRAM ctrl
-   output reg [7:0] addr  ;
+   output wire [7:0] addr  ;
 
    //--------------------------------------------------------------------
    // MUX for rA
    //--------------------------------------------------------------------
-   always@ (*)
-     begin
-	case (mux_ctrl_rA)
-	  'd0 :
-	    begin
-	       rA_out <= rA_ldi; // load immediate instruction
-	    end
-
-	  'd1 :
-	    begin
-	       rA_out <= rA_alu; // result from ALU
-	    end
-
-	  'd2 :
-	    begin
-	       rA_out <= rB; // swap with B
-	    end
-
-	  'd3 :
-	    begin
-	       rA_out <= rP; // copy P to A
-	    end
-
-	  'd4 :
-	    begin
-	       rA_out <= rA_dq; // load from memory instruction
-	    end
-
-	  default :
-	    begin
-	       rA_out <= 'b0;
-	    end
-	endcase // case (mux_ctrl_rA)
-
-     end // always@ (*)
-
+   mux_8to1 muxrA_0bit(
+                       .sl(mux_ctrl_rA),
+                       .in0(rA_ldi[0]),
+                       .in1(rA_alu[0]),
+                       .in2(rB[0]),
+                       .in3(rP[0]),
+                       .in4(rA_dq[0]),
+                       .in5(),
+                       .in6(),
+                       .in7(),
+                       .out(rA_out[0])
+                       );   
+   mux_8to1 muxrA_1bit(
+                       .sl(mux_ctrl_rA),
+                       .in0(rA_ldi[1]),
+                       .in1(rA_alu[1]),
+                       .in2(rB[1]),
+                       .in3(rP[1]),
+                       .in4(rA_dq[1]),
+                       .in5(),
+                       .in6(),
+                       .in7(),
+                       .out(rA_out[1])
+                       );
+   mux_8to1 muxrA_2bit(
+                       .sl(mux_ctrl_rA),
+                       .in0(rA_ldi[2]),
+                       .in1(rA_alu[2]),
+                       .in2(rB[2]),
+                       .in3(rP[2]),
+                       .in4(rA_dq[2]),
+                       .in5(),
+                       .in6(),
+                       .in7(),
+                       .out(rA_out[2])
+                       );
+   mux_8to1 muxrA_3bit(
+                       .sl(mux_ctrl_rA),
+                       .in0(rA_ldi[3]),
+                       .in1(rA_alu[3]),
+                       .in2(rB[3]),
+                       .in3(rP[3]),
+                       .in4(rA_dq[3]),
+                       .in5(),
+                       .in6(),
+                       .in7(),
+                       .out(rA_out[3])
+                       );   
+   mux_8to1 muxrA_4bit(
+                       .sl(mux_ctrl_rA),
+                       .in0(rA_ldi[4]),
+                       .in1(rA_alu[4]),
+                       .in2(rB[4]),
+                       .in3(rP[4]),
+                       .in4(rA_dq[4]),
+                       .in5(),
+                       .in6(),
+                       .in7(),
+                       .out(rA_out[4])
+                       );
+   mux_8to1 muxrA_5bit(
+                       .sl(mux_ctrl_rA),
+                       .in0(rA_ldi[5]),
+                       .in1(rA_alu[5]),
+                       .in2(rB[5]),
+                       .in3(rP[5]),
+                       .in4(rA_dq[5]),
+                       .in5(),
+                       .in6(),
+                       .in7(),
+                       .out(rA_out[5])
+                       );   
+   mux_8to1 muxrA_6bit(
+                       .sl(mux_ctrl_rA),
+                       .in0(rA_ldi[6]),
+                       .in1(rA_alu[6]),
+                       .in2(rB[6]),
+                       .in3(rP[6]),
+                       .in4(rA_dq[6]),
+                       .in5(),
+                       .in6(),
+                       .in7(),
+                       .out(rA_out[6])
+                       );
+   mux_8to1 muxrA_7bit(
+                       .sl(mux_ctrl_rA),
+                       .in0(rA_ldi[7]),
+                       .in1(rA_alu[7]),
+                       .in2(rB[7]),
+                       .in3(rP[7]),
+                       .in4(rA_dq[7]),
+                       .in5(),
+                       .in6(),
+                       .in7(),
+                       .out(rA_out[7])
+                       );
+   
    //--------------------------------------------------------------------
    // MUX for rB
    //--------------------------------------------------------------------
-   always@ (*)
-     begin
-	case (mux_ctrl_rB)
-	  'd0 :
-	    begin
-	       rB_out <= rA; // swap with A
-	    end
 
-	  'd1 :
-	    begin
-	       rB_out <= rM; // swap with M
-	    end
+   mux_2to1 muxrB0bit(
+                      .sl(mux_ctrl_rB),
+                      .out(rB_out[0]),
+                      .in0(rA[0]),
+                      .in1(rM[0])
+                      );
+   mux_2to1 muxrB1bit(
+                      .sl(mux_ctrl_rB),
+                      .out(rB_out[1]),
+                      .in0(rA[1]),
+                      .in1(rM[1])
+                      );
+   mux_2to1 muxrB2bit(
+                      .sl(mux_ctrl_rB),
+                      .out(rB_out[2]),
+                      .in0(rA[2]),
+                      .in1(rM[2])
+                      );
+   mux_2to1 muxrB3bit(
+                      .sl(mux_ctrl_rB),
+                      .out(rB_out[3]),
+                      .in0(rA[3]),
+                      .in1(rM[3])
+                      );
+   mux_2to1 muxrB4bit(
+                      .sl(mux_ctrl_rB),
+                      .out(rB_out[4]),
+                      .in0(rA[4]),
+                      .in1(rM[4])
+                      );
+   mux_2to1 muxrB5bit(
+                      .sl(mux_ctrl_rB),
+                      .out(rB_out[5]),
+                      .in0(rA[5]),
+                      .in1(rM[5])
+                      );
+   mux_2to1 muxrB6bit(
+                      .sl(mux_ctrl_rB),
+                      .out(rB_out[6]),
+                      .in0(rA[6]),
+                      .in1(rM[6])
+                      );
+   mux_2to1 muxrB7bit(
+                      .sl(mux_ctrl_rB),
+                      .out(rB_out[7]),
+                      .in0(rA[7]),
+                      .in1(rM[7])
+                      );
 
-	  default :
-	    begin
-	       rB_out <= 'b0;
-	    end
-	endcase // case (mux_ctrl_rB)
-
-     end // always@ (*)
-
-   //--------------------------------------------------------------------
-   // rP either increments itself or takes value of rM, hence no MUX
-   //--------------------------------------------------------------------
-   // input wire
-
-   // //MUX for rP
-   //  always@ (*)
-   //   begin
-   // 	case (mux_ctrl_rB)
-   // 	  'd0 :
-   // 	    begin
-   // 	       rB_out <= rA;
-   // 	    end
-
-   // 	  'd1 :
-   // 	    begin
-   // 	       rB_out <= rM;
-   // 	    end
-
-   // 	  default :
-   // 	    begin
-   // 	       rB_out <= 'b0;
-   // 	    end
-   // 	endcase // case (mux_ctrl_rB)
-
-   //   end // always@ (*)
 
    //--------------------------------------------------------------------
    // MUX for rM
    //--------------------------------------------------------------------
-   always@ (*)
-     begin
-	case (mux_ctrl_rM)
-	  'd0 :
-	    begin
-	       rM_out <= rA; // swap with A
-	    end
-
-	  'd1 :
-	    begin
-	       rM_out <= rB; // swap with B
-	    end
-
-	  'd2 :
-	    begin
-	       rM_out <= rP; // swap with B
-	    end
-
-	  default :
-	    begin
-	       rM_out <= 'b0;
-	    end
-	endcase // case (mux_ctrl_rM)
-
-     end // always@ (*)
+   mux_4to1 muxrM0bit(
+                      .sl(mux_ctrl_rM),
+                      .out(rM_out[0]),
+                      .in0(rA[0]),
+                      .in1(rB[0]),
+                      .in2(rP[0]),
+                      .in3()
+                      );
+   mux_4to1 muxrM1bit(
+                      .sl(mux_ctrl_rM),
+                      .out(rM_out[1]),
+                      .in0(rA[1]),
+                      .in1(rB[1]),
+                      .in2(rP[1]),
+                      .in3()
+                      );
+   mux_4to1 muxrM2bit(
+                      .sl(mux_ctrl_rM),
+                      .out(rM_out[2]),
+                      .in0(rA[2]),
+                      .in1(rB[2]),
+                      .in2(rP[2]),
+                      .in3()
+                      );
+   mux_4to1 muxrM3bit(
+                      .sl(mux_ctrl_rM),
+                      .out(rM_out[3]),
+                      .in0(rA[3]),
+                      .in1(rB[3]),
+                      .in2(rP[3]),
+                      .in3()
+                      );
+   mux_4to1 muxrM4bit(
+                      .sl(mux_ctrl_rM),
+                      .out(rM_out[4]),
+                      .in0(rA[4]),
+                      .in1(rB[4]),
+                      .in2(rP[4]),
+                      .in3()
+                      );
+   mux_4to1 muxrM5bit(
+                      .sl(mux_ctrl_rM),
+                      .out(rM_out[5]),
+                      .in0(rA[5]),
+                      .in1(rB[5]),
+                      .in2(rP[5]),
+                      .in3()
+                      );
+   mux_4to1 muxrM6bit(
+                      .sl(mux_ctrl_rM),
+                      .out(rM_out[6]),
+                      .in0(rA[6]),
+                      .in1(rB[6]),
+                      .in2(rP[6]),
+                      .in3()
+                      );
+   mux_4to1 muxrM7bit(
+                      .sl(mux_ctrl_rM),
+                      .out(rM_out[7]),
+                      .in0(rA[7]),
+                      .in1(rB[7]),
+                      .in2(rP[7]),
+                      .in3()
+                      );
 
    //--------------------------------------------------------------------
    // MUX for mem addrs
    //--------------------------------------------------------------------
-   always@ (*)
-     begin
-	case (addr_ctrl)
-	  'd0 :
-	    begin
-	       addr <= rP;
-	    end
-
-	  'd1 :
-	    begin
-	       addr <= rM;
-	    end
-
-	  default :
-	    begin
-	       addr <= rP;
-	    end
-	endcase // case (addr_ctrl)
-
-     end // always@ (*)
-
+   mux_2to1 muxAddr0bit(
+                      .sl(addr_ctrl),
+                      .out(addr[0]),
+                      .in0(rP[0]),
+                      .in1(rM[0])
+                      );
+   mux_2to1 muxAddr1bit(
+                      .sl(addr_ctrl),
+                      .out(addr[1]),
+                      .in0(rP[1]),
+                      .in1(rM[1])
+                      );
+   mux_2to1 muxAddr2bit(
+                      .sl(addr_ctrl),
+                      .out(addr[2]),
+                      .in0(rP[2]),
+                      .in1(rM[2])
+                      );
+   mux_2to1 muxAddr3bit(
+                      .sl(addr_ctrl),
+                      .out(addr[3]),
+                      .in0(rP[3]),
+                      .in1(rM[3])
+                      );
+   mux_2to1 muxAddr4bit(
+                      .sl(addr_ctrl),
+                      .out(addr[4]),
+                      .in0(rP[4]),
+                      .in1(rM[4])
+                      );
+   mux_2to1 muxAddr5bit(
+                      .sl(addr_ctrl),
+                      .out(addr[5]),
+                      .in0(rP[5]),
+                      .in1(rM[5])
+                      );
+   mux_2to1 muxAddr6bit(
+                      .sl(addr_ctrl),
+                      .out(addr[6]),
+                      .in0(rP[6]),
+                      .in1(rM[6])
+                      );
+   mux_2to1 muxAddr7bit(
+                      .sl(addr_ctrl),
+                      .out(addr[7]),
+                      .in0(rP[7]),
+                      .in1(rM[7])
+                      );
+   
 endmodule
