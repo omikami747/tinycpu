@@ -51,26 +51,26 @@ module toplevel (
 
 
 
-   cpu_ctrl cpu_ctrl(
-		     .dq(dq_sram),     // input from sram_ctrl
-		     .rst(rst),
-		     .clk(clk),
-		     .cmp(cmp_in),      // compare result sig in
-		     .mux_rA(mux_rA_o),   // control sig for register MUXes
-		     .mux_rB(mux_rB_o),
-		     .mux_rM(mux_rM_o),
-		     .den(den_o),      // control sig for SRAM ctrl
-		     .cen(cen_o),
-		     .wen(wen_o),
-		     .oen(oen_o),
-		     .alu_ctrl(alu_ctrl_o), // control sig for ALU
-		     .rP_inc(rP_inc_o),   // control sig for rP
-		     .rP_load(rP_load_o),
-		     .addr_ctrl(addr_ctrl_o), // address control signal to SRAM ctrl
-		     .rA_we(rA_we_o),
-		     .rB_we(rB_we_o),
-		     .rM_we(rM_we_o)
-		     );
+   cpu_ctrl_op cpu_ctrl(                  // cpu_ctrl_op is optimised version of cpu_ctrl(lesser redundancies)
+		        .dq(dq_sram),     // input from sram_ctrl
+		        .rst(rst),
+		        .clk(clk),
+		        .cmp(cmp_in),      // compare result sig in
+		        .mux_rA(mux_rA_o),   // control sig for register MUXes
+		        .mux_rB(mux_rB_o),
+		        .mux_rM(mux_rM_o),
+		        .den(den_o),      // control sig for SRAM ctrl
+		        .cen(cen_o),
+		        .wen(wen_o),
+		        .oen(oen_o),
+		        .alu_ctrl(alu_ctrl_o), // control sig for ALU
+		        .rP_inc(rP_inc_o),   // control sig for rP
+		        .rP_load(rP_load_o),
+		        .addr_ctrl(addr_ctrl_o), // address control signal to SRAM ctrl
+		        .rA_we(rA_we_o),
+		        .rB_we(rB_we_o),
+		        .rM_we(rM_we_o)
+		        );
    cpu_reg cpu_reg (
 		    .rst(rst),
 		    .clk(clk),
@@ -87,7 +87,6 @@ module toplevel (
 		    .rM_in(rM_in_o),
 		    .rM_we(rM_we_o),
 		    .rM_out(rM_o)
-
 		    );
    data_path  data_path(
 			.rA_ldi({rA_o[3:0],cpu_ctrl.inst[3:0]}),
