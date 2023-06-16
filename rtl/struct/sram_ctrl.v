@@ -46,15 +46,17 @@ module sram_ctrl(
    output wire [7:0] rA_mux_in;
    inout wire [7:0]  dq_out ;
 
-
    wire [7:0] 	     dq = den_in ? rA : 8'hZZ;
+   
    assign dq_out = dq;
    assign cen_out = cen_in;
    assign oen_out = oen_in;
    assign wen_out = wen_in;
-   // assign addr_out = addr_in;
    assign rA_mux_in = dq_out;
 
+   //--------------------------------------------------------------------
+   // Address Register
+   //--------------------------------------------------------------------
    always@ (posedge clk or negedge rst)
      begin
 	if (rst == 1'b0)

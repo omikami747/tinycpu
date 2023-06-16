@@ -1,21 +1,23 @@
 //--------------------------------------------------------------------
-//
-//
+// File: mux_8to1.v
+// Name: Omkar Girish Kamath
+// Date: 15th June 2023
+// Description: A 8 input to 1 output multiplexer with 3 bit select  
+//              lines.
 //--------------------------------------------------------------------
 
-module mux_8to1
-  (
-   sl,
-   out,
-   in0,
-   in1,
-   in2,
-   in3,
-   in4,
-   in5,
-   in6,
-   in7
-   );
+module mux_8to1 (
+                 sl,
+                 out,
+                 in0,
+                 in1,
+                 in2,
+                 in3,
+                 in4,
+                 in5,
+                 in6,
+                 in7
+                 );
    
    //--------------------------------------------------------------------
    // Inputs
@@ -29,6 +31,7 @@ module mux_8to1
    input wire       in5;
    input wire       in6;
    input wire       in7;
+   
    //--------------------------------------------------------------------
    // Outputs
    //--------------------------------------------------------------------

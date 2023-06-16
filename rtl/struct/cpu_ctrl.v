@@ -102,6 +102,20 @@ module cpu_ctrl (
    reg [7:0]         inst;
    wire [2:0]        in;
    wire              nota;
+   wire              den_fc ;
+   wire              inst_we;
+   wire              cen_fc ;
+   wire              cen_sc ;
+   wire              cen_tc ;
+   wire              wen_fc;
+   wire              ac_fc;
+   wire              ac_sc;
+   wire              rpl_fc;
+   wire              rpl_sc;
+   wire              rpl_tc;
+   wire              rpl_fourth_case;
+   wire              oen_fc;
+   wire              oen_sc;
    
    //--------------------------------------------------------------------
    // Instruction Indicator
@@ -133,8 +147,6 @@ module cpu_ctrl (
    //--------------------------------------------------------------------
    // Instruction Register
    //--------------------------------------------------------------------
-   wire inst_we;
-   
    assign inst_we = (state[4]);
    
    always@ (posedge clk or negedge rst)
@@ -174,8 +186,6 @@ module cpu_ctrl (
    //--------------------------------------------------------------------
    // den control
    //--------------------------------------------------------------------
-   wire den_fc ;
-   
    assign den_fc = ((state[2]) | (state[1])) & ((~inst[7]) & (inst[6]) & (inst[5]) & (~inst[4]));
    
    always @(posedge clk or negedge rst)
@@ -193,10 +203,6 @@ module cpu_ctrl (
    //--------------------------------------------------------------------
    // cen control
    //--------------------------------------------------------------------
-   wire cen_fc ;
-   wire cen_sc ;
-   wire cen_tc ;
-
    assign cen_fc = (state[5]);
    assign cen_sc = (state[3]) & ((~inst[7]) & (inst[6]) & (~inst[5]) & (inst[4]));
    assign cen_tc = (state[2]);
@@ -216,8 +222,6 @@ module cpu_ctrl (
    //--------------------------------------------------------------------
    // wen control
    //--------------------------------------------------------------------
-   wire wen_fc;
-
    assign wen_fc = (state[2]) & ((~inst[7]) & (inst[6]) & (inst[5]) & (~inst[4]));
    
    always @(posedge clk or negedge rst)
@@ -235,9 +239,6 @@ module cpu_ctrl (
    //--------------------------------------------------------------------
    // oen control
    //--------------------------------------------------------------------
-   wire oen_fc;
-   wire oen_sc;
-   
    assign oen_fc = (state[5]);
    assign oen_sc = (state[2] | state[3]) & ((~inst[7]) & (inst[6]) & (~inst[5]) & (inst[4]));
    
@@ -266,11 +267,6 @@ module cpu_ctrl (
    //--------------------------------------------------------------------
    // program counter load from rM control
    //--------------------------------------------------------------------
-   wire rpl_fc;
-   wire rpl_sc;
-   wire rpl_tc;
-   wire rpl_fourth_case;
-   
    assign rpl_fc = ((inst[7]) & (inst[6]) & (~inst[5]) & (~inst[4]));
    assign rpl_sc = ((inst[7]) & (inst[6]) & (~inst[5]) & (inst[4])) & ((~cmp[1]) & (~cmp[0])) ;
    assign rpl_tc = ((inst[7]) & (inst[6]) & (inst[5]) & (~inst[4])) & ((~cmp[1]) & cmp[0]) ;
@@ -279,10 +275,7 @@ module cpu_ctrl (
    
    //--------------------------------------------------------------------
    // Address control signal for MUX
-   //--------------------------------------------------------------------
-   wire ac_fc;
-   wire ac_sc;
-   
+   //--------------------------------------------------------------------   
    assign ac_fc =  ((state[3])) & ((~inst[7]) & (inst[6]) & ((inst[5]) ^ (inst[4])));
    assign ac_sc =  ((state[2])) & ((~inst[7]) & (inst[6]) & (inst[5]) & (~inst[4]));
    assign addr_ctrl = ac_fc | ac_sc | state[1] | state[0];

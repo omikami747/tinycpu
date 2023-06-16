@@ -1,17 +1,19 @@
 //--------------------------------------------------------------------
-//
-//
+// File: mux_4to1.v
+// Name: Omkar Girish Kamath
+// Date: 15th June 2023
+// Description: A 4 input to 1 output multiplexer with 2 bit select  
+//              lines.
 //--------------------------------------------------------------------
 
-module mux_4to1
-  (
-   sl,
-   out,
-   in0,
-   in1,
-   in2,
-   in3
-   );
+module mux_4to1 (
+                 sl,
+                 out,
+                 in0,
+                 in1,
+                 in2,
+                 in3
+                 );
 
    //--------------------------------------------------------------------
    // Inputs
