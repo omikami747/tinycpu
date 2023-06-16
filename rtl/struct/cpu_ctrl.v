@@ -32,8 +32,8 @@ module cpu_ctrl (
    // Instruction Set
    //----------------------------------------------------------------------
    //Arithmetic and Logic
-   localparam     AND   = 4'h0;            // A = A & B
-   localparam     OR    = 4'h1;            // A = A | B
+   localparam     AND   = 4'h0;            // A = A && B
+   localparam     OR    = 4'h1;            // A = A || B
    localparam     INV   = 4'h2;            // A = ~A
    localparam     ADD   = 4'h3;            // A = A + B
 
@@ -120,8 +120,8 @@ module cpu_ctrl (
    //--------------------------------------------------------------------
    // Instruction Indicator
    //--------------------------------------------------------------------
-   assign nota = ~(((~inst[7]) & (inst[6]) & (~inst[5]) & (inst[4])) || ((~inst[7]) & (inst[6]) & (inst[5]) & (~inst[4])));
-   assign in = {nota,((~inst[7]) & (inst[6]) & (~inst[5]) & (inst[4])),((~inst[7]) & (inst[6]) & (inst[5]) & (~inst[4]))};
+   assign nota = ~(((~inst[7]) && (inst[6]) && (~inst[5]) && (inst[4])) || ((~inst[7]) && (inst[6]) && (inst[5]) && (~inst[4])));
+   assign in = {nota,((~inst[7]) && (inst[6]) && (~inst[5]) && (inst[4])),((~inst[7]) && (inst[6]) && (inst[5]) && (~inst[4]))};
    
    //--------------------------------------------------------------------
    // Processor State Machine
@@ -134,12 +134,12 @@ module cpu_ctrl (
           end
         else
           begin
-             state[4] <= state[5];
              state[0] <= state[1];
+             state[1] <= state[2] && in[0];
+             state[2] <= state[3] && (in[0] || in[1]);
              state[3] <= state[4];
-             state[1] <= state[2] & in[0];
-             state[2] <= state[3] & (in[0] | in[1]);
-             state[5] <= (state[3] & in[2]) | (state[2] & in[1]) | (state[0]);
+             state[4] <= state[5];
+             state[5] <= (state[3] && in[2]) || (state[2] && in[1]) || (state[0]);
           end
      end // always @ (posedge clk or negedge rst)
 
@@ -165,28 +165,28 @@ module cpu_ctrl (
    //--------------------------------------------------------------------
    // rA MUX and we control
    //--------------------------------------------------------------------
-   assign rA_we = (state[3]) & ((~inst[7]) & (~inst[5]) & (~inst[4]) | (~inst[7]) & (~inst[6]) | (~inst[6]) & (~inst[4])) | (state[2] & (~inst[7]) & (inst[6]) & (~inst[5]) & (inst[4]));
-   assign mux_rA[1] = (state[3]) & (inst[7]) & (~inst[6]) & (~inst[4]) ;
-   assign mux_rA[2] = state[0] | state[1] | state[2];
-   assign mux_rA[0] = (state[3]) & ((~inst[6]) & (inst[5]) & (~inst[4]) | (~inst[7]) & (~inst[6]));
+   assign rA_we = (state[3]) && ((~inst[7]) && (~inst[5]) && (~inst[4]) || (~inst[7]) && (~inst[6]) || (~inst[6]) && (~inst[4])) || (state[2] && (~inst[7]) && (inst[6]) && (~inst[5]) && (inst[4]));
+   assign mux_rA[1] = (state[3]) && (inst[7]) && (~inst[6]) && (~inst[4]) ;
+   assign mux_rA[2] = state[0] || state[1] || state[2];
+   assign mux_rA[0] = (state[3]) && ((~inst[6]) && (inst[5]) && (~inst[4]) || (~inst[7]) && (~inst[6]));
 
    //--------------------------------------------------------------------
    // rB MUX and we control
    //--------------------------------------------------------------------
-   assign mux_rB = ((state[3])) & ((inst[7]) & (~inst[6]) & (~inst[5]) & (inst[4]));
-   assign rB_we  = ((state[3])) & ((inst[7]) & (~inst[6]) & (~inst[5]));
+   assign mux_rB = ((state[3])) && ((inst[7]) && (~inst[6]) && (~inst[5]) && (inst[4]));
+   assign rB_we  = ((state[3])) && ((inst[7]) && (~inst[6]) && (~inst[5]));
 
    //--------------------------------------------------------------------
    // rM MUX control
    //--------------------------------------------------------------------
-   assign rM_we = ((state[3])) & ((inst[7]) & (~inst[6]) & (inst[4]));
-   assign mux_rM[0] = ((state[3])) & ((inst[7]) & (~inst[6]) & (~inst[5]) & (inst[4]));
-   assign mux_rM[1] = ((state[3])) & ((inst[7]) & (inst[6]));
+   assign rM_we = ((state[3])) && ((inst[7]) && (~inst[6]) && (inst[4]));
+   assign mux_rM[0] = ((state[3])) && ((inst[7]) && (~inst[6]) && (~inst[5]) && (inst[4]));
+   assign mux_rM[1] = ((state[3])) && ((inst[7]) && (inst[6]));
 
    //--------------------------------------------------------------------
    // den control
    //--------------------------------------------------------------------
-   assign den_fc = ((state[2]) | (state[1])) & ((~inst[7]) & (inst[6]) & (inst[5]) & (~inst[4]));
+   assign den_fc = ((state[2]) || (state[1])) && ((~inst[7]) && (inst[6]) && (inst[5]) && (~inst[4]));
    
    always @(posedge clk or negedge rst)
      begin
@@ -204,7 +204,7 @@ module cpu_ctrl (
    // cen control
    //--------------------------------------------------------------------
    assign cen_fc = (state[5]);
-   assign cen_sc = (state[3]) & ((~inst[7]) & (inst[6]) & (~inst[5]) & (inst[4]));
+   assign cen_sc = (state[3]) && ((~inst[7]) && (inst[6]) && (~inst[5]) && (inst[4]));
    assign cen_tc = (state[2]);
    
    always @(posedge clk or negedge rst)
@@ -215,14 +215,14 @@ module cpu_ctrl (
           end
         else
           begin
-             cen <= ~(cen_fc | cen_sc | cen_tc);
+             cen <= ~(cen_fc || cen_sc || cen_tc);
           end
      end
 
    //--------------------------------------------------------------------
    // wen control
    //--------------------------------------------------------------------
-   assign wen_fc = (state[2]) & ((~inst[7]) & (inst[6]) & (inst[5]) & (~inst[4]));
+   assign wen_fc = (state[2]) && ((~inst[7]) && (inst[6]) && (inst[5]) && (~inst[4]));
    
    always @(posedge clk or negedge rst)
      begin
@@ -240,7 +240,7 @@ module cpu_ctrl (
    // oen control
    //--------------------------------------------------------------------
    assign oen_fc = (state[5]);
-   assign oen_sc = (state[2] | state[3]) & ((~inst[7]) & (inst[6]) & (~inst[5]) & (inst[4]));
+   assign oen_sc = (state[2] || state[3]) && ((~inst[7]) && (inst[6]) && (~inst[5]) && (inst[4]));
    
    always @(posedge clk or negedge rst)
      begin
@@ -250,7 +250,7 @@ module cpu_ctrl (
           end
         else
           begin
-             oen <= ~(oen_fc | oen_sc);
+             oen <= ~(oen_fc || oen_sc);
           end
      end
 
@@ -267,18 +267,18 @@ module cpu_ctrl (
    //--------------------------------------------------------------------
    // program counter load from rM control
    //--------------------------------------------------------------------
-   assign rpl_fc = ((inst[7]) & (inst[6]) & (~inst[5]) & (~inst[4]));
-   assign rpl_sc = ((inst[7]) & (inst[6]) & (~inst[5]) & (inst[4])) & ((~cmp[1]) & (~cmp[0])) ;
-   assign rpl_tc = ((inst[7]) & (inst[6]) & (inst[5]) & (~inst[4])) & ((~cmp[1]) & cmp[0]) ;
-   assign rpl_fourth_case = ((inst[7]) & (inst[6]) & (inst[5]) & (inst[4])) & (cmp[1] & (~cmp[0])) ;
-   assign rP_load = ((state[3])) & (rpl_fc | rpl_sc | rpl_tc | rpl_fourth_case);
+   assign rpl_fc = ((inst[7]) && (inst[6]) && (~inst[5]) && (~inst[4]));
+   assign rpl_sc = ((inst[7]) && (inst[6]) && (~inst[5]) && (inst[4])) && ((~cmp[1]) && (~cmp[0])) ;
+   assign rpl_tc = ((inst[7]) && (inst[6]) && (inst[5]) && (~inst[4])) && ((~cmp[1]) && cmp[0]) ;
+   assign rpl_fourth_case = ((inst[7]) && (inst[6]) && (inst[5]) && (inst[4])) && (cmp[1] && (~cmp[0])) ;
+   assign rP_load = ((state[3])) && (rpl_fc || rpl_sc || rpl_tc || rpl_fourth_case);
    
    //--------------------------------------------------------------------
    // Address control signal for MUX
    //--------------------------------------------------------------------   
-   assign ac_fc =  ((state[3])) & ((~inst[7]) & (inst[6]) & ((inst[5]) ^ (inst[4])));
-   assign ac_sc =  ((state[2])) & ((~inst[7]) & (inst[6]) & (inst[5]) & (~inst[4]));
-   assign addr_ctrl = ac_fc | ac_sc | state[1] | state[0];
+   assign ac_fc =  ((state[3])) && ((~inst[7]) && (inst[6]) && ((inst[5]) ^ (inst[4])));
+   assign ac_sc =  ((state[2])) && ((~inst[7]) && (inst[6]) && (inst[5]) && (~inst[4]));
+   assign addr_ctrl = ac_fc || ac_sc || state[1] || state[0];
    
 endmodule
 
