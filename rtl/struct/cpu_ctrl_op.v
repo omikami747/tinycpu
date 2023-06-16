@@ -1,10 +1,10 @@
 //--------------------------------------------------------------------
-// File: cpu_ctrl.v
+// File: cpu_ctrl_op.v
 // Name: Omkar Girish Kamath
-// Date: 17th May 2023
+// Date: 16th June 2023
 // Description: Provides all the control signal for CPU function such
-// as for MUXes, write enable for registers, ALU etc.
-//
+// as for MUXes, write enable for registers, ALU etc. Optimised 
+// version.
 //--------------------------------------------------------------------
 
    module cpu_ctrl_op (
