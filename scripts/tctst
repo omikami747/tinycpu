@@ -1,5 +1,6 @@
 #!/bin/bash
 
+SORT_APPEND=0
 ASM=../prog/asm/asm
 EMU=../prog/emu/emu
 TEST_DIR=../prog/src
@@ -32,7 +33,7 @@ exec 2> error.log
 #-------------------------------------------------------------------------------
 # Parse command line arguments
 #-------------------------------------------------------------------------------
-VALID_ARGS=$(getopt --options d:Dh --long design:,debug,help -- "$@")
+VALID_ARGS=$(getopt --options d:Dha --long design:,debug,help,appendnot -- "$@")
 
 if [[ -s error.log ]] ; then   #-s returns true if file exists with size greater than zero otherwise false
     echo `cat error.log | sed -e s/getopt/Error/g`
@@ -62,6 +63,11 @@ while [ : ]; do
         -h | --help)
             echo -e "The use of the script is in the following format - \n../scripts/tctst [option] [option_with argument] argument testname.\nThe script supports 3 options:-\n\n -h (--help) option provides detailed methods of using the tool.If -h option (an argument-less option) is used, then no testname is allowed.\n\n -D (--debug long format) - This option enables the debug mode in the SRAM  module, the debug messages (SRAM I/O values) are stored in 'design'_'testname'.trace file.\n\n -d (--design long format) - This option requires an argument that must be one of the following three choices\n a) model - Reference Model\n b) beh - Behavioural Model\n c) str - Structural Model\n d) str74 - Structural in 74 Model\nIn absence of -h (--help) option, a testfile should be provided which is present in the directory ../prog/src/ and should be an Assembly code file adhering to Instruction Format specified in specs doc." | fold -w 80 -s
             exit 0;
+            shift
+            ;;
+        -a | --appendnot)
+            SORT_APPEND=1;
+            echo "sort append stopped";
             shift
             ;;
         --) shift;
@@ -98,7 +104,7 @@ rm -f debug.trace
 $EMU bin.out > emu_${TESTNAME}.trace
 ../prog/bin2readmemh/bin2readmemh bin.out > program.mem
 sleep 0.2
-if [[ $TESTNAME".s" == "sort.s" ]] ; then
+if [[ $TESTNAME".s" == "sort.s" && $SORT_APPEND == 0 ]] ; then
     ../scripts/sortappend;
 fi
 make $OUTNAME --makefile=../scripts/makefile

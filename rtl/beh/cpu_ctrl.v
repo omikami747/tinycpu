@@ -57,12 +57,12 @@ module cpu_ctrl (
    //--------------------------------------------------------------------
    // Processor States
    //--------------------------------------------------------------------
-   localparam IDLE    = 3'd0;
-   localparam FETCH   = 3'd1;
-   localparam EXEC    = 3'd2;
-   localparam MEMACC1 = 3'd3;
-   localparam MEMACC2 = 3'd4;
-   localparam MEMACC3 = 3'd5;
+   localparam IDLE    = 6'b100000;
+   localparam FETCH   = 6'b010000;
+   localparam EXEC    = 6'b001000;
+   localparam MEMACC1 = 6'b000100;
+   localparam MEMACC2 = 6'b000010;
+   localparam MEMACC3 = 6'b000001;
    
    // Compare Results
    localparam EQ = 2'b00;
@@ -98,9 +98,9 @@ module cpu_ctrl (
    //--------------------------------------------------------------------
    // Internals
    //--------------------------------------------------------------------
-   reg [3:0]         state;
+   reg [5:0]         state;
    reg [7:0]         inst;
-
+   
    //--------------------------------------------------------------------
    // Processor State Machine
    //--------------------------------------------------------------------
@@ -128,7 +128,7 @@ module cpu_ctrl (
                     state <= IDLE;
                     if (inst[7:4] == LDM)
                       begin
-                         state <= MEMACC2;
+                         state <= MEMACC1;
                       end
                     else 
                       if (inst[7:4] == STM)
@@ -139,18 +139,18 @@ module cpu_ctrl (
 
                MEMACC1 :
                  begin
-                    state <= MEMACC2;
-                 end
-               MEMACC2 :
-                 begin
                     if (inst[7:4] == STM)
                       begin
-                         state <= MEMACC3;
+                         state <= MEMACC2;
                       end
                     else
                       begin
                          state <= IDLE;
                       end
+                 end
+               MEMACC2 :
+                 begin
+                    state <= MEMACC3;
                  end
                MEMACC3 :
                  begin
@@ -237,12 +237,19 @@ module cpu_ctrl (
           MEMACC1 :
             begin
                mux_rA <= 'd4;
-               rA_we  <= 'b0;
+               if (inst[7:4] == LDM)
+                 begin
+                    rA_we  <= 'b1;
+                 end
+               else
+                 begin
+                    rA_we <= 'b0;
+                 end
             end
           MEMACC2 :
             begin
                mux_rA <= 'd4;
-               rA_we  <= 'b1;
+               rA_we  <= 'b0;
             end
           MEMACC3 :
             begin
@@ -324,14 +331,14 @@ module cpu_ctrl (
                  end
                default :
                  begin
-                    mux_rM <= 'd3;
+                    mux_rM <= 'd0;
                     rM_we  <= 'b0;
                  end
              endcase
           end // if (state == EXEC)
         else
           begin
-             mux_rM <= 'd3;
+             mux_rM <= 'd0;
              rM_we <= 'b0;
           end
      end
@@ -414,7 +421,7 @@ module cpu_ctrl (
           end
         else
           begin
-             if ((state == IDLE) || ((state == EXEC) && (inst[7:4] == LDM)))
+             if ((state == IDLE) || (((state == EXEC) || (state == MEMACC1)) && (inst[7:4] == LDM)))
                begin
                   oen <= 'b0;
                end
@@ -469,7 +476,7 @@ module cpu_ctrl (
 
    always@ (*)
      begin
-        if (((state == EXEC) && (inst[7:4] == LDM)) || ((inst[7:4] == STM) && (state == MEMACC1)))
+        if (((state == EXEC) && (inst[7:4] == LDM || inst[7:4] == STM)) || ((inst[7:4] == STM) && (state == MEMACC1)) || (state == MEMACC2) || state == MEMACC3)
           begin
              addr_ctrl <= 'b1;
           end

@@ -57,12 +57,12 @@ module cpu_ctrl (
    //--------------------------------------------------------------------
    // Processor States
    //--------------------------------------------------------------------
-   localparam IDLE    = 3'd0;
-   localparam FETCH   = 3'd1;
-   localparam EXEC    = 3'd2;
-   localparam MEMACC1 = 3'd3;
-   localparam MEMACC2 = 3'd4;
-   localparam MEMACC3 = 3'd5;
+   localparam IDLE    = 6'b100000;
+   localparam FETCH   = 6'b010000;
+   localparam EXEC    = 6'b001000;
+   localparam MEMACC1 = 6'b000100;
+   localparam MEMACC2 = 6'b000010;
+   localparam MEMACC3 = 6'b000001;
    
    // Compare Results
    localparam EQ = 2'b00;
@@ -98,79 +98,44 @@ module cpu_ctrl (
    //--------------------------------------------------------------------
    // Internals
    //--------------------------------------------------------------------
-   reg [2:0]         state;
+   reg [5:0]         state;
    reg [7:0]         inst;
-
+   wire [2:0]        in;
+   wire              nota;
+   
+   //--------------------------------------------------------------------
+   // Instruction Indicator
+   //--------------------------------------------------------------------
+   assign nota = ~(((~inst[7]) & (inst[6]) & (~inst[5]) & (inst[4])) || ((~inst[7]) & (inst[6]) & (inst[5]) & (~inst[4])));
+   assign in = {nota,((~inst[7]) & (inst[6]) & (~inst[5]) & (inst[4])),((~inst[7]) & (inst[6]) & (inst[5]) & (~inst[4]))};
+   
    //--------------------------------------------------------------------
    // Processor State Machine
    //--------------------------------------------------------------------
    always @(posedge clk or negedge rst)
      begin
-        if (rst == 'b0)
+        if (rst == 1'b0)
           begin
-             state <= IDLE;
+             state <= 6'b100000;
           end
         else
           begin
-             case (state)
-               IDLE :
-                 begin
-                    state <= FETCH;
-                 end
-
-               FETCH :
-                 begin
-                    state <= EXEC ;
-                 end
-
-               EXEC :
-                 begin
-                    state <= IDLE;
-                    if (inst[7:4] == LDM)
-                      begin
-                         state <= MEMACC2;
-                      end
-                    else 
-                      if (inst[7:4] == STM)
-                        begin
-                           state <= MEMACC1;
-                        end
-                 end
-
-               MEMACC1 :
-                 begin
-                    state <= MEMACC2;
-                 end
-               MEMACC2 :
-                 begin
-                    if (inst[7:4] == STM)
-                      begin
-                         state <= MEMACC3;
-                      end
-                    else
-                      begin
-                         state <= IDLE;
-                      end
-                 end
-               MEMACC3 :
-                 begin
-                    state <= IDLE ;
-                 end
-
-               default :
-                 begin
-                    state <= IDLE ;
-                 end
-             endcase
+             state[4] <= state[5];
+             state[0] <= state[1];
+             state[3] <= state[4];
+             state[1] <= state[2] & in[0];
+             state[2] <= state[3] & (in[0] | in[1]);
+             state[5] <= (state[3] & in[2]) | (state[2] & in[1]) | (state[0]);
           end
-     end
+     end // always @ (posedge clk or negedge rst)
+
    
    //--------------------------------------------------------------------
    // Instruction Register
    //--------------------------------------------------------------------
    wire inst_we;
    
-   assign inst_we = (~state[2]) & (~state[1]) & (state[0]);
+   assign inst_we = (state[4]);
    
    always@ (posedge clk or negedge rst)
      begin
@@ -188,169 +153,30 @@ module cpu_ctrl (
    //--------------------------------------------------------------------
    // rA MUX and we control
    //--------------------------------------------------------------------
-   // assign mux_rA[2] = state[2] | (state[1] & state[0]);
-   assign rA_we = (~state[2]) & (state[1]) & (~state[0]) & ((~inst[7]) & (~inst[5]) & (~inst[4]) | (~inst[7]) & (~inst[6]) | (~inst[6]) & (~inst[4])) | (state[2]) & (~state[1]) & (~state[0]);
-   assign mux_rA[1] = (~state[2]) & (state[1]) & (~state[0]) & (inst[7]) & (~inst[6]) & (~inst[4]) ;
-   assign mux_rA[2] = (state[2]) | (~state[1]) | (state[0]);
-   assign mux_rA[0] = (~state[2]) & (state[1]) & (~state[0]) & ((~inst[6]) & (inst[5]) & (~inst[4]) | (~inst[7]) & (~inst[6]));
-   
-   // always@ (*)
-   //   begin
-   //      case (state)
-   //        EXEC :
-   //          begin
-   //             case (inst[7:4])
-   //               LDI :
-   //                 begin
-   //                    mux_rA <= 'd0;
-   //                 end
-   //               AND :
-   //                 begin
-   //                    mux_rA <= 'd1;
-   //                 end
-   //               OR  :
-   //                 begin
-   //                    mux_rA <= 'd1;
-   //                 end
-   //               INV :
-   //                 begin
-   //                    mux_rA <= 'd1;
-   //                 end
-   //               ADD :
-   //                 begin
-   //                    mux_rA <= 'd1;
-   //                 end
-   //               SWAB :
-   //                 begin
-   //                    mux_rA <= 'd2;
-   //                 end
-   //               CPPA :
-   //                 begin
-   //                    mux_rA <= 'd3;
-   //                 end
-   //               default :
-   //                 begin
-   //                    mux_rA <= 'd0;
-   //                 end
-   //             endcase
-   //          end // case: EXEC
-   //        MEMACC1 :
-   //          begin
-   //             mux_rA <= 'd4;
-   //          end
-   //        MEMACC2 :
-   //          begin
-   //             mux_rA <= 'd4;
-   //          end
-   //        MEMACC3 :
-   //          begin
-   //             mux_rA <= 'd4;
-   //          end
-   //        default:
-   //          begin
-   //             mux_rA <= 'b0;
-   //          end
-   //      endcase
-   //   end
+   assign rA_we = (state[3]) & ((~inst[7]) & (~inst[5]) & (~inst[4]) | (~inst[7]) & (~inst[6]) | (~inst[6]) & (~inst[4])) | (state[2] & (~inst[7]) & (inst[6]) & (~inst[5]) & (inst[4]));
+   assign mux_rA[1] = (state[3]) & (inst[7]) & (~inst[6]) & (~inst[4]) ;
+   assign mux_rA[2] = state[0] | state[1] | state[2];
+   assign mux_rA[0] = (state[3]) & ((~inst[6]) & (inst[5]) & (~inst[4]) | (~inst[7]) & (~inst[6]));
 
    //--------------------------------------------------------------------
    // rB MUX and we control
    //--------------------------------------------------------------------
-   assign mux_rB = ((~state[2]) & state[1] & (~state[0])) & ((inst[7]) & (~inst[6]) & (~inst[5]) & (inst[4]));
-   assign rB_we  = ((~state[2]) & state[1] & (~state[0])) & ((inst[7]) & (~inst[6]) & (~inst[5]));
-   
-   // always@ (*)
-   //   begin
-   //      if (state == EXEC)
-   //        begin
-   //           if (inst[7:4] == SWAB)
-   //             begin
-   //                mux_rB <= 1'b0;
-   //                rB_we  <= 'b1;
-   //             end
-   //           else
-   //             if (inst[7:4] == SWMB)
-   //               begin
-   //                  mux_rB <= 1'b1;
-   //                  rB_we  <= 'b1;
-   //               end
-   //             else
-   //               begin
-   //                  mux_rB <= 1'b0;
-   //                  rB_we  <= 'b0;
-   //               end
-   //        end // if (state == EXEC)
-   //      else
-   //        begin
-   //           mux_rB <= 1'b0;
-   //           rB_we  <= 'b0;
-   //        end
-   //   end
+   assign mux_rB = ((state[3])) & ((inst[7]) & (~inst[6]) & (~inst[5]) & (inst[4]));
+   assign rB_we  = ((state[3])) & ((inst[7]) & (~inst[6]) & (~inst[5]));
 
    //--------------------------------------------------------------------
    // rM MUX control
    //--------------------------------------------------------------------
-   assign rM_we = ((~state[2]) & state[1] & (~state[0])) & ((inst[7]) & (~inst[6]) & (inst[4]));
-   assign mux_rM[0] = ((~state[2]) & state[1] & (~state[0])) & ((inst[7]) & (~inst[6]) & (~inst[5]) & (inst[4]));
-   assign mux_rM[1] = ((~state[2]) & state[1] & (~state[0])) & ((inst[7]) & (inst[6]));
-   
-   // always@ (*)
-   //   begin
-   //      if (state == EXEC)
-   //        begin
-   //           case (inst[7:4])
-   //             CPAM :
-   //               begin
-   //                  mux_rM <= 'd0;
-   //                  rM_we  <= 'b1;
-   //               end
-   //             SWMB :
-   //               begin
-   //                  mux_rM <= 'd1;
-   //                  rM_we  <= 'b1;
-   //               end
-   //             JU   :
-   //               begin
-   //                  mux_rM <= 'd2;
-   //                  rM_we  <= 'b0;
-   //               end
-   //             JE   :
-   //               begin
-   //                  mux_rM <= 'd2;
-   //                  rM_we  <= 'b0;
-   //               end
-   //             JL   :
-   //               begin
-   //                  mux_rM <= 'd2;
-   //                  rM_we  <= 'b0;
-   //               end
-   //             JG   :
-   //               begin
-   //                  mux_rM <= 'd2;
-   //                  rM_we  <= 'b0;
-   //               end
-   //             default :
-   //               begin
-   //                  mux_rM <= 'd3;
-   //                  rM_we  <= 'b0;
-   //               end
-   //           endcase
-   //        end // if (state == EXEC)
-   //      else
-   //        begin
-   //           mux_rM <= 'd3;
-   //           rM_we <= 'b0;
-   //        end
-   //   end
+   assign rM_we = ((state[3])) & ((inst[7]) & (~inst[6]) & (inst[4]));
+   assign mux_rM[0] = ((state[3])) & ((inst[7]) & (~inst[6]) & (~inst[5]) & (inst[4]));
+   assign mux_rM[1] = ((state[3])) & ((inst[7]) & (inst[6]));
 
    //--------------------------------------------------------------------
    // den control
    //--------------------------------------------------------------------
    wire den_fc ;
-   wire den_sc ;
-
-   assign den_fc = (~state[2]) & (state[1]) & (state[0]);
-   assign den_sc = (state[2]) & (~state[1]) & (~state[0]) & ((~inst[7]) & (inst[6]) & (inst[5]) & (~inst[4]));
+   
+   assign den_fc = ((state[2]) | (state[1])) & ((~inst[7]) & (inst[6]) & (inst[5]) & (~inst[4]));
    
    always @(posedge clk or negedge rst)
      begin
@@ -360,7 +186,7 @@ module cpu_ctrl (
           end
         else
           begin
-             den <= den_fc | den_sc;
+             den <= den_fc;
           end
      end
 
@@ -371,9 +197,9 @@ module cpu_ctrl (
    wire cen_sc ;
    wire cen_tc ;
 
-   assign cen_fc = (~state[2]) & (~state[1]) & (~state[0]);
-   assign cen_sc = (~state[2]) & state[1] & (~state[0]) & ((~inst[7]) & (inst[6]) & (~inst[5]) & (inst[4]));
-   assign cen_tc = (~state[2]) & (state[1]) & (state[0]);
+   assign cen_fc = (state[5]);
+   assign cen_sc = (state[3]) & ((~inst[7]) & (inst[6]) & (~inst[5]) & (inst[4]));
+   assign cen_tc = (state[2]);
    
    always @(posedge clk or negedge rst)
      begin
@@ -392,7 +218,7 @@ module cpu_ctrl (
    //--------------------------------------------------------------------
    wire wen_fc;
 
-   assign wen_fc = (~state[2]) & state[1] & state[0] & ((~inst[7]) & (inst[6]) & (inst[5]) & (~inst[4]));
+   assign wen_fc = (state[2]) & ((~inst[7]) & (inst[6]) & (inst[5]) & (~inst[4]));
    
    always @(posedge clk or negedge rst)
      begin
@@ -411,9 +237,9 @@ module cpu_ctrl (
    //--------------------------------------------------------------------
    wire oen_fc;
    wire oen_sc;
-
-   assign oen_fc = (~state[2]) & (~state[1]) & (~state[0]);
-   assign oen_sc = (~state[2]) & (state[1]) & (~state[0]) & ((~inst[7]) & (inst[6]) & (~inst[5]) & (inst[4]));
+   
+   assign oen_fc = (state[5]);
+   assign oen_sc = (state[2] | state[3]) & ((~inst[7]) & (inst[6]) & (~inst[5]) & (inst[4]));
    
    always @(posedge clk or negedge rst)
      begin
@@ -430,16 +256,12 @@ module cpu_ctrl (
    //--------------------------------------------------------------------
    // alu control
    //--------------------------------------------------------------------
-   // always@ (*)
-   //   begin
-   //      alu_ctrl <= inst[5:4];
-   //   end
    assign alu_ctrl = inst[5:4]; 
    
    //--------------------------------------------------------------------
    // program counter increment control
    //--------------------------------------------------------------------
-   assign rP_inc = (~state[2]) & (~state[1]) & (state[0]);
+   assign rP_inc = (state[4]);
    
    //--------------------------------------------------------------------
    // program counter load from rM control
@@ -453,7 +275,7 @@ module cpu_ctrl (
    assign rpl_sc = ((inst[7]) & (inst[6]) & (~inst[5]) & (inst[4])) & ((~cmp[1]) & (~cmp[0])) ;
    assign rpl_tc = ((inst[7]) & (inst[6]) & (inst[5]) & (~inst[4])) & ((~cmp[1]) & cmp[0]) ;
    assign rpl_fourth_case = ((inst[7]) & (inst[6]) & (inst[5]) & (inst[4])) & (cmp[1] & (~cmp[0])) ;
-   assign rP_load = ((~state[2]) & state[1] & (~state[0])) & (rpl_fc | rpl_sc | rpl_tc | rpl_fourth_case);
+   assign rP_load = ((state[3])) & (rpl_fc | rpl_sc | rpl_tc | rpl_fourth_case);
    
    //--------------------------------------------------------------------
    // Address control signal for MUX
@@ -461,10 +283,9 @@ module cpu_ctrl (
    wire ac_fc;
    wire ac_sc;
    
-   assign ac_fc =  ((~state[2]) & state[1] & (~state[0])) & ((~inst[7]) & (inst[6]) & (~inst[5]) & (inst[4]));
-   assign ac_sc =  ((~state[2]) & (state[1]) & (state[0])) & ((~inst[7]) & (inst[6]) & (inst[5]) & (~inst[4]));
-   assign addr_ctrl = ac_fc || ac_sc;
+   assign ac_fc =  ((state[3])) & ((~inst[7]) & (inst[6]) & ((inst[5]) ^ (inst[4])));
+   assign ac_sc =  ((state[2])) & ((~inst[7]) & (inst[6]) & (inst[5]) & (~inst[4]));
+   assign addr_ctrl = ac_fc | ac_sc | state[1] | state[0];
    
-
 endmodule
 

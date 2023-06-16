@@ -3,6 +3,8 @@ module tinycpu_test;
 `ifdef MODEL
  `define DUMP_NAME "model_dump.vcd"
  `define TOPLEVEL tinycpu
+ `define IDLE 3'd0
+ `define EXEC 3'd2
  `define STATE cpumodel.exec_state
  `define INSTR cpumodel.instr[7:6]
  `define RA cpumodel.rA
@@ -13,6 +15,8 @@ module tinycpu_test;
  `ifdef BEH
   `define DUMP_NAME "beh_dump.vcd"
   `define TOPLEVEL sim_env
+  `define IDLE 6'b100000
+  `define EXEC 6'b001000
   `define STATE cpumodel.toplevel.cpu_ctrl.state
   `define INSTR cpumodel.toplevel.cpu_ctrl.inst[7:6]
   `define RA cpumodel.toplevel.cpu_reg.rA_out
@@ -22,6 +26,8 @@ module tinycpu_test;
  `else
   `define DUMP_NAME "str_dump.vcd"
   `define TOPLEVEL sim_env
+  `define IDLE 6'b100000
+  `define EXEC 6'b001000
   `define STATE cpumodel.toplevel.cpu_ctrl.state
   `define INSTR cpumodel.toplevel.cpu_ctrl.inst[7:6]
   `define RA cpumodel.toplevel.cpu_reg.rA_out
@@ -54,7 +60,7 @@ module tinycpu_test;
 
    always @(posedge clk)
      begin
-        if (`STATE == 3'd2
+        if (`STATE == `EXEC
             && `INSTR == 2'b11
             && (`RP - 1) == `RM
             && reset == 1'b1)
@@ -62,7 +68,7 @@ module tinycpu_test;
              $display("Detected forever loop, halting CPU.");
              $finish;
           end
-        if (`STATE == 3'd0 && reset == 1'b1)
+        if (`STATE == `IDLE && reset == 1'b1)
           begin
              $display("A = %x, B = %x, M = %x, P = %x",
                       `RA, `RB, `RM, `RP);
