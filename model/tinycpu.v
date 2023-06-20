@@ -32,12 +32,18 @@ module tinycpu
   //----------------------------------------------------------------------
   // FSM States
   //----------------------------------------------------------------------
-  localparam     IDLE    = 3'd0;
-  localparam     FETCH   = 3'd1;
-  localparam     EXEC    = 3'd2;
-  localparam     MEMACC1 = 3'd3;
-  localparam     MEMACC2 = 3'd4;
-  localparam     MEMACC3 = 3'd5;
+  // localparam     IDLE    = 3'd0;
+  // localparam     FETCH   = 3'd1;
+  // localparam     EXEC    = 3'd2;
+  // localparam     MEMACC1 = 3'd3;
+  // localparam     MEMACC2 = 3'd4;
+  // localparam     MEMACC3 = 3'd5;
+  localparam     IDLE    = 6'b100000;
+  localparam     FETCH   = 6'b010000;
+  localparam     EXEC    = 6'b001000;
+  localparam     MEMACC1 = 6'b000100;
+  localparam     MEMACC2 = 6'b000010;
+  localparam     MEMACC3 = 6'b000001;
 
   //----------------------------------------------------------------------
   // CPU registers
@@ -55,7 +61,7 @@ module tinycpu
   reg          wen;
   reg          oen;
   reg [7:0]    addr;
-  reg [2:0]    exec_state;
+  reg [5:0]    exec_state;
   reg [7:0]    instr;
 
   // Memory data bus - has tristate control
