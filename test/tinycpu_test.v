@@ -3,8 +3,8 @@ module tinycpu_test;
 `ifdef MODEL
  `define DUMP_NAME "model_dump.vcd"
  `define TOPLEVEL tinycpu
- `define IDLE 3'd0
- `define EXEC 3'd2
+ `define IDLE 6'b100000
+ `define EXEC 6'b001000
  `define STATE cpumodel.exec_state
  `define INSTR cpumodel.instr[7:6]
  `define RA cpumodel.rA
