@@ -1,32 +1,32 @@
 //--------------------------------------------------------------------
-// File: cpu_ctrl_op.v
+// File: cpu_ctrl.v
 // Name: Omkar Girish Kamath
-// Date: 16th June 2023
+// Date: 17th May 2023
 // Description: Provides all the control signal for CPU function such
-// as for MUXes, write enable for registers, ALU etc. Optimised 
-// version.
+// as for MUXes, write enable for registers, ALU etc.
+//
 //--------------------------------------------------------------------
 
-   module cpu_ctrl_op (
-                       dq,     // input from sram_ctrl
-                       rst,
-                       clk,
-                       cmp,      // compare result sig in
-                       mux_rA,   // control sig for register MUXes
-                       rA_we,
-                       mux_rB,
-                       rB_we,
-                       mux_rM,
-                       rM_we,
-                       den,      // control sig for SRAM ctrl
-                       cen,
-                       wen,
-                       oen,
-                       alu_ctrl, // control sig for ALU
-                       rP_inc,   // control sig for rP
-                       rP_load,
-                       addr_ctrl// address control signal to SRAM ctrl
-                       );
+module cpu_ctrl (
+                 dq,     // input from sram_ctrl
+                 rst,
+                 clk,
+                 cmp,      // compare result sig in
+                 mux_rA,   // control sig for register MUXes
+                 rA_we,
+                 mux_rB,
+                 rB_we,
+                 mux_rM,
+                 rM_we,
+                 den,      // control sig for SRAM ctrl
+                 cen,
+                 wen,
+                 oen,
+                 alu_ctrl, // control sig for ALU
+                 rP_inc,   // control sig for rP
+                 rP_load,
+                 addr_ctrl// address control signal to SRAM ctrl
+                 );
 
    //----------------------------------------------------------------------
    // Instruction Set
@@ -116,36 +116,12 @@
    wire              rpl_fourth_case;
    wire              oen_fc;
    wire              oen_sc;
-
-   //--------------------------------------------------------------------
-   // Redundancy Eliminator
-   //--------------------------------------------------------------------
-   wire              notfivefour;
-   assign notfivefour = (~inst[5]) && (inst[4]);
    
-   wire              sevsix;
-   assign sevsix = (inst[7]) && (inst[6]);
-   
-   wire              sevnotsix;
-   assign sevnotsix = (inst[7]) && (~inst[6]);
-
-   wire              notsevnotsix;
-   assign notsevnotsix = (~inst[7]) && (~inst[6]);
-   
-   wire              stm;
-   assign stm = ((~inst[7]) && (inst[6]) && (inst[5]) && (~inst[4]));
-   
-   wire              ldm;
-   assign ldm = ((~inst[7]) && (inst[6]) && notfivefour);
-   
-   wire              swmb;
-   assign swmb = sevnotsix && notfivefour;
-      
    //--------------------------------------------------------------------
    // Instruction Indicator
    //--------------------------------------------------------------------
-   assign nota = ~(ldm || stm);
-   assign in = {nota,ldm,stm};
+   assign nota = ~(((~inst[7]) && (inst[6]) && (~inst[5]) && (inst[4])) || ((~inst[7]) && (inst[6]) && (inst[5]) && (~inst[4])));
+   assign in = {nota,((~inst[7]) && (inst[6]) && (~inst[5]) && (inst[4])),((~inst[7]) && (inst[6]) && (inst[5]) && (~inst[4]))};
    
    //--------------------------------------------------------------------
    // Processor State Machine
@@ -163,8 +139,7 @@
              state[2] <= state[3] && (in[0] || in[1]);
              state[3] <= state[4];
              state[4] <= state[5];
-             state[5] <= (state[3] && in[2]) || (state[2] && in[1]) || 
-                         (state[0]);
+             state[5] <= (state[3] && in[2]) || (state[2] && in[1]) || (state[0]);
           end
      end // always @ (posedge clk or negedge rst)
 
@@ -190,33 +165,28 @@
    //--------------------------------------------------------------------
    // rA MUX and we control
    //--------------------------------------------------------------------
-   assign rA_we = (state[3]) && 
-                  ((~inst[7]) && (~inst[5]) && 
-                   (~inst[4]) || notsevnotsix || 
-                   (~inst[6]) && (~inst[4])) ||
-                  (state[2] && ldm);
-   assign mux_rA[1] = (state[3]) && sevnotsix && (~inst[4]) ;
+   assign rA_we = (state[3]) && ((~inst[7]) && (~inst[5]) && (~inst[4]) || (~inst[7]) && (~inst[6]) || (~inst[6]) && (~inst[4])) || (state[2] && (~inst[7]) && (inst[6]) && (~inst[5]) && (inst[4]));
+   assign mux_rA[1] = (state[3]) && (inst[7]) && (~inst[6]) && (~inst[4]) ;
    assign mux_rA[2] = state[0] || state[1] || state[2];
-   assign mux_rA[0] = (state[3]) && ((~inst[6]) && (inst[5]) && 
-                                     (~inst[4]) || notsevnotsix);
+   assign mux_rA[0] = (state[3]) && ((~inst[6]) && (inst[5]) && (~inst[4]) || (~inst[7]) && (~inst[6]));
 
    //--------------------------------------------------------------------
    // rB MUX and we control
    //--------------------------------------------------------------------
-   assign mux_rB = ((state[3])) && swmb;
-   assign rB_we  = ((state[3])) && (sevnotsix && (~inst[5]));
+   assign mux_rB = ((state[3])) && ((inst[7]) && (~inst[6]) && (~inst[5]) && (inst[4]));
+   assign rB_we  = ((state[3])) && ((inst[7]) && (~inst[6]) && (~inst[5]));
 
    //--------------------------------------------------------------------
    // rM MUX control
    //--------------------------------------------------------------------
-   assign rM_we = ((state[3])) && (sevnotsix && (inst[4]));
-   assign mux_rM[0] = ((state[3])) && swmb;
-   assign mux_rM[1] = ((state[3])) && sevsix;
+   assign rM_we = ((state[3])) && ((inst[7]) && (~inst[6]) && (inst[4]));
+   assign mux_rM[0] = ((state[3])) && ((inst[7]) && (~inst[6]) && (~inst[5]) && (inst[4]));
+   assign mux_rM[1] = ((state[3])) && ((inst[7]) && (inst[6]));
 
    //--------------------------------------------------------------------
    // den control
    //--------------------------------------------------------------------
-   assign den_fc = ((state[2]) || (state[1])) && stm;
+   assign den_fc = ((state[2]) || (state[1])) && ((~inst[7]) && (inst[6]) && (inst[5]) && (~inst[4]));
    
    always @(posedge clk or negedge rst)
      begin
@@ -234,7 +204,7 @@
    // cen control
    //--------------------------------------------------------------------
    assign cen_fc = (state[5]);
-   assign cen_sc = (state[3]) && ldm;
+   assign cen_sc = (state[3]) && ((~inst[7]) && (inst[6]) && (~inst[5]) && (inst[4]));
    assign cen_tc = (state[2]);
    
    always @(posedge clk or negedge rst)
@@ -252,7 +222,7 @@
    //--------------------------------------------------------------------
    // wen control
    //--------------------------------------------------------------------
-   assign wen_fc = (state[2]) && stm;
+   assign wen_fc = (state[2]) && ((~inst[7]) && (inst[6]) && (inst[5]) && (~inst[4]));
    
    always @(posedge clk or negedge rst)
      begin
@@ -270,7 +240,7 @@
    // oen control
    //--------------------------------------------------------------------
    assign oen_fc = (state[5]);
-   assign oen_sc = (state[2] || state[3]) && ldm;
+   assign oen_sc = (state[2] || state[3]) && ((~inst[7]) && (inst[6]) && (~inst[5]) && (inst[4]));
    
    always @(posedge clk or negedge rst)
      begin
@@ -297,21 +267,17 @@
    //--------------------------------------------------------------------
    // program counter load from rM control
    //--------------------------------------------------------------------
-   assign rpl_fc = (sevsix && (~inst[5]) && (~inst[4]));
-   assign rpl_sc = (sevsix && notfivefour) && 
-                   ((~cmp[1]) && (~cmp[0])) ;
-   assign rpl_tc = (sevsix && (inst[5]) && (~inst[4])) && 
-                   ((~cmp[1]) && cmp[0]) ;
-   assign rpl_fourth_case = (sevsix && (inst[5]) && (inst[4])) && 
-                            (cmp[1] && (~cmp[0])) ;
-   assign rP_load = ((state[3])) && 
-                    (rpl_fc || rpl_sc || rpl_tc || rpl_fourth_case);
+   assign rpl_fc = ((inst[7]) && (inst[6]) && (~inst[5]) && (~inst[4]));
+   assign rpl_sc = ((inst[7]) && (inst[6]) && (~inst[5]) && (inst[4])) && ((~cmp[1]) && (~cmp[0])) ;
+   assign rpl_tc = ((inst[7]) && (inst[6]) && (inst[5]) && (~inst[4])) && ((~cmp[1]) && cmp[0]) ;
+   assign rpl_fourth_case = ((inst[7]) && (inst[6]) && (inst[5]) && (inst[4])) && (cmp[1] && (~cmp[0])) ;
+   assign rP_load = ((state[3])) && (rpl_fc || rpl_sc || rpl_tc || rpl_fourth_case);
    
    //--------------------------------------------------------------------
    // Address control signal for MUX
    //--------------------------------------------------------------------   
-   assign ac_fc =  state[3] && (ldm || stm);
-   assign ac_sc =  state[2] && stm;
+   assign ac_fc =  ((state[3])) && ((~inst[7]) && (inst[6]) && ((inst[5]) ^ (inst[4])));
+   assign ac_sc =  ((state[2])) && ((~inst[7]) && (inst[6]) && (inst[5]) && (~inst[4]));
    assign addr_ctrl = ac_fc || ac_sc || state[1] || state[0];
    
 endmodule

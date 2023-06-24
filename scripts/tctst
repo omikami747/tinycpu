@@ -82,6 +82,10 @@ fi
 
 OUTNAME=$(gawk -F '.' --assign dbg=$DBG '{ print ($1 dbg $2) }' <<< $OUTNAME)
 
+if [[ $1 == "sort.s" && $SORT_APPEND == 0 ]] ; then
+    ../scripts/sortappend;
+fi
+
 if [[ -s $TEST_DIR/$1 ]]; then
     echo -e "Test name is valid and exists in ../prog/src/ directory";
 else echo -e "Error: test name is not valid and doesnt exist in ../prog/src/ directory.\nFatal";
@@ -104,9 +108,7 @@ rm -f debug.trace
 $EMU bin.out > emu_${TESTNAME}.trace
 ../prog/bin2readmemh/bin2readmemh bin.out > program.mem
 sleep 0.2
-if [[ $TESTNAME".s" == "sort.s" && $SORT_APPEND == 0 ]] ; then
-    ../scripts/sortappend;
-fi
+
 make $OUTNAME --makefile=../scripts/makefile
 
 if [[ -s error.log ]]; then
