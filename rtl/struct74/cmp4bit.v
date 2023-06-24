@@ -37,6 +37,7 @@ module cmp4bit (
    input wire pin14;
    input wire pin15;
    input wire pin16;
+
    
    output wire pin5;
    output wire pin6;
