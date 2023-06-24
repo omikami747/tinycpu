@@ -75,7 +75,7 @@ module cpu_ctrl_op (
    input wire        clk;
    input wire        rst;
    input wire [7:0]  dq ;
-   input wire [1:0]  cmp;
+   input wire [2:0]  cmp;
 
    //--------------------------------------------------------------------
    // Outputs
@@ -583,10 +583,7 @@ module cpu_ctrl_op (
    // wen control
    //--------------------------------------------------------------------
    wire              oen_in;
-   wire              cmp10_or;
-   wire              _cmp10_or;
-   wire              _cmp0;
-   wire              _cmp1;
+   
    dualdff pair5 (
                   .pin1(),
                   .pin2(wen_fc),
@@ -611,12 +608,12 @@ module cpu_ctrl_op (
                 .pin5(_rpl_fc_2),
                 .pin6(rpl_fc_2),
                 .pin7(),
-                .pin8(_cmp10_or),
-                .pin9(cmp10_or),
-                .pin10(_cmp1),
-                .pin11(cmp[1]),
-                .pin12(_cmp0),
-                .pin13(cmp[0]),
+                .pin8(),
+                .pin9(),
+                .pin10(),
+                .pin11(),
+                .pin12(),
+                .pin13(),
                 .pin14()
                 );
    // assign wen_fc = (state2_out) && stm;
@@ -648,9 +645,9 @@ module cpu_ctrl_op (
                .pin8(_rpl_fc_2),
                .pin9(inst[5]),
                .pin10(inst[4]),
-               .pin11(cmp10_or),
-               .pin12(cmp[1]),
-               .pin13(cmp[0]),
+               .pin11(),
+               .pin12(),
+               .pin13(),
                .pin14()
                );
    assign oen_fc = (state5_out);
@@ -683,12 +680,15 @@ module cpu_ctrl_op (
    //--------------------------------------------------------------------
    wire              _inst5inst4;
    wire              rpl_sc_1;
-   wire              cmp_1_0_and;
    wire              inst5_inst4;
    wire              rpl_tc_1;
    wire              inst5inst4;
    wire              rpl_fourth_case_1;
-   wire              cmp1_0_and;
+   wire              ac_fc_2;
+   wire              rpl_fc_sc;
+   wire              rpl_tc_fourth_case;
+   wire              rpl_fc_sc_tc_fourth_case;
+   
    quadand and9 (
                  .pin1(_inst[5]),
                  .pin2(inst[4]),
@@ -699,10 +699,10 @@ module cpu_ctrl_op (
                  .pin7(),
                  .pin8(rpl_sc),
                  .pin9(rpl_sc_1),
-                 .pin10(_cmp10_or),
-                 .pin11(cmp_1_0_and),
-                 .pin12(_cmp1),
-                 .pin13(cmp[0]),
+                 .pin10(cmp[1]),
+                 .pin11(ac_sc),
+                 .pin12(state2_out),
+                 .pin13(stm),
                  .pin14()
                  );
    quadand and10 (
@@ -715,15 +715,12 @@ module cpu_ctrl_op (
                   .pin7(),
                   .pin8(rpl_tc),
                   .pin9(rpl_tc_1),
-                  .pin10(cmp_1_0_and),
-                  .pin11(cmp1_0_and),
-                  .pin12(cmp[1]),
-                  .pin13(_cmp0),
+                  .pin10(cmp[0]),
+                  .pin11(ac_fc),
+                  .pin12(state3_out),
+                  .pin13(ac_fc_2),
                   .pin14()
                   );
-   wire              rpl_fc_sc;
-   wire              rpl_tc_fourth_case;
-   wire              rpl_fc_sc_tc_fourth_case;
     quadand and11 (
                   .pin1(inst[4]),
                   .pin2(inst[5]),
@@ -734,14 +731,12 @@ module cpu_ctrl_op (
                   .pin7(),
                   .pin8(rpl_fourth_case),
                   .pin9(rpl_fourth_case_1),
-                  .pin10(cmp1_0_and),
+                  .pin10(cmp[2]),
                   .pin11(rP_load),
                   .pin12(state3_out),
                   .pin13(rpl_fc_sc_tc_fourth_case),
                   .pin14()
                    );
-   wire              ac_fc_2;
-   
    quador or5 (
                .pin1(rpl_fc),
                .pin2(rpl_sc),
@@ -771,22 +766,6 @@ module cpu_ctrl_op (
    //--------------------------------------------------------------------
    // Address control signal for MUX
    //-------------------------------------------------------------------- 
-    quadand and12 (
-                  .pin1(state3_out),
-                  .pin2(ac_fc_2),
-                  .pin3(ac_fc),
-                  .pin4(state2_out),
-                  .pin5(stm),
-                  .pin6(ac_sc),
-                  .pin7(),
-                  .pin8(),
-                  .pin9(),
-                  .pin10(),
-                  .pin11(),
-                  .pin12(),
-                  .pin13(),
-                  .pin14()
-                   );
    wire              addr_ctrl_1;
    wire              addr_ctrl_2;
    

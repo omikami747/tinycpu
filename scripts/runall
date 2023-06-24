@@ -1,8 +1,10 @@
 #!/bin/bash
 
-rm -f ../docs/status/dashboard.*
+FILE_NAME=$(./../scripts/date_appd)
+echo "$FILE_NAME"
+rm -f ../docs/status/dashboard*
 rm -f *.txt
-cat ../docs/status/template.tex  > ../docs/status/dashboard.tex
+cat ../docs/status/template.tex  > ../docs/status/${FILE_NAME}.tex
 
 ../scripts/tcregrtst -d model
 
@@ -29,27 +31,41 @@ done < "$input_file2"
 input_file3="str_reg.log"
 IT=1
 while IFS= read -r line3; do
-    (gawk '{print $3 " \\\\ "}' <<< "$line3" | sed 's/_/\\_/g') >> $IT.txt;
-    echo "\hline" >> $IT.txt;
+    (gawk '{print $3 " & "}' <<< "$line3" | sed 's/_/\\_/g') >> $IT.txt;
     IT=$(($IT+1));
 done < "$input_file3"
+
+../scripts/tcregrtst -d str74
+
+input_file4="str74_reg.log"
+IT=1
+while IFS= read -r line4; do
+    (gawk '{print $3 " \\\\ "}' <<< "$line4" | sed 's/_/\\_/g') >> $IT.txt;
+    echo "\hline" >> $IT.txt;
+    IT=$(($IT+1));
+done < "$input_file4"
+
 FILES=$(ls *.txt)
 for file in $FILES; do
     tr -d '\n' < $file > new${file}
-    cat new${file} >> ../docs/status/dashboard.tex;
-    echo -e "\n" >> ../docs/status/dashboard.tex;
+    cat new${file} >> ../docs/status/${FILE_NAME}.tex;
+    echo -e "\n" >> ../docs/status/${FILE_NAME}.tex;
 done
-echo "\end{tabular} \end{table} \end{document}" >> ../docs/status/dashboard.tex
+echo "\end{tabular} \end{table} \end{document}" >> ../docs/status/${FILE_NAME}.tex
 if command -v latexmk &>/dev/null; then
     echo "latexmk is installed"
 else
     echo "latexmk is not installed, install it then run the script. Fatal."
     exit 34;
 fi
-latexmk -pdf ../docs/status/dashboard.tex
+rm -f str74_reg.log
+latexmk -pdf ../docs/status/${FILE_NAME}.tex
 if [ $? -eq 0 ]; then
-    echo "latexmk succeeded"
+    echo "latexmk succeeded";
 else
     echo "latexmk failed, error in input .tex file. Pdf not built."
     exit 33;
 fi
+shopt -s extglob
+rm -f !(*.pdf)
+cp ${FILE_NAME}.pdf ../docs/runalldocs/

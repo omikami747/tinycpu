@@ -24,7 +24,7 @@ module toplevel (
    //--------------------------------------------------------------------
 
    wire [7:0] 	     dq_sram ;
-   wire [1:0] 	     cmp_in;
+   wire [2:0] 	     cmp_in;
    wire [2:0] 	     mux_rA_o;
    wire  	     mux_rB_o;
    wire [1:0] 	     mux_rM_o;

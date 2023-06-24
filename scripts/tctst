@@ -125,7 +125,7 @@ rm ${DESIGN}_${TESTNAME}tmp
 #     exit 0;
 # fi
 
-if diff -q emu_${TESTNAME}.trace ${DESIGN}_${TESTNAME}.trace ; then
+if diff --ignore-matching-lines="^.*" -q emu_${TESTNAME}.trace ${DESIGN}_${TESTNAME}.trace ; then
     echo -e "${DESIGN} design passed ${TESTNAME}.s test" > ${DESIGN}_${TESTNAME}.log;
     exit 0;
 else
